@@ -1,3 +1,8 @@
+@import '../../../node_modules/reset-css/reset.css';
+@import 'variables';
+
 body, html{
-  background-color: gray;
+  background-color: $white;
+  font-size: 20px;
+  font-family: 'VT323', monospace;
 }

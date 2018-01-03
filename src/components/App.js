@@ -1,9 +1,10 @@
 import React, {PropTypes} from 'react';
+import '../static/style/index.scss';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="mainWrapper">
         {this.props.children}
       </div>
     );

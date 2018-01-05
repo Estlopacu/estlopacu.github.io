@@ -1,0 +1,40 @@
+{
+  "experience": [
+    {
+      "dates": "February 2017 - December 2017",
+      "company": "Gorilla Logic",
+      "position": "Senior Web Developer",
+      "location": "Sabana Business Center - Sabana, San José"
+    },
+    {
+      "dates": "July 2016 - February 2017",
+      "company": "Informatech Costa Rica",
+      "position": "Senior Web Developer",
+      "location": "Forum 2 - Santa Ana"
+    },
+    {
+      "dates": "July 2014 - July 2016",
+      "company": "Konrad Group Costa Rica",
+      "position": "Web Developer",
+      "location": "Terra Campus - Tres Ríos, Cartago"
+    },
+    {
+      "dates": "February 2016 - March 2016",
+      "company": "Brainstation Costa Rica",
+      "position": "Teacher for course of introduction to javascript",
+      "location": "Terra Campus - Tres Ríos, Cartago"
+    },
+    {
+      "dates": "June 2008 - April 2011",
+      "company": "Prodigious Costa Rica (Bosz Digital)",
+      "position": "Creative Engineer, Tech",
+      "location": "Tributo Building - San Rafael, Heredia"
+    },
+    {
+      "dates": "April 2011 - July 2014",
+      "company": "Lion Resources Costa Rica",
+      "position": "Finance Assistant & Web Developer",
+      "location": "Barreal, Heredia"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+@import '../../static/style/variables.scss';
+
+.experience {
+  justify-content: space-around;
+
+  > div {
+    padding: $spacing;
+    flex: 1;
+  }
+
+  > div:nth-child(1) {
+    background-color: $white;
+  }
+
+  > div:nth-child(2) {
+    background-color: $secondary-color;
+  }
+
+  .experience--grid {
+    flex-direction: column;
+
+    > div {
+      margin-bottom:$spacing / 2;
+    }
+  }
+}

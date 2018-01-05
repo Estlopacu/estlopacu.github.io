@@ -1,0 +1,28 @@
+{
+  "skills": [
+    {
+      "type": "HTML5 & CSS3",
+      "percent": "95%"
+    },
+    {
+      "type": "JAVASCRIPT & NODE",
+      "percent": "95%"
+    },
+    {
+      "type": "REACT",
+      "percent": "95%"
+    },
+    {
+      "type": "ANGULARJS",
+      "percent": "95%"
+    },
+    {
+      "type": "PHP",
+      "percent": "70%"
+    },
+    {
+      "type": "RUBY",
+      "percent": "50%"
+    }
+  ]
+}

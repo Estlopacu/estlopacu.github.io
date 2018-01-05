@@ -24,6 +24,7 @@ export default {
   module: {
     loaders: [
       {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
+      { test: /\.json$/, loader: 'json' },
       {test: /(\.scss)$/, loaders: ['style', 'css', 'sass']},
       {test: /\.(png|jp(e*)g|svg)$/, loader: 'url-loader', options: { limit: 8000, name: 'src/static/images/[name].[ext]'}},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},

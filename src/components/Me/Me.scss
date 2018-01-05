@@ -1,0 +1,59 @@
+@import '../../static/style/variables.scss';
+
+.me {
+  h2 {
+    font-size: 1em;
+    margin-top: $spacing / 4;
+  }
+
+  > div {
+    text-align: center;
+    align-items: center;
+  }
+
+  .me--profile {
+    img {
+      max-width: $spacing * 2;
+      border-radius: 50%;
+      margin-top: $spacing / 2;
+
+      @media (min-width: $tablet) {
+        margin-top: $spacing;
+      }
+    }
+  }
+
+  ul {
+    margin-top: $spacing / 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    a, svg {
+      color: $primary-color;
+      font-size: 1.5em;
+    }
+
+    > li {
+      flex:1;
+      padding: $spacing / 4 $spacing / 4 0;
+
+      @media (min-width: $tablet) {
+        padding: $spacing / 2 $spacing / 2 0;
+      }
+
+      &:hover {
+        animation: 1s swing;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: $spacing / 2;
+
+      @media (min-width: $tablet) {
+        margin-bottom: $spacing;
+      }
+    }
+  }
+}

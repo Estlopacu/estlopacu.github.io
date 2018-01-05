@@ -1,0 +1,41 @@
+@import '../../static/style/variables.scss';
+
+.skills {
+  justify-content: space-around;
+
+  > div {
+    padding: $spacing;
+    flex: 1;
+  }
+
+  > div:nth-child(1) {
+    background-color: $primary-color;
+  }
+
+  > div:nth-child(2) {
+    background-color: $white;
+  }
+
+  .skills--grid {
+    flex-direction: column;
+
+    > div {
+      margin-bottom:$spacing / 2;
+    }
+  }
+
+  .skills--progressContainer {
+    background-color: $forth-color;
+    width: 100%;
+    height: $spacing / 2;
+    position: relative;
+    overflow: hidden;
+
+    span {
+      height: 20px;
+      text-align: right;
+      background-color: $secondary-color;
+      position: absolute;
+    }
+  }
+}

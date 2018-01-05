@@ -1,0 +1,24 @@
+{
+  "education": [
+    {
+      "dates": "2012- 2013",
+      "title": "Master Degree System Engineering",
+      "studyCenter": "Universidad Latinoamericana de Ciencia y Tecnología"
+    },
+    {
+      "dates": "2006 - 2011",
+      "title": "Bachelor Degree System Engineering",
+      "studyCenter": "Universidad Fidélitas"
+    },
+    {
+      "dates": "2003 – 2005",
+      "title": "Technician in Accounting and Finance and High School",
+      "studyCenter": "Colegio Vocacional Monseñor Sanabria"
+    },
+    {
+      "dates": "2013",
+      "title": "HTML5 application development fundamentals Course",
+      "studyCenter": "Universidad Latinoamericana de Ciencia y Tecnología"
+    }
+  ]
+}

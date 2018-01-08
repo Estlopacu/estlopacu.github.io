@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import '../static/style/index.scss';
+require('../static/images/favicon.ico');
 import WOW from 'wowjs';
 
 class App extends React.Component {

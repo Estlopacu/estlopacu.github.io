@@ -1,8 +1,12 @@
+// @flow
 import React from 'react';
 import './Education.scss';
 import educationList from '../../static/data/education.json';
 
-class Education extends React.Component {
+type Props = {};
+type State = {};
+
+class Education extends React.Component<Props, State> {
   render() {
     return (
       <div className="education flex-grid wow bounceInUp" id="education" >

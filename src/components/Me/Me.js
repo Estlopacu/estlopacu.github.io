@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import './Me.scss';
 import profile from '../../static/images/profile.jpg';
@@ -10,7 +11,10 @@ import linkedin from '@fortawesome/fontawesome-free-brands/faLinkedin';
 import github from '@fortawesome/fontawesome-free-brands/faGithub';
 import facebook from '@fortawesome/fontawesome-free-brands/faFacebookSquare';
 
-class Me extends React.Component {
+type Props = {};
+type State = {};
+
+class Me extends React.Component<Props, State> {
   render() {
     return (
         <div className="me flex-grid" id="profile">

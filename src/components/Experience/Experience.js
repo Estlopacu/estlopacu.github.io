@@ -1,8 +1,12 @@
+// @flow
 import React from 'react';
 import './Experience.scss';
 import experienceList from '../../static/data/experience.json';
 
-class Experience extends React.Component {
+type Props = {};
+type State = {};
+
+class Experience extends React.Component<Props, State> {
   render() {
     return (
       <div className="experience flex-grid wow bounceInUp flex-grid-reverse" id="experience">

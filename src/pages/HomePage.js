@@ -1,4 +1,7 @@
+// @flow
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Menu from '../components/Common/Menu';
 import Me from '../components/Me/Me';
 import Education from '../components/Education/Education';
@@ -7,7 +10,13 @@ import Skills from '../components/Skills/Skills';
 import Projects from '../components/Projects/Projects';
 import Footer from '../components/Common/Footer';
 
-class HomePage extends React.Component {
+type Props = {
+  currentMenu: string
+};
+
+type State = {};
+
+class HomePage extends React.Component<Props, State> {
   render() {
     return (
       <div className="wow fadeIn">
@@ -22,4 +31,16 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+  currentMenu: PropTypes.string
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentMenu: state.global.currentMenu
+  };
+};
+
+export default connect(
+  mapStateToProps
+)(HomePage);

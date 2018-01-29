@@ -1,12 +1,32 @@
+// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { changeMenu } from '../../actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './Menu.scss';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import bars from '@fortawesome/fontawesome-free-solid/faBars';
 import close from '@fortawesome/fontawesome-free-solid/faTimes';
+import type { flowActions } from '../flow-typed/actions';
 
-class HomePage extends React.Component {
+type Action = flowActions;
+
+type Props = {
+  dispatch: (action: Action) => void;
+};
+
+type State = {
+    showMenu: boolean
+};
+
+class Menu extends React.Component<Props, State> {
+
+  scrollToSection: (Object, string) => void;
+  toogleMenu: () => void;
+  menuSection: string;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,17 +36,18 @@ class HomePage extends React.Component {
     this.toogleMenu = this.toogleMenu.bind(this);
   }
 
-  isMobile() {
-    return window.getComputedStyle(document.getElementsByClassName("menu--mobile")[0]).getPropertyValue("display") === "block";
-  }
-
-  scrollToSection(element) {
-    const elem = document.getElementById(element);
+  scrollToSection(e: {}, section: string) {
+    const elem = document && document.getElementById(section);
+    this.props.dispatch(changeMenu(section));
     if (this.isMobile()) {
       this.toogleMenu();
     }
-    window.scrollTo(0, elem.offsetTop - (this.isMobile() ? 50 : 100));
+    window.scrollTo(0, elem && elem.offsetTop - (this.isMobile() ? 50 : 100));
 
+  }
+
+  isMobile() {
+    return window.getComputedStyle(document.getElementsByClassName("menu--mobile")[0]).getPropertyValue("display") === "block";
   }
 
   toogleMenu() {
@@ -43,10 +64,10 @@ class HomePage extends React.Component {
       <div className="menu">
         <nav className="menu--desktop">
           <ul>
-            <li><a onClick={() => { this.scrollToSection("profile"); }}>General Information</a></li>
-            <li><a onClick={() => { this.scrollToSection("skills"); }}>Skills</a></li>
-            <li><a onClick={() => { this.scrollToSection("experience"); }}>Laboral Experience</a></li>
-            <li><a onClick={() => { this.scrollToSection("education"); }}>Education</a></li>
+            <li><a onClick={(e) => this.scrollToSection(e, "profile")}>General Information</a></li>
+            <li><a onClick={(e) => this.scrollToSection(e, "skills")}>Skills</a></li>
+            <li><a onClick={(e) => this.scrollToSection(e, "experience")}>Laboral Experience</a></li>
+            <li><a onClick={(e) => this.scrollToSection(e, "education")}>Education</a></li>
           </ul>
         </nav>
         <nav className="menu--mobile">
@@ -57,10 +78,10 @@ class HomePage extends React.Component {
           <div className="menu--mobile-show animated linear bounceInUp">
             <ul>
               <li><a onClick={() => this.toogleMenu()}><FontAwesomeIcon icon={close}/></a></li>
-              <li><a onClick={() => { this.scrollToSection("profile"); }}>General Information</a></li>
-              <li><a onClick={() => { this.scrollToSection("skills"); }}>Skills</a></li>
-              <li><a onClick={() => { this.scrollToSection("experience"); }}>Laboral Experience</a></li>
-              <li><a onClick={() => { this.scrollToSection("education"); }}>Education</a></li>
+              <li><a onClick={(e) => this.scrollToSection(e, "profile")}>General Information</a></li>
+              <li><a onClick={(e) => this.scrollToSection(e, "skills")}>Skills</a></li>
+              <li><a onClick={(e) => this.scrollToSection(e, "experience")}>Laboral Experience</a></li>
+              <li><a onClick={(e) => this.scrollToSection(e, "education")}>Education</a></li>
             </ul>
           </div>
           }
@@ -70,4 +91,16 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+Menu.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentMenu: state.global.currentMenu
+  };
+};
+
+export default connect(
+  mapStateToProps
+)(Menu);

@@ -1,9 +1,13 @@
+// @flow
 import React from 'react';
 import './Skills.scss';
 import SkillBar from './SkillBar.js';
 import skillsList from '../../static/data/skills.json';
 
-class Skills extends React.Component {
+type Props = {};
+type State = {};
+
+class Skills extends React.Component<Props, State> {
   render() {
     return (
       <div className="skills flex-grid wow bounceInUp" id="skills">

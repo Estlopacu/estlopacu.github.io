@@ -1,9 +1,13 @@
+// @flow
 import React from 'react';
 import './Projects.scss';
 import contratistacr from '../../static/images/contratistacr.png';
 import mamavaprimero from '../../static/images/mamavaprimero.png';
 
-class Projects extends React.Component {
+type Props = {};
+type State = {};
+
+class Projects extends React.Component<Props, State> {
   render() {
     return (
       <div className="projects flex-grid wow bounceInUp flex-grid-reverse">

@@ -1,7 +1,10 @@
+// @flow
 import React from 'react';
 import './Menu.scss';
 
-class HomePage extends React.Component {
+type Props = {};
+
+class HomePage extends React.Component<Props> {
   render() {
     return (
       <div className="footer">

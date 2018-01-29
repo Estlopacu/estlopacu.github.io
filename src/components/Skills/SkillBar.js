@@ -1,8 +1,16 @@
+// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SkillBar = props => {
-  let barStyle = {
+type Props = {
+  skill: {
+    percent: number,
+    type: string
+  }
+};
+
+const SkillBar = (props: Props) => {
+  const barStyle = {
     width: props.skill.percent
   };
 

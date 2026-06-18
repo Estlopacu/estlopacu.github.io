@@ -1,0 +1,16 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+# Keep the root checkout current, then install deps with the repo's package
+# manager (yarn). Git refresh is best-effort so setup never fails on it.
+setup = """
+git -C "$CONDUCTOR_ROOT_PATH" fetch --prune origin && git -C "$CONDUCTOR_ROOT_PATH" pull --ff-only || true
+yarn install
+"""
+
+# The site is static (root index.html + CDN React/Babel); serve it on the
+# per-workspace port so previews don't collide.
+run = "python3 -m http.server $CONDUCTOR_PORT"
+
+# Each workspace serves on its own CONDUCTOR_PORT with no shared resource.
+run_mode = "concurrent"

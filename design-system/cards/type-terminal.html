@@ -1,0 +1,22 @@
+<!-- @dsCard group="Type" viewport="700x210" name="Terminal accent — VT323" subtitle="Heritage font from the original CV" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--blue-950);font-family:var(--font-body);padding:24px 30px;display:flex;flex-direction:column;gap:10px}
+  .term{font-family:var(--font-terminal);font-size:38px;line-height:1.15;color:var(--text-terminal)}
+  .term .prompt{color:var(--azure)}
+  .term .cursor{display:inline-block;width:14px;height:30px;background:var(--signal-400);transform:translateY(4px);margin-left:2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .note{font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--tracking-mono);text-transform:uppercase;color:var(--slate-400)}
+</style>
+</head>
+<body>
+  <div class="term"><span class="prompt">esteban@portfolio:~$</span> whoami</div>
+  <div class="term">&gt; luis esteban lópez acuña — web developer<span class="cursor"></span></div>
+  <div class="note">VT323 · the original CV's display font, kept as a terminal accent</div>
+</body>
+</html>

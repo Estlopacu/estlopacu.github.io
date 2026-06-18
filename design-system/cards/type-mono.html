@@ -1,0 +1,22 @@
+<!-- @dsCard group="Type" viewport="700x210" name="Mono & Labels — JetBrains Mono" subtitle="Code, data, uppercase labels" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--surface-card);font-family:var(--font-body);color:var(--text-strong);padding:26px 32px;display:flex;flex-direction:column;gap:16px}
+  .label{font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:var(--tracking-mono);text-transform:uppercase;color:var(--brand)}
+  .code{font-family:var(--font-mono);font-size:var(--text-sm);background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:12px 14px;color:var(--text-body);line-height:1.6}
+  .k{color:var(--brand)}.s{color:var(--signal-600)}.c{color:var(--text-muted)}
+  .chips{display:flex;gap:8px}
+  .chip{font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.06em;background:var(--blue-50);color:var(--brand);border-radius:var(--radius-xs);padding:4px 9px}
+</style>
+</head>
+<body>
+  <div class="label">// experience · 2014 — present</div>
+  <div class="code"><span class="k">const</span> engineer = { <span class="s">name</span>: <span class="s">'Esteban'</span>, <span class="s">stack</span>: [<span class="s">'react'</span>, <span class="s">'node'</span>] }; <span class="c">// shipping since 2008</span></div>
+  <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">Vue</span></div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Motion & easing" subtitle="Hover a bar to feel the curve" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--surface-card);font-family:var(--font-mono);padding:22px 28px;display:flex;flex-direction:column;gap:12px}
+  .row{display:flex;align-items:center;gap:14px}
+  .spec{width:170px;font-size:11px;color:var(--text-muted);flex:none}
+  .track{flex:1;height:16px;background:var(--surface-sunken);border-radius:var(--radius-pill);position:relative;overflow:hidden}
+  .dot{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--brand);transform:translateX(0)}
+  body:hover .dot{transform:translateX(calc(100% + 320px))}
+  .e1{transition:transform var(--dur-slow) var(--ease-out)}
+  .e2{transition:transform var(--dur-slow) var(--ease-in-out);background:var(--blue-400)}
+  .e3{transition:transform var(--dur-slow) var(--ease-spring);background:var(--signal-500)}
+  .hint{font-size:10px;color:var(--text-muted);text-align:right}
+</style>
+</head>
+<body>
+  <div class="row"><span class="spec">ease-out · settle</span><div class="track"><div class="dot e1"></div></div></div>
+  <div class="row"><span class="spec">ease-in-out · symmetric</span><div class="track"><div class="dot e2"></div></div></div>
+  <div class="row"><span class="spec">ease-spring · overshoot</span><div class="track"><div class="dot e3"></div></div></div>
+  <div class="hint">durations: fast 140ms · base 240ms · slow 420ms · reveal 700ms</div>
+</body>
+</html>

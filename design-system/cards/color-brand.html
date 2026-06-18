@@ -1,0 +1,34 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Brand blue ramp" subtitle="Anchored on heritage #004BA8" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--surface-card);font-family:var(--font-mono);padding:24px 28px}
+  .ramp{display:flex;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .sw{flex:1;height:92px;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;color:#fff}
+  .sw small{font-size:9px;opacity:.85;letter-spacing:.03em}
+  .sw b{font-size:11px;font-weight:500}
+  .dark{color:var(--slate-900)}
+  .cap{display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--text-muted);letter-spacing:.04em}
+</style>
+</head>
+<body>
+  <div class="ramp">
+    <div class="sw dark" style="background:var(--blue-50)"><b>50</b></div>
+    <div class="sw dark" style="background:var(--blue-100)"><b>100</b></div>
+    <div class="sw dark" style="background:var(--blue-200)"><b>200</b></div>
+    <div class="sw dark" style="background:var(--blue-300)"><b>300</b></div>
+    <div class="sw" style="background:var(--blue-400)"><b>400</b><small>#337ACA</small></div>
+    <div class="sw" style="background:var(--blue-500)"><b>500</b></div>
+    <div class="sw" style="background:var(--blue-600)"><b>600</b><small>#004BA8</small></div>
+    <div class="sw" style="background:var(--blue-700)"><b>700</b></div>
+    <div class="sw" style="background:var(--blue-800)"><b>800</b></div>
+    <div class="sw" style="background:var(--blue-900)"><b>900</b></div>
+    <div class="sw" style="background:var(--blue-950)"><b>950</b></div>
+  </div>
+  <div class="cap"><span>--blue-400 — bright azure (heritage tertiary)</span><span>--blue-600 — PRIMARY brand</span></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!-- @dsCard group="Colors" viewport="700x200" name="Accents & status" subtitle="Signal green, azure glow, semantic" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0}
+  body{background:var(--surface-card);font-family:var(--font-mono);padding:24px 28px;display:flex;flex-direction:column;gap:16px}
+  .grp{display:flex;gap:12px}
+  .sw{flex:1;height:62px;border-radius:var(--radius-sm);display:flex;flex-direction:column;justify-content:flex-end;padding:8px;color:#fff;box-shadow:var(--shadow-xs)}
+  .sw b{font-size:11px;font-weight:600}.sw small{font-size:9px;opacity:.9}
+  .lbl{font-size:11px;color:var(--text-muted);letter-spacing:var(--tracking-mono);text-transform:uppercase;margin-bottom:-6px}
+</style>
+</head>
+<body>
+  <div class="lbl">Accents</div>
+  <div class="grp">
+    <div class="sw" style="background:var(--signal-400);color:var(--slate-900)"><b>signal-400</b><small>terminal green</small></div>
+    <div class="sw" style="background:var(--signal-600)"><b>signal-600</b></div>
+    <div class="sw" style="background:var(--azure)"><b>azure</b><small>glow / focus</small></div>
+    <div class="sw" style="background:var(--blue-muted)"><b>blue-muted</b></div>
+  </div>
+  <div class="lbl">Semantic status</div>
+  <div class="grp">
+    <div class="sw" style="background:var(--success)"><b>success</b></div>
+    <div class="sw" style="background:var(--warning);color:var(--slate-900)"><b>warning</b></div>
+    <div class="sw" style="background:var(--danger)"><b>danger</b></div>
+    <div class="sw" style="background:var(--info)"><b>info</b></div>
+  </div>
+</body>
+</html>

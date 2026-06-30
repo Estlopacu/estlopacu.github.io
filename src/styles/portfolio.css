@@ -118,6 +118,7 @@ a { color: inherit; }
 /* ---------- Projects ---------- */
 .pf-projects { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-8); }
 .pf-project { padding: 0 !important; overflow: hidden; }
+.pf-project__link { display: block; color: inherit; text-decoration: none; }
 .pf-project__media { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--slate-200); }
 .pf-project__media img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform var(--dur-slow) var(--ease-out); }
 .pf-project:hover .pf-project__media img { transform: scale(1.05); }

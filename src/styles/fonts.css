@@ -1,0 +1,10 @@
+/* ============================================================
+   FONTS — Estlopacu Portfolio Design System
+   Heritage: VT323 (the original CV's terminal font) is kept as
+   a brand accent. Paired with modern technical type.
+   ------------------------------------------------------------
+   Loaded from Google Fonts. If you self-host, replace these
+   @import lines with local @font-face rules.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap');

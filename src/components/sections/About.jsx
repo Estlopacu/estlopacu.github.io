@@ -22,8 +22,9 @@ function About() {
           <p className="pf-prose">
             I'm a senior full-stack engineer, originally from Costa Rica and based in Berlin.
             Over the last decade I've delivered high-impact digital products across startups
-            and scale-ups — six years at GetYourGuide, then Root Global, and now Payrails.
-            I care about product quality, team collaboration, and continuous improvement.
+            and scale-ups — six years at GetYourGuide, then Root Global, and most recently Payrails.
+            I'm currently open to new opportunities. I care about product quality, team
+            collaboration, and continuous improvement.
           </p>
           <Card variant="sunken">
             <div className="pf-stats">

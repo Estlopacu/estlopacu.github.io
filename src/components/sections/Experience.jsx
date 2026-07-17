@@ -6,7 +6,7 @@ import Tag from '../ds/Tag.jsx';
 
 function Experience() {
   const jobs = [
-    { dates: 'Jan 2026 — Present', company: 'Payrails', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
+    { dates: 'Jan 2026 — Jun 2026', company: 'Payrails', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
       highlight: 'Built & launched a new company-website CMS with Next.js and Sanity; maintained the legacy Webflow site.' },
     { dates: 'Jul 2024 — Nov 2024', company: 'Root Global', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
       highlight: 'Led a new user-tracking system and executed critical PostgreSQL migrations for the new web app.' },

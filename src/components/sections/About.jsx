@@ -8,7 +8,8 @@ import Tag from '../ds/Tag.jsx';
 function About() {
   const groups = [
     { label: 'core stack', tone: 'signal', items: ['TypeScript', 'React / Next.js', 'Node.js', 'Vue.js / Nuxt'] },
-    { label: 'frontend', items: ['TanStack Query', 'React Router', 'Pinia', 'Tailwind', 'HTML', 'CSS'] },
+    { label: 'frontend', items: ['React Native', 'TanStack Query', 'React Router', 'Pinia', 'Tailwind', 'HTML', 'CSS'] },
+    { label: 'cms', items: ['Sanity', 'Webflow'] },
     { label: 'infra & cloud', items: ['AWS', 'Docker'] },
     { label: 'testing', items: ['Playwright', 'Cypress', 'E2E'] },
     { label: 'databases', items: ['PostgreSQL', 'MySQL'] },
@@ -22,9 +23,10 @@ function About() {
           <p className="pf-prose">
             I'm a senior full-stack engineer, originally from Costa Rica and based in Berlin.
             Over the last decade I've delivered high-impact digital products across startups
-            and scale-ups — six years at GetYourGuide, then Root Global, and most recently Payrails.
-            I'm currently open to new opportunities. I care about product quality, team
-            collaboration, and continuous improvement.
+            and scale-ups — six years at GetYourGuide, then Root Global, a year of freelance
+            work and intensive German (B2), and most recently Payrails. I'm currently open to
+            new opportunities. I care about product quality, team collaboration, and continuous
+            improvement.
           </p>
           <Card variant="sunken">
             <div className="pf-stats">

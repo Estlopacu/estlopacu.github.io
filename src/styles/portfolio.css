@@ -114,6 +114,8 @@ a { color: inherit; }
 .pf-timeline__hl { font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--text-body); margin: 0 0 8px; max-width: 60ch; }
 .pf-timeline__loc { display: flex; align-items: center; gap: 6px; font-size: var(--text-sm); color: var(--text-muted); margin: 0; }
 .pf-timeline__loc svg { width: 14px; height: 14px; }
+.pf-timeline__more { display: flex; justify-content: center; margin-top: var(--space-4); max-width: var(--container-md); }
+.pf-timeline__more button { display: inline-flex; align-items: center; gap: 6px; }
 
 /* ---------- Projects ---------- */
 .pf-projects { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-8); }

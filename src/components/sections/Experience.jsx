@@ -1,9 +1,26 @@
-// Experience — vertical timeline built from the current CV (08.2026).
+// Experience — reframed as `git log --author=esteban --oneline`.
+// Each job entry renders as a commit with tag, author, date, and body.
 import React, { useState } from 'react';
-import { MapPin, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import SectionHeading from '../ds/SectionHeading.jsx';
-import Tag from '../ds/Tag.jsx';
 import Button from '../ds/Button.jsx';
+import CommandLine from '../ds/CommandLine.jsx';
+
+// Deterministic pseudo-hash from index+company so the "commit" ids are stable.
+function shortHash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+  return (h >>> 0).toString(16).padStart(7, '0').slice(0, 7);
+}
+
+function branchTag(dates) {
+  // "Jan 2026 — Jul 2026" → "2026-jan..jul", "Feb 2017 — Dec 2017" → "2017-feb..dec"
+  const m = dates.match(/(\w{3})\s+(\d{4})\s+[—-]\s+(\w{3})\s+(\d{4})/);
+  if (!m) return dates.toLowerCase().replace(/\s+/g, '-');
+  const [, m1, y1, m2, y2] = m;
+  if (y1 === y2) return `${y1}-${m1.toLowerCase()}..${m2.toLowerCase()}`;
+  return `${y1}-${m1.toLowerCase()}..${y2}-${m2.toLowerCase()}`;
+}
 
 function Experience() {
   const [showEarlier, setShowEarlier] = useState(false);
@@ -23,32 +40,50 @@ function Experience() {
     { dates: 'Jul 2014 — Jul 2016', company: 'Konrad Group', position: 'Web Developer', location: 'San José, CR',
       highlight: 'Implemented POCs for multiple clients.' },
   ];
+  const visible = showEarlier ? jobs : jobs.slice(0, -3);
   return (
-    <section className="pf-section pf-section--alt" id="experience">
+    <section className="pf-section pf-section--alt" id="experience" data-nav-target>
       <div className="pf-reveal">
-        <SectionHeading eyebrow="experience" title="Where I've worked" align="center"
+        <SectionHeading eyebrow="# experience" title="Where I've worked" align="center"
           subtitle="10+ years across startups and scale-ups — the last six in Berlin." />
       </div>
-      <ol className="pf-timeline pf-reveal">
-        {(showEarlier ? jobs : jobs.slice(0, -3)).map((j, i) => (
-          <li className="pf-timeline__item" key={i}>
-            <span className="pf-timeline__node" />
-            <div className="pf-timeline__card">
-              <div className="pf-timeline__head">
-                <h3>{j.position}</h3>
-                <Tag tone="neutral">{j.dates}</Tag>
+      <CommandLine command="git log --author=esteban --oneline" className="pf-gitlog__cmd" />
+      <ol className="pf-gitlog pf-reveal">
+        {visible.map((j, i) => {
+          const hash = shortHash(j.company + j.dates);
+          const branch = branchTag(j.dates);
+          const isHead = i === 0;
+          return (
+            <li className="pf-gitlog__item" key={i} tabIndex="0" data-nav-row>
+              <p className="pf-gitlog__commit">
+                <span className="pf-gitlog__kw">commit</span>{' '}
+                <span className="pf-gitlog__hash">{hash}</span>{' '}
+                <span className="pf-gitlog__refs">
+                  ({isHead && <><span className="pf-gitlog__head">HEAD -&gt; main</span>, </>}
+                  <span className="pf-gitlog__branch">{branch}</span>)
+                </span>
+              </p>
+              <p className="pf-gitlog__meta">
+                <span className="pf-gitlog__kw">Author:</span>{' '}
+                Esteban López Acuña &lt;estlopacu@gmail.com&gt;
+              </p>
+              <p className="pf-gitlog__meta">
+                <span className="pf-gitlog__kw">Date:</span>{'   '}{j.dates}
+              </p>
+              <div className="pf-gitlog__body">
+                <p className="pf-gitlog__subject">
+                  {j.position} @ <span className="pf-gitlog__co">{j.company}</span>, {j.location}
+                </p>
+                <p className="pf-gitlog__desc">{j.highlight}</p>
               </div>
-              <p className="pf-timeline__company">{j.company}</p>
-              <p className="pf-timeline__hl">{j.highlight}</p>
-              <p className="pf-timeline__loc"><MapPin size={14} />{j.location}</p>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ol>
       {!showEarlier && (
         <div className="pf-timeline__more">
           <Button variant="secondary" onClick={() => setShowEarlier(true)}>
-            Show earlier roles <ChevronDown size={16} />
+            $ git log --all <ChevronDown size={16} />
           </Button>
         </div>
       )}

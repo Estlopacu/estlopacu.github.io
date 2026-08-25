@@ -11,7 +11,7 @@ function Contact() {
     { dates: '2012', title: "Bachelor's in Computer Systems", center: 'Universidad Fidélitas, San José CR' },
   ];
   return (
-    <section className="pf-section pf-contact" id="contact" data-theme="terminal">
+    <section className="pf-section pf-contact" id="contact" data-nav-target>
       <div className="pf-contact__inner pf-reveal">
         <SectionHeading eyebrow="contact" title="Let's build something" align="center"
           subtitle="I'm open to new opportunities. The fastest way to reach me is email." />
@@ -38,7 +38,9 @@ function Contact() {
             ))}
           </ul>
         </div>
-        <footer className="pf-footer">© {new Date().getFullYear()} Esteban López Acuña · built with the estlopacu design system</footer>
+        <footer className="pf-footer">
+          <span className="pf-footer__eof">EOF</span> — © {new Date().getFullYear()} esteban lópez acuña &nbsp;//&nbsp; built with astro + react &nbsp;//&nbsp; press <kbd>?</kbd> for shortcuts
+        </footer>
       </div>
     </section>
   );

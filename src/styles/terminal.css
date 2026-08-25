@@ -1,0 +1,497 @@
+/* ============================================================
+   TERMINAL THEME — component overrides
+   ------------------------------------------------------------
+   Only fires under [data-theme="terminal"]. Layers on top of
+   portfolio.css to reskin every section as terminal output.
+   ============================================================ */
+
+/* ---- Primitives ---- */
+
+/* CommandLine — `esteban@portfolio:~$ command` */
+.pf-cmd {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  margin: 0 0 var(--space-3);
+  color: var(--text-body);
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.pf-cmd__user   { color: var(--term-green, var(--brand)); }
+.pf-cmd__sep    { color: var(--text-muted); }
+.pf-cmd__path   { color: var(--term-amber, var(--accent)); }
+.pf-cmd__prompt { color: var(--text-muted); margin: 0 .4em 0 .2em; }
+.pf-cmd__cmd    { color: var(--text-strong); }
+
+/* TerminalWindow — bordered pane with title bar */
+.pf-term {
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface-card);
+  overflow: hidden;
+}
+.pf-term__chrome {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 12px;
+  background: var(--surface-sunken);
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono); font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+.pf-term__dot { width: 10px; height: 10px; border-radius: 50%; }
+.pf-term__dot--r { background: #ff5f56; }
+.pf-term__dot--y { background: #ffbd2e; }
+.pf-term__dot--g { background: #27c93f; }
+.pf-term__title { margin-left: 10px; }
+.pf-term__body { padding: var(--space-5); }
+
+/* ============================================================
+   Everything below only in terminal theme.
+   ============================================================ */
+[data-theme="terminal"] body {
+  /* Force mono globally, kill IBM Plex Sans body font. */
+  font-family: var(--font-mono);
+}
+
+/* Kill rounded card fluff, replace with square box-drawing feel */
+[data-theme="terminal"] .els-card,
+[data-theme="terminal"] .pf-timeline__card,
+[data-theme="terminal"] .pf-project {
+  border-radius: 4px;
+  border-color: var(--term-border, var(--border-subtle));
+}
+
+/* Nav: keep the fixed bar but restyle badge for green-bg contrast */
+[data-theme="terminal"] .pf-nav {
+  background: color-mix(in srgb, var(--term-bg) 88%, transparent);
+  border-bottom-color: var(--term-border);
+}
+[data-theme="terminal"] .pf-nav__mono {
+  background: var(--term-green);
+  color: var(--term-bg);   /* WCAG contrast — dark on green */
+  border-radius: 3px;
+}
+[data-theme="terminal"] .pf-nav__wm { color: var(--text-body); }
+[data-theme="terminal"] .pf-nav__cursor { color: var(--term-amber); }
+
+/* Nav links styled as file paths — no underline pill; use `>` cursor on active. */
+[data-theme="terminal"] .pf-nav__link {
+  color: var(--text-muted);
+  padding-left: 14px;   /* room for cursor */
+  position: relative;
+}
+[data-theme="terminal"] .pf-nav__link::before {
+  content: '';
+  position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%);
+  color: var(--term-green);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+[data-theme="terminal"] .pf-nav__link:hover,
+[data-theme="terminal"] .pf-nav__link.is-active {
+  color: var(--text-strong);
+}
+[data-theme="terminal"] .pf-nav__link:hover::before,
+[data-theme="terminal"] .pf-nav__link.is-active::before {
+  content: '>';
+  opacity: 1;
+}
+[data-theme="terminal"] .pf-nav__underline { display: none; }
+
+/* Theme toggle + CTA */
+[data-theme="terminal"] .pf-nav__theme {
+  background: transparent;
+  border-color: var(--term-border-hi);
+  color: var(--text-body);
+  border-radius: 3px;
+}
+[data-theme="terminal"] .pf-nav__theme:hover {
+  color: var(--term-green);
+  border-color: var(--term-green);
+}
+[data-theme="terminal"] .pf-nav__cta {
+  background: transparent;
+  color: var(--term-green);
+  border: 1px solid var(--term-green);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  padding: .5em 1em;
+}
+[data-theme="terminal"] .pf-nav__cta:hover {
+  background: var(--term-green);
+  color: var(--term-bg);
+  box-shadow: 0 0 12px rgba(92, 242, 138, 0.35);
+}
+
+/* Hero title in terminal theme: force mono, tighten scale, lose the tracking */
+[data-theme="terminal"] .pf-hero__title {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+[data-theme="terminal"] .pf-hero__eyebrow {
+  color: var(--term-green);
+  letter-spacing: 0.08em;
+}
+[data-theme="terminal"] .pf-hero__dot { color: var(--term-amber); }
+[data-theme="terminal"] .pf-hero__portrait {
+  background: linear-gradient(135deg, var(--term-green), var(--term-amber));
+}
+[data-theme="terminal"] .pf-hero__portrait img {
+  border-color: var(--term-bg);
+}
+[data-theme="terminal"] .pf-hero__scroll { color: var(--text-muted); }
+[data-theme="terminal"] .pf-hero__scroll svg { color: var(--term-green); }
+
+/* Buttons */
+[data-theme="terminal"] .els-btn,
+[data-theme="terminal"] a.els-btn {
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+[data-theme="terminal"] .els-btn--primary {
+  background: var(--term-green);
+  color: var(--term-bg);
+  border-color: var(--term-green);
+}
+[data-theme="terminal"] .els-btn--primary:hover {
+  background: var(--term-amber);
+  border-color: var(--term-amber);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
+}
+[data-theme="terminal"] .els-btn--secondary {
+  background: transparent;
+  color: var(--term-green);
+  border: 1px solid var(--term-green);
+}
+[data-theme="terminal"] .els-btn--secondary:hover {
+  background: rgba(92, 242, 138, 0.08);
+}
+
+/* Tags — bracket-styled `[tag]` in terminal theme */
+[data-theme="terminal"] .els-tag {
+  background: transparent;
+  border: 1px solid var(--term-border-hi);
+  border-radius: 3px;
+  color: var(--text-body);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+[data-theme="terminal"] .els-tag--signal {
+  color: var(--term-green);
+  border-color: var(--term-green);
+  background: rgba(92, 242, 138, 0.06);
+}
+
+/* Section headings — mono, subdued (the CommandLine above them carries the weight) */
+[data-theme="terminal"] .els-sh__title {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+[data-theme="terminal"] .els-sh__eyebrow {
+  color: var(--term-green);
+  font-family: var(--font-mono);
+}
+
+/* Timeline in terminal theme: sharper corners, greener nodes, no card shadow */
+[data-theme="terminal"] .pf-timeline::before { background: var(--term-border-hi); }
+[data-theme="terminal"] .pf-timeline__node {
+  background: var(--term-bg);
+  border-color: var(--term-green);
+}
+[data-theme="terminal"] .pf-timeline__item:first-child .pf-timeline__node {
+  background: var(--term-green);
+  border-color: var(--term-green);
+  box-shadow: 0 0 12px rgba(92, 242, 138, 0.5);
+}
+[data-theme="terminal"] .pf-timeline__card {
+  background: var(--surface-card);
+  box-shadow: none;
+}
+[data-theme="terminal"] .pf-timeline__company { color: var(--term-green); }
+
+/* Projects card in terminal theme */
+[data-theme="terminal"] .pf-project { border-color: var(--term-border); }
+[data-theme="terminal"] .pf-project::before {
+  background: radial-gradient(220px circle at var(--mx) var(--my), rgba(92, 242, 138, 0.18), transparent 60%);
+}
+[data-theme="terminal"] .pf-project:hover { border-color: var(--term-border-hi); }
+
+/* Skill pills */
+[data-theme="terminal"] .pf-skillgroup__label { color: var(--term-green); }
+
+/* Reveal — softer distance so heavy mono type doesn't jitter */
+[data-theme="terminal"] .pf-reveal { transform: translateY(14px); }
+
+/* Focus ring for keyboard nav */
+[data-theme="terminal"] :focus-visible {
+  outline: 2px solid var(--term-amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   About wrapped in TerminalWindow
+   ============================================================ */
+.pf-about__win .els-sh { margin-top: 0; }
+.pf-about__win .pf-prose { margin-top: var(--space-3); }
+[data-theme="terminal"] .pf-about__win .pf-prose { color: var(--text-body); }
+
+/* ============================================================
+   YAML block (skills.yaml)
+   ============================================================ */
+.pf-yaml { font-family: var(--font-mono); font-size: var(--text-sm); }
+.pf-yaml__block { margin-bottom: var(--space-4); }
+.pf-yaml__key {
+  color: var(--term-green, var(--brand));
+  margin: 0 0 var(--space-2);
+  font-weight: 500;
+}
+.pf-yaml__list { display: flex; flex-wrap: wrap; gap: 6px 10px; padding-left: var(--space-4); }
+.pf-yaml__item { display: inline-flex; align-items: center; gap: 4px; }
+.pf-yaml__dash { color: var(--text-muted); font-family: var(--font-mono); }
+
+/* ============================================================
+   git log
+   ============================================================ */
+.pf-gitlog__cmd { max-width: var(--container-md); margin: var(--space-6) auto var(--space-4); }
+.pf-gitlog {
+  list-style: none; margin: 0 auto; padding: 0;
+  max-width: var(--container-md);
+  font-family: var(--font-mono);
+}
+.pf-gitlog__item {
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-4);
+  border-left: 2px solid var(--border-strong);
+  background: var(--surface-card);
+  border-radius: 4px;
+  transition: border-color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.pf-gitlog__item:focus,
+.pf-gitlog__item:hover { border-left-color: var(--term-green, var(--brand)); transform: translateX(3px); outline: none; }
+[data-theme="terminal"] .pf-gitlog__item:focus-visible { outline: 2px solid var(--term-amber); outline-offset: 2px; }
+.pf-gitlog__commit { margin: 0; font-size: var(--text-sm); line-height: 1.4; overflow-wrap: anywhere; word-break: break-word; }
+.pf-gitlog__kw { color: var(--text-muted); }
+.pf-gitlog__hash { color: var(--term-amber, var(--accent)); }
+.pf-gitlog__refs { color: var(--text-muted); }
+.pf-gitlog__head { color: var(--term-green, var(--brand)); }
+.pf-gitlog__branch { color: var(--term-amber, var(--accent)); }
+.pf-gitlog__meta { margin: 2px 0 0; font-size: var(--text-sm); color: var(--text-body); overflow-wrap: anywhere; word-break: break-word; }
+.pf-gitlog__body { margin: var(--space-3) 0 0; padding-left: var(--space-5); }
+.pf-gitlog__subject {
+  margin: 0 0 6px; font-size: var(--text-md); color: var(--text-strong); font-weight: 500;
+}
+.pf-gitlog__co { color: var(--term-green, var(--brand)); }
+.pf-gitlog__desc { margin: 0; font-size: var(--text-sm); color: var(--text-body); line-height: 1.55; max-width: 66ch; }
+
+/* ============================================================
+   ls -la
+   ============================================================ */
+.pf-ls__cmd { max-width: var(--container-lg); margin: var(--space-6) 0 var(--space-3); }
+.pf-ls { font-family: var(--font-mono); font-size: var(--text-sm); }
+.pf-ls__total { color: var(--text-muted); margin: 0 0 var(--space-3); }
+.pf-ls__row {
+  display: grid;
+  grid-template-columns: 100px 80px 60px 60px 60px 1fr;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: 10px var(--space-4);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background var(--dur-base) var(--ease-out);
+  position: relative;
+}
+.pf-ls__row::before {
+  content: '';
+  position: absolute; left: -2px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--term-green, var(--brand));
+  font-family: var(--font-mono);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.pf-ls__row:hover,
+.pf-ls__row:focus { background: color-mix(in srgb, var(--term-green, var(--accent)) 6%, transparent); outline: none; }
+.pf-ls__row:hover::before,
+.pf-ls__row:focus::before { content: '>'; opacity: 1; }
+[data-theme="terminal"] .pf-ls__row:focus-visible { outline: 2px solid var(--term-amber); outline-offset: 2px; }
+.pf-ls__perm  { color: var(--text-muted); }
+.pf-ls__owner { color: var(--term-green, var(--brand)); }
+.pf-ls__group { color: var(--term-amber, var(--accent)); }
+.pf-ls__size  { color: var(--text-muted); text-align: right; }
+.pf-ls__date  { color: var(--text-muted); }
+.pf-ls__name  { color: var(--text-strong); font-weight: 500; }
+.pf-ls__link  { text-decoration: none; color: inherit; display: block; }
+
+.pf-ls__preview {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-4);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height var(--dur-slow) var(--ease-out), opacity var(--dur-base) var(--ease-out), margin-top var(--dur-slow) var(--ease-out);
+}
+.pf-ls__row:hover .pf-ls__preview,
+.pf-ls__row:focus .pf-ls__preview {
+  max-height: 280px;
+  opacity: 1;
+  margin-top: var(--space-3);
+}
+.pf-ls__media { border: 1px solid var(--border-strong); border-radius: 3px; overflow: hidden; aspect-ratio: 16/10; }
+.pf-ls__media img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.pf-ls__body { display: flex; flex-direction: column; gap: var(--space-2); }
+.pf-ls__blurb { margin: 0; color: var(--text-body); font-size: var(--text-sm); line-height: 1.55; max-width: 60ch; }
+.pf-ls__stack { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 680px) {
+  .pf-ls__row { grid-template-columns: 1fr; gap: 4px; }
+  .pf-ls__perm, .pf-ls__owner, .pf-ls__group, .pf-ls__size, .pf-ls__date { display: none; }
+  .pf-ls__preview { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-ls__preview { transition: none; }
+}
+
+/* ============================================================
+   Project README panes
+   ============================================================ */
+.pf-readme__grid {
+  display: flex; flex-direction: column;
+  gap: var(--space-8);
+  max-width: var(--container-lg);
+  margin: var(--space-6) auto 0;
+}
+.pf-readme__win .pf-term__body {
+  padding: 0;
+}
+.pf-readme__media {
+  aspect-ratio: 16 / 9;
+  background: var(--surface-sunken);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+.pf-readme__media img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.pf-readme:hover .pf-readme__media img { transform: scale(1.02); }
+.pf-readme__content {
+  padding: var(--space-5) var(--space-6);
+  font-family: var(--font-mono);
+}
+.pf-readme__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-3);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.pf-readme__h {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--term-green, var(--brand));
+  margin: var(--space-4) 0 var(--space-2);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.pf-readme__p {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-body);
+  margin: 0 0 var(--space-3);
+  max-width: 66ch;
+}
+.pf-readme__stack {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin: 0 0 var(--space-2);
+}
+.pf-readme__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--term-green, var(--brand));
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+.pf-readme__link:hover { border-bottom-color: var(--term-green, var(--brand)); }
+.pf-readme:focus-within .pf-term { border-color: var(--term-green, var(--brand)); }
+@media (min-width: 900px) {
+  .pf-readme__win .pf-term__body {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    align-items: stretch;
+  }
+  .pf-readme__media {
+    aspect-ratio: auto;
+    border-bottom: none;
+    border-right: 1px solid var(--border-subtle);
+    min-height: 240px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-readme__media img { transition: none; }
+  .pf-readme:hover .pf-readme__media img { transform: none; }
+}
+
+/* ============================================================
+   Footer EOF
+   ============================================================ */
+.pf-footer__eof { color: var(--term-amber, var(--accent)); font-weight: 500; }
+.pf-footer kbd {
+  font-family: var(--font-mono);
+  padding: 1px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+/* ============================================================
+   Keyboard shortcuts overlay
+   ============================================================ */
+.pf-kbd {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid; place-items: center;
+  backdrop-filter: blur(4px);
+}
+.pf-kbd__panel {
+  background: var(--surface-card);
+  border: 1px solid var(--term-green, var(--border-strong));
+  border-radius: 6px;
+  padding: var(--space-5) var(--space-6);
+  min-width: 320px;
+  font-family: var(--font-mono);
+  box-shadow: 0 0 40px rgba(92, 242, 138, 0.25);
+}
+.pf-kbd__title {
+  color: var(--term-green, var(--brand));
+  font-size: var(--text-sm);
+  margin: 0 0 var(--space-3);
+}
+.pf-kbd__table { border-collapse: collapse; width: 100%; }
+.pf-kbd__table td { padding: 6px 12px 6px 0; font-size: var(--text-sm); color: var(--text-body); vertical-align: middle; }
+.pf-kbd__table td:first-child { width: 90px; }
+.pf-kbd kbd {
+  font-family: var(--font-mono);
+  padding: 2px 8px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  color: var(--term-green, var(--brand));
+  font-size: 0.85em;
+}
+.pf-kbd__hint { color: var(--text-muted); font-size: var(--text-xs); margin: var(--space-3) 0 0; }

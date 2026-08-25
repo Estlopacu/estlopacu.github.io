@@ -94,21 +94,62 @@
 
 /* ============================================================
    DARK / TERMINAL THEME SCOPE
-   Apply data-theme="terminal" to any container to flip surfaces.
+   Applied to <html data-theme="terminal"> as the site default.
+   Palette leans terminal.shop: cool phosphor green primary,
+   warm amber secondary, near-black bg, muted white body text.
+   Typography collapses to a single monospace family — the whole
+   theme reads as one continuous shell session.
    ============================================================ */
 [data-theme="terminal"] {
-  --surface-page:    var(--blue-950);
-  --surface-card:    var(--slate-900);
-  --surface-sunken:  var(--slate-950);
+  /* ---- Terminal-tuned surface + text ---- */
+  --term-bg:         #0a0e0a;   /* near-black, hair of green cast */
+  --term-bg-elev:    #10160f;   /* elevated surfaces (cards) */
+  --term-bg-sunken:  #060906;   /* sunken (behind-panel) */
+  --term-green:      #5cf28a;   /* cyan-tinted phosphor, terminal.shop-ish */
+  --term-green-dim:  #3ba565;
+  --term-amber:      #fbbf24;   /* secondary accent for hover / focus */
+  --term-text:       #d6dcd6;   /* muted white body copy */
+  --term-text-mute:  #7a8578;   /* comments / secondary */
+  --term-border:     rgba(92, 242, 138, 0.18);   /* subtle green line */
+  --term-border-hi:  rgba(92, 242, 138, 0.42);
+
+  /* ---- Semantic alias overrides ---- */
+  --surface-page:    var(--term-bg);
+  --surface-card:    var(--term-bg-elev);
+  --surface-sunken:  var(--term-bg-sunken);
   --surface-inverse: var(--white);
-  --surface-brand:   var(--blue-500);
+  --surface-brand:   var(--term-green);
 
-  --text-strong:   var(--slate-50);
-  --text-body:     var(--slate-300);
-  --text-muted:    var(--slate-400);
-  --text-inverse:  var(--slate-900);
-  --text-link:     var(--azure);
+  --text-strong:   var(--term-green);
+  --text-body:     var(--term-text);
+  --text-muted:    var(--term-text-mute);
+  --text-inverse:  var(--term-bg);
+  --text-link:     var(--term-green);
+  --text-terminal: var(--term-green);
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  --brand:         var(--term-green);
+  --brand-bright:  var(--term-amber);
+  --brand-deep:    var(--term-green-dim);
+  --accent:        var(--term-amber);
+
+  --border-subtle: var(--term-border);
+  --border-strong: var(--term-border-hi);
+  --border-brand:  var(--term-green);
+  --border-inverse: rgba(255, 255, 255, 0.12);
+
+  --focus-ring:    var(--term-amber);
+
+  /* Green signal ramp collapsed onto terminal green so existing components
+     that reach for --signal-* stay coherent in the terminal theme. */
+  --signal-300: var(--term-green);
+  --signal-400: var(--term-green);
+  --signal-500: var(--term-green-dim);
+  --signal-600: var(--term-green-dim);
+
+  /* ---- Typography collapse: mono is the ONE typeface ---- */
+  --font-display: var(--font-mono);
+  --font-body:    var(--font-mono);
+  --display-font: var(--font-mono);
+  --heading-font: var(--font-mono);
+  --body-font:    var(--font-mono);
 }

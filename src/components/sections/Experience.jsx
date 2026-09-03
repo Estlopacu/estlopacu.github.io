@@ -25,7 +25,7 @@ function branchTag(dates) {
 function Experience() {
   const [showEarlier, setShowEarlier] = useState(false);
   const jobs = [
-    { dates: 'Jan 2026 — Jul 2026', company: 'Payrails', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
+    { dates: 'Jan 2026 — Aug 2026', company: 'Payrails', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
       highlight: 'Built & launched a new company-website CMS with Next.js and Sanity; improved SEO and engagement; maintained the legacy Webflow site.' },
     { dates: 'Dec 2024 — Dec 2025', company: 'Freelance', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
       highlight: 'Delivered frontend and backend work for clients; mentored developers on projects in Costa Rica; studied German intensively to B2.' },

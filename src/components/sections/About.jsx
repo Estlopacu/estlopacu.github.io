@@ -14,6 +14,7 @@ function About() {
     { label: 'cms',        items: ['Sanity', 'Webflow'] },
     { label: 'infra_cloud',items: ['AWS', 'Docker'] },
     { label: 'testing',    items: ['Playwright', 'Cypress', 'E2E'] },
+    { label: 'observability', items: ['PostHog', 'Datadog', 'Sentry'] },
     { label: 'databases',  items: ['PostgreSQL', 'MySQL'] },
   ];
   let n = 0;

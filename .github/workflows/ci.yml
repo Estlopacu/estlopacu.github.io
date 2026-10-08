@@ -1,0 +1,169 @@
+name: CI
+
+on:
+  pull_request:
+    # ready_for_review so marking a draft ready triggers the review.
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [dev]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  # AI review, then merge when the model finds no critical issues.
+  # Runs only after `check` is green, so a red PR is never merged.
+  # Uses the Gemini API free tier; needs a GEMINI_API_KEY secret from
+  # Google AI Studio (aistudio.google.com/apikey).
+  review:
+    needs: check
+    # Same-repo PRs only, skip drafts, and skip PRs labeled `hold` so there's
+    # a manual way to keep a PR open.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft &&
+      !contains(github.event.pull_request.labels.*.name, 'hold')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      # Tried in order; later ones are fallbacks when the first is busy.
+      MODELS: gemini-3.8-flash gemini-3.5-flash gemini-3.5-flash-lite
+      # Keeps requests well inside free-tier limits; bigger diffs are not
+      # auto-merged and need a manual review.
+      MAX_DIFF_CHARS: 200000
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Review and merge if clean
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::Missing GEMINI_API_KEY secret (free key at aistudio.google.com/apikey)."
+            exit 1
+          fi
+
+          # The checkout is the PR merged into its base; HEAD^1 is the base.
+          git diff HEAD^1 HEAD -- . ':(exclude)package-lock.json' > pr.diff
+          chars=$(wc -c < pr.diff)
+
+          if [ "$chars" -gt "$MAX_DIFF_CHARS" ]; then
+            printf '### AI review\n\nThis diff is %s characters, too large for the free review (limit %s). Not merging; review and merge it by hand.\n' \
+              "$chars" "$MAX_DIFF_CHARS" > review.md
+            gh pr comment "$PR" --body-file review.md --edit-last --create-if-none
+            echo "::error::Diff too large for automatic review."
+            exit 1
+          fi
+
+          cat > system.txt <<'PROMPT'
+          You review pull requests for estlopacu.github.io, a static Astro 5
+          portfolio site with React islands. It builds to static HTML and
+          deploys to GitHub Pages from the `dev` branch. The build has
+          already passed.
+
+          A CRITICAL issue is one that should stop the merge:
+          - a bug that breaks a page, a React island, or the build/deploy
+          - wrong personal/CV facts shown to users (names, dates, employers,
+            contact info)
+          - security problems: leaked secrets or keys, XSS, unsafe HTML,
+            dangerous external links
+          - removing or silently changing site data (sections, projects,
+            experience entries, routing, meta tags)
+          Style, naming, refactors and nice-to-haves are NOT critical; list
+          them as suggestions. Only report problems you can see in the diff.
+          Your training data is older than this code. Every action, package
+          and model version in the diff already ran successfully in this CI
+          run (this review itself runs on them), so they exist. Never report
+          a version, model name or package as invalid, nonexistent or
+          unreleased, not even as a suggestion.
+
+          Reply with only a JSON object of this shape:
+          {"summary": "2-4 sentences on the change and the review",
+           "critical_issues": [{"file": "path", "problem": "what and why"}],
+           "suggestions": ["short non-blocking suggestion"]}
+          PROMPT
+
+          jq -n --rawfile system system.txt --rawfile diff pr.diff '{
+            systemInstruction: {parts: [{text: $system}]},
+            contents: [{role: "user", parts: [{text: ("Review this diff:\n\n" + $diff)}]}],
+            generationConfig: {temperature: 0, responseMimeType: "application/json"}
+          }' > request.json
+
+          # Free-tier models are often overloaded (503) or rate-limited (429):
+          # retry with backoff, then fall back to the next model.
+          ok=
+          for MODEL in $MODELS; do
+            for wait in 5 15 30 0; do
+              status=$(curl -sS -o response.json -w '%{http_code}' \
+                "https://generativelanguage.googleapis.com/v1beta/models/$MODEL:generateContent" \
+                -H "x-goog-api-key: $GEMINI_API_KEY" \
+                -H "Content-Type: application/json" \
+                -d @request.json) || status=000
+              if [ "$status" = 200 ]; then ok=1; break 2; fi
+              echo "$MODEL returned HTTP $status"
+              case "$status" in 429|500|502|503|504|000) ;; *) break ;; esac
+              if [ "$wait" -gt 0 ]; then sleep "$wait"; fi
+            done
+          done
+          if [ -z "$ok" ]; then
+            echo "::error::Gemini request failed:"
+            head -c 2000 response.json
+            exit 1
+          fi
+
+          # Fail closed: anything but valid review JSON blocks the merge.
+          if ! jq -er '.candidates[0].content.parts[0].text' response.json \
+                | sed -e '/^```/d' > result.json \
+              || ! jq -e '(.critical_issues | type == "array") and (.summary | type == "string")' result.json > /dev/null; then
+            echo "::error::Unexpected response from Gemini:"
+            head -c 2000 response.json
+            exit 1
+          fi
+          # The model may omit suggestions.
+          jq '.suggestions //= []' result.json > tmp.json && mv tmp.json result.json
+
+          count=$(jq '.critical_issues | length' result.json)
+          {
+            echo "### AI review ($MODEL)"
+            echo
+            jq -r '.summary' result.json
+            echo
+            if [ "$count" -eq 0 ]; then
+              echo "No critical issues found. Merging."
+            else
+              echo "**$count critical issue(s), not merging:**"
+              jq -r '.critical_issues[] | "- `\(.file)`: \(.problem)"' result.json
+            fi
+            if [ "$(jq '.suggestions | length' result.json)" -gt 0 ]; then
+              echo
+              echo "Suggestions (not blocking):"
+              jq -r '.suggestions[] | "- \(.)"' result.json
+            fi
+          } > review.md
+          gh pr comment "$PR" --body-file review.md --edit-last --create-if-none
+
+          if [ "$count" -ne 0 ]; then
+            echo "::error::Review found $count critical issue(s)."
+            exit 1
+          fi
+          # Only merge the exact commit that was built and reviewed.
+          gh pr merge "$PR" --merge --delete-branch --match-head-commit "$HEAD_SHA"

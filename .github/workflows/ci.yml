@@ -167,3 +167,28 @@ jobs:
           fi
           # Only merge the exact commit that was built and reviewed.
           gh pr merge "$PR" --merge --delete-branch --match-head-commit "$HEAD_SHA"
+
+  # Deploys Pages from the same workflow run that auto-merged the PR.
+  # Needed because pushes made with GITHUB_TOKEN (the auto-merge above)
+  # do not trigger deploy.yml. Direct pushes to dev still use deploy.yml.
+  deploy:
+    needs: review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: dev
+      - uses: withastro/action@v3
+      - id: deployment
+        uses: actions/deploy-pages@v4

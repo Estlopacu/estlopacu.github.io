@@ -27,6 +27,14 @@ const PROJECTS = [
     stack: ['JavaScript', 'Facebook API', 'Video', 'AJAX'],
   },
   {
+    slug: 'graphql-costa-rica-locations',
+    name: 'GraphQL Costa Rica Locations',
+    img: '/project-graphql-cr.png',
+    href: 'https://github.com/Estlopacu/graphql-costa-rica-locations',
+    body: `A schema-first GraphQL API serving Costa Rica's administrative divisions — 7 provincias, 82 cantones, 474 distritos — with stable IDs and postal codes. Resolvers are type-checked against the schema via GraphQL Code Generator so a bad return shape fails tsc, not a live query. Deployed on EC2 behind nginx as a systemd service.`,
+    stack: ['TypeScript', 'GraphQL', 'Apollo Server', 'graphql-codegen', 'Node.js'],
+  },
+  {
     slug: 'indicadores-economicos-bccr',
     name: 'indicadores-economicos-bccr',
     img: '/project-bccr.png',

@@ -131,7 +131,7 @@ function Hero() {
           transition={{ duration: DUR.slow, ease: EASE.out, delay: 0.3 }}
         >
           <div className="pf-hero__portrait">
-            <img src="/profile.jpg" alt="Esteban López Acuña" />
+            <img src="/profile-bg-removed.png" alt="Esteban López Acuña" />
           </div>
           <TerminalPrompt command="cat about.md" output="Senior full-stack engineer · 10+ yrs · Berlin." />
         </motion.div>

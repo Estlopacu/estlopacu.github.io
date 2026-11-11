@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://estlopacu.github.io/sitemap.xml

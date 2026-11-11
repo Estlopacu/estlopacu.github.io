@@ -2,18 +2,20 @@
 function Experience() {
   const { SectionHeading, Tag } = window.EstlopacuPortfolioDesignSystem_604ed3;
   const jobs = [
-    { dates: 'Jan 2026 — Present', company: 'Payrails', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
-      highlight: 'Built & launched a new company-website CMS with Next.js and Sanity; maintained the legacy Webflow site.' },
+    { dates: 'Jan 2026 — Aug 2026', company: 'Payrails', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
+      highlight: 'Built & launched a new company-website CMS with Next.js and Sanity; improved SEO and engagement; maintained the legacy Webflow site.' },
+    { dates: 'Dec 2024 — Dec 2025', company: 'Freelance', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
+      highlight: 'Delivered frontend and backend work for clients; mentored developers on projects in Costa Rica; studied German intensively to B2.' },
     { dates: 'Jul 2024 — Nov 2024', company: 'Root Global', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
-      highlight: 'Led a new user-tracking system and executed critical PostgreSQL migrations for the new web app.' },
+      highlight: 'Contributed to a document ingestion pipeline (S3 upload, AWS Lambda, PDF processing & DB storage); led a PostHog tracking system tying actions to individual users to clarify how users use the app.' },
     { dates: 'May 2018 — Jun 2024', company: 'GetYourGuide', position: 'Senior Full Stack Engineer', location: 'Berlin, DE',
-      highlight: 'A/B tests lifting conversion ~7%; SLO dashboards + page-degradation monitoring; migrated E2E tests to internal services.' },
+      highlight: 'A/B tests lifting conversion ~4% in several experiments; company-wide E2E test migration to a Dockerized service; internal TS tracking package adopted across teams; Datadog/Sentry observability for critical services.' },
     { dates: 'Feb 2017 — Dec 2017', company: 'Gorilla Logic', position: 'Senior Web Developer', location: 'San José, CR',
       highlight: 'Engineered continuous video playback, plus video tagging and thumbnails across the site.' },
     { dates: 'Aug 2016 — Feb 2017', company: 'Informatec', position: 'Senior Web Developer', location: 'San José, CR',
-      highlight: 'Built PDF invoice scanning and shipped UX updates for upper management.' },
+      highlight: 'Developed PDF scanning to process company invoices.' },
     { dates: 'Jul 2014 — Jul 2016', company: 'Konrad Group', position: 'Web Developer', location: 'San José, CR',
-      highlight: 'Delivered web apps and POCs for clients including Deloitte.' },
+      highlight: 'Implemented POCs for multiple clients.' },
   ];
   return (
     <section className="pf-section pf-section--alt" id="experience">

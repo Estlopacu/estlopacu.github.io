@@ -24,7 +24,7 @@ function About() {
         <div className="pf-about__text">
           <CommandLine command="cat about.md" />
           <TerminalWindow title="about.md" className="pf-about__win">
-            <SectionHeading eyebrow="# about" title="Engineer who sweats the details" />
+            <SectionHeading eyebrow="about" title="Engineer who sweats the details" />
             <p className="pf-prose">
               I'm a senior full-stack engineer, originally from Costa Rica and based in Berlin.
               Over the last decade I've delivered high-impact digital products across startups
@@ -35,7 +35,7 @@ function About() {
               <div className="pf-stats">
                 <div><b>10+</b><span>years building</span></div>
                 <div><b>6 yr</b><span>longest role</span></div>
-                <div><b>BER</b><span>based · from CR</span></div>
+                <div><b>BER</b><span>Berlin, from CR</span></div>
               </div>
             </Card>
           </TerminalWindow>

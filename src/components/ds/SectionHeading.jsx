@@ -13,7 +13,7 @@ function injectStyles() {
   .els-sh{display:flex;flex-direction:column;gap:.5em}
   .els-sh--center{align-items:center;text-align:center}
   .els-sh__eyebrow{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:500;
-    letter-spacing:var(--tracking-mono);text-transform:uppercase;color:var(--brand);
+    letter-spacing:.04em;color:var(--brand);
     display:inline-flex;align-items:center;gap:.5em}
   .els-sh__eyebrow::before{content:"//";color:var(--accent);font-weight:700}
   .els-sh__title{font-family:var(--font-display);font-weight:700;letter-spacing:var(--tracking-tight);

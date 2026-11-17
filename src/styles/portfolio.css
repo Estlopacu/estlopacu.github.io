@@ -11,7 +11,7 @@ img { display: block; max-width: 100%; }
 a { color: inherit; }
 
 /* ---------- Reveal-on-scroll ---------- */
-.pf-reveal { opacity: 0; transform: translateY(28px); transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
+.pf-reveal { opacity: 0; transform: translateY(4px); transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
 .pf-reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .pf-reveal { opacity: 1; transform: none; transition: none; } }
 
@@ -103,7 +103,7 @@ a { color: inherit; }
 /* ---------- Hero ---------- */
 .pf-hero { max-width: var(--container-lg); margin: 0 auto; padding: calc(var(--header-height) + var(--space-12)) var(--space-6) var(--space-10); position: relative; }
 .pf-hero__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-10); align-items: center; }
-.pf-hero__eyebrow { font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--brand); }
+.pf-hero__eyebrow { font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: .03em; color: var(--brand); }
 
 /* Typewriter cursor — sits inline after typed text, blinks like the nav
    monogram cursor. Mono font, signal green so it reads as terminal.  */
@@ -137,7 +137,7 @@ a { color: inherit; }
 .pf-stats b { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--brand); line-height: 1; }
 .pf-stats span { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted); margin-top: 4px; }
 .pf-skillgroups { margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-5); }
-.pf-skillgroup__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 var(--space-3); }
+.pf-skillgroup__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .04em; color: var(--text-muted); margin: 0 0 var(--space-3); }
 .pf-skillgroup__label::first-letter { color: var(--accent); }
 .pf-skillgroup__pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .pf-skillgroup__pills .pf-pill { font-size: var(--text-sm); padding: .5em .85em; }
@@ -145,7 +145,7 @@ a { color: inherit; }
    Two-class selectors beat the Tag component's own runtime-injected
    single-class transition rule. */
 .pf-skillgroup__pills .pf-pill {
-  opacity: 0; transform: translateX(-26px);
+  opacity: 0; transform: translateX(-6px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-spring);
 }
 .pf-skillgroups.is-in .pf-pill { opacity: 1; transform: none; }
@@ -162,7 +162,7 @@ a { color: inherit; }
 
 /* Per-item stagger reveal — parent gets `.pf-reveal` via App IO; children stagger. */
 .pf-timeline .pf-timeline__item {
-  opacity: 0; transform: translateY(16px);
+  opacity: 0; transform: translateY(4px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
 }
 .pf-timeline.is-in .pf-timeline__item { opacity: 1; transform: none; }
@@ -210,7 +210,7 @@ a { color: inherit; }
 }
 .pf-project__overlay { position: absolute; inset: 0; background: color-mix(in srgb, var(--blue-950) 88%, transparent); display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); padding: var(--space-5); opacity: 0; transition: opacity var(--dur-base) var(--ease-out); }
 .pf-project:hover .pf-project__overlay { opacity: 1; }
-.pf-project__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--signal-400); margin: 0; }
+.pf-project__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .04em; color: var(--signal-400); margin: 0; }
 .pf-project__stack { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .pf-project__body { padding: var(--space-5); }
 .pf-project__body h3 { font-family: var(--font-display); font-size: var(--text-lg); color: var(--text-strong); margin: 0 0 var(--space-2); }
@@ -223,7 +223,7 @@ a { color: inherit; }
 .pf-contact__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
 .pf-contact__social { display: flex; gap: var(--space-3); }
 .pf-edu { width: 100%; max-width: 560px; margin-top: var(--space-4); }
-.pf-edu__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--signal-400); margin: 0 0 var(--space-3); }
+.pf-edu__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .04em; color: var(--signal-400); margin: 0 0 var(--space-3); }
 .pf-edu ul { list-style: none; margin: 0; padding: 0; }
 .pf-edu li { display: grid; grid-template-columns: 130px 1fr auto; gap: var(--space-4); align-items: baseline; padding: var(--space-3) 0; border-top: 1px solid var(--border-inverse); font-size: var(--text-sm); }
 .pf-edu__d { font-family: var(--font-mono); color: var(--text-muted); }

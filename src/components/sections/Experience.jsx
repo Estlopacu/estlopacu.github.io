@@ -44,7 +44,7 @@ function Experience() {
   return (
     <section className="pf-section pf-section--alt" id="experience" data-nav-target>
       <div className="pf-reveal">
-        <SectionHeading eyebrow="# experience" title="Where I've worked" align="center"
+        <SectionHeading eyebrow="experience" title="Where I've worked" align="center"
           subtitle="10+ years across startups and scale-ups — the last six in Berlin." />
       </div>
       <CommandLine command="git log --author=esteban --oneline" className="pf-gitlog__cmd" />

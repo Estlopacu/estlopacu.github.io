@@ -11,7 +11,7 @@ import Typewriter from '../ds/Typewriter.jsx';
 import CommandLine from '../ds/CommandLine.jsx';
 import { DUR, EASE, STAGGER } from '../../lib/motion-tokens.ts';
 
-const EYEBROW = '// software engineer · berlin, germany';
+const EYEBROW = '// software engineer, berlin';
 const TITLE_L1 = 'Luis Esteban';
 const TITLE_L2 = 'López Acuña';
 

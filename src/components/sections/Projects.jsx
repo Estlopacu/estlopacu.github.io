@@ -89,7 +89,7 @@ function Projects() {
   return (
     <section className="pf-section" id="projects" data-nav-target>
       <div className="pf-reveal">
-        <SectionHeading eyebrow="# selected work" title="Projects I've shipped"
+        <SectionHeading eyebrow="selected work" title="Projects I've shipped"
           subtitle="A few products I've built end-to-end." />
       </div>
       <CommandLine command="ls work/" className="pf-ls__cmd" />

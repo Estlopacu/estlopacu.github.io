@@ -1,0 +1,498 @@
+---
+import '../../styles/global.css';
+
+const PLAY_URL = null; // set to 'https://play.google.com/store/apps/details?id=com.estlopacu.interviewNudge' once public
+const BETA_MAILTO = 'mailto:estlopacu@gmail.com?subject=Interview%20Nudge%20beta';
+const ctaHref = PLAY_URL ?? BETA_MAILTO;
+const ctaLabel = PLAY_URL ? 'Get it on Google Play' : 'Join the beta';
+
+const screenshots = [
+  { file: '01-home.png',          alt: 'Topics list showing System Design, Security & Auth, and other built-in decks' },
+  { file: '02-concept.png',       alt: 'Concept detail screen with Forgot and Knew it buttons' },
+  { file: '03-progress.png',      alt: 'Progress screen showing streak, review heatmap, and mastery per topic' },
+  { file: '04-nudges.png',        alt: 'Recent nudges list showing notification history' },
+  { file: '05-topic-settings.png',alt: 'Topic settings: times per day, active hours, days, and notification sound' },
+  { file: '06-dark-concept.png',  alt: 'Concept detail in dark theme' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="terminal">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/interview-nudge/icon-512.png" />
+    <title>Interview Nudge: interview concepts, one notification at a time</title>
+    <meta name="description" content="Stay interview-ready: bite-size concepts delivered as notifications all day. Spaced repetition on Android, no account required." />
+    <link rel="canonical" href="https://estlopacu.github.io/interview-nudge/" />
+
+    <meta property="og:title" content="Interview Nudge: interview concepts, one notification at a time" />
+    <meta property="og:description" content="Stay interview-ready: bite-size concepts delivered as notifications all day." />
+    <meta property="og:image" content="https://estlopacu.github.io/interview-nudge/feature-graphic.png" />
+    <meta property="og:url" content="https://estlopacu.github.io/interview-nudge/" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Interview Nudge: interview concepts, one notification at a time" />
+    <meta name="twitter:description" content="Stay interview-ready: bite-size concepts delivered as notifications all day." />
+    <meta name="twitter:image" content="https://estlopacu.github.io/interview-nudge/feature-graphic.png" />
+  </head>
+
+  <body>
+    <header class="in-nav">
+      <a class="in-nav__home" href="/">← estlopacu.github.io</a>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="in-hero">
+        <div class="in-hero__copy">
+          <div class="in-hero__identity">
+            <img class="in-hero__icon" src="/interview-nudge/icon-512.png" width="96" height="96" alt="Interview Nudge app icon" />
+            <h1 class="in-hero__title">Interview Nudge</h1>
+          </div>
+          <p class="in-hero__sub">Stay interview-ready: bite-size concepts delivered as notifications all day.</p>
+          <p class="in-hero__cmd" aria-hidden="true"><span class="in-prompt">nudge:~$</span> recall --daily</p>
+          <div class="in-hero__cta">
+            <a class="in-btn in-btn--primary" href={ctaHref}>{ctaLabel}</a>
+            {!PLAY_URL && <p class="in-hero__beta-note">Android · closed beta on Google Play</p>}
+          </div>
+        </div>
+        <div class="in-hero__phone-wrap">
+          <div class="in-phone-frame">
+            <img src="/interview-nudge/screenshots/02-concept.png"
+              width="1080" height="2160" loading="eager"
+              alt="Concept detail screen with Forgot and Knew it buttons" />
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="in-section">
+        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>HOW IT WORKS</p>
+        <h2 class="in-section__title">Three steps, all day long</h2>
+        <ol class="in-steps">
+          <li class="in-step">
+            <span class="in-step__num">01</span>
+            <div>
+              <strong>Notification arrives</strong>
+              <p>A concept name and a short hint drop into your notification shade. Try to recall the answer before you tap.</p>
+            </div>
+          </li>
+          <li class="in-step">
+            <span class="in-step__num">02</span>
+            <div>
+              <strong>Read the full explanation</strong>
+              <p>Tap to open the concept detail with the complete explanation.</p>
+            </div>
+          </li>
+          <li class="in-step">
+            <span class="in-step__num">03</span>
+            <div>
+              <strong>Rate your recall</strong>
+              <p>Tap "Knew it" or "Forgot" right from the notification. Spaced repetition brings forgotten concepts back sooner and spaces out the ones you know.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Screenshots -->
+      <section class="in-section">
+        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>SCREENSHOTS</p>
+        <h2 class="in-section__title">See it in action</h2>
+        <div class="in-shots">
+          {screenshots.map(({ file, alt }) => (
+            <div class="in-shot">
+              <img
+                src={`/interview-nudge/screenshots/${file}`}
+                width="1080" height="2160"
+                loading="lazy"
+                alt={alt}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Decks -->
+      <section class="in-section">
+        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>CONCEPT DECKS</p>
+        <h2 class="in-section__title">Built-in decks, ready on day one</h2>
+        <ul class="in-decks">
+          <li>System Design</li>
+          <li>Security &amp; Auth</li>
+          <li>Architecture Patterns</li>
+          <li>DSA Patterns</li>
+          <li>Behavioral</li>
+        </ul>
+        <p class="in-decks__addendum">Add your own topics and concepts: algorithms, behavioral answers, language trivia, anything.</p>
+      </section>
+
+      <!-- Features -->
+      <section class="in-section">
+        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>FEATURES</p>
+        <h2 class="in-section__title">What's under the hood</h2>
+        <ul class="in-features">
+          <li><span class="in-feature__label">Spaced repetition</span> — forgotten concepts come back sooner; known ones get spaced out.</li>
+          <li><span class="in-feature__label">Progress</span> — daily streak, review heatmap, and mastery per topic.</li>
+          <li><span class="in-feature__label">Per-topic schedule</span> — set how many times a day, active hours, which days, and notification sound for each deck.</li>
+          <li><span class="in-feature__label">Light and dark theme</span> — follows your system preference or set it manually.</li>
+        </ul>
+      </section>
+
+      <!-- Privacy -->
+      <section class="in-section in-section--callout">
+        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>PRIVATE BY DESIGN</p>
+        <h2 class="in-section__title">No account, no ads, no tracking.</h2>
+        <p class="in-privacy__body">Everything stays on your phone. The app doesn't even need an internet connection.</p>
+        <a class="in-privacy__link" href="/interview-nudge/privacy/">Read the full privacy policy →</a>
+      </section>
+
+      <!-- CTA repeat -->
+      <section class="in-section in-cta-bottom">
+        <a class="in-btn in-btn--primary" href={ctaHref}>{ctaLabel}</a>
+        {!PLAY_URL && <p class="in-hero__beta-note">Android · closed beta on Google Play</p>}
+      </section>
+    </main>
+
+    <footer class="in-footer">
+      <p>Questions or feedback: <a href="mailto:estlopacu@gmail.com">estlopacu@gmail.com</a></p>
+      <p><a href="/">← estlopacu.github.io</a></p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* ── Layout shell ─────────────────────────────────────────── */
+  body {
+    background: var(--surface-page);
+    margin: 0;
+    color: var(--text-body);
+    font-family: var(--font-body);
+  }
+
+  /* ── Nav ──────────────────────────────────────────────────── */
+  .in-nav {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .in-nav__home {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .in-nav__home:hover { color: var(--text-terminal); }
+
+  /* ── Shared section chrome ────────────────────────────────── */
+  .in-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .in-section--callout {
+    border-left: 3px solid var(--border-brand);
+    background: color-mix(in srgb, var(--brand) 6%, transparent);
+    border-radius: 4px;
+    margin: 0 auto 0;
+  }
+
+  .in-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-terminal);
+    margin: 0 0 8px;
+  }
+  .in-eyebrow__muted { color: var(--text-muted); }
+
+  .in-section__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(22px, 4vw, 32px);
+    color: var(--text-strong);
+    line-height: 1.2;
+    margin: 0 0 32px;
+  }
+
+  /* ── Hero ─────────────────────────────────────────────────── */
+  .in-hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 24px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .in-hero__identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .in-hero__icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .in-hero__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--text-strong);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .in-hero__sub {
+    font-size: clamp(16px, 2.2vw, 20px);
+    color: var(--text-body);
+    line-height: 1.55;
+    margin: 0 0 24px;
+    max-width: 480px;
+  }
+
+  .in-hero__cmd {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--text-terminal);
+    margin: 0 0 32px;
+    letter-spacing: 0.03em;
+  }
+  .in-prompt {
+    color: var(--text-muted);
+    margin-right: 6px;
+  }
+
+  .in-hero__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .in-hero__beta-note {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* phone frame */
+  .in-hero__phone-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .in-phone-frame {
+    border: 2px solid var(--border-strong);
+    border-radius: 36px;
+    overflow: hidden;
+    max-width: 240px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .in-phone-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Button ───────────────────────────────────────────────── */
+  .in-btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
+  }
+  .in-btn:hover { opacity: 0.85; }
+  .in-btn--primary {
+    background: var(--brand);
+    color: var(--text-inverse);
+  }
+
+  /* ── How it works ─────────────────────────────────────────── */
+  .in-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .in-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .in-step__num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-terminal);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .in-step strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-strong);
+    margin-bottom: 4px;
+  }
+  .in-step p { margin: 0; line-height: 1.6; }
+
+  /* ── Screenshots ──────────────────────────────────────────── */
+  .in-shots {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .in-shot {
+    min-width: 120px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-sunken);
+  }
+  .in-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Decks ────────────────────────────────────────────────── */
+  .in-decks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .in-decks li {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-strong);
+    padding: 10px 16px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    background: var(--surface-card);
+  }
+  .in-decks li::before {
+    content: '$ ';
+    color: var(--text-terminal);
+  }
+  .in-decks__addendum {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ── Features ─────────────────────────────────────────────── */
+  .in-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .in-features li {
+    padding-left: 20px;
+    border-left: 2px solid var(--border-subtle);
+    line-height: 1.6;
+  }
+  .in-feature__label {
+    color: var(--text-strong);
+    font-weight: 600;
+  }
+
+  /* ── Privacy callout ──────────────────────────────────────── */
+  .in-privacy__body {
+    color: var(--text-body);
+    margin: 0 0 16px;
+    line-height: 1.6;
+  }
+  .in-privacy__link {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .in-privacy__link:hover { color: var(--brand-bright); }
+
+  /* ── Bottom CTA ───────────────────────────────────────────── */
+  .in-cta-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* ── Footer ───────────────────────────────────────────────── */
+  .in-footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 56px;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .in-footer p { margin: 6px 0; }
+  .in-footer a {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .in-footer a:hover { color: var(--brand-bright); }
+
+  /* ── Responsive ───────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .in-hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 48px 16px 48px;
+    }
+    .in-hero__phone-wrap {
+      order: -1;
+    }
+    .in-phone-frame {
+      max-width: 180px;
+    }
+    .in-shots {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .in-section {
+      padding: 48px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .in-shots {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .in-hero__icon {
+      width: 72px;
+      height: 72px;
+    }
+  }
+</style>

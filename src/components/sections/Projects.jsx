@@ -13,6 +13,14 @@ import CommandLine from '../ds/CommandLine.jsx';
 
 const PROJECTS = [
   {
+    slug: 'interview-nudge',
+    name: 'Interview Nudge',
+    img: '/interview-nudge/screenshots/01-home.png',
+    href: '/interview-nudge/',
+    body: `An Android app that keeps interview concepts fresh by delivering them as local notifications throughout the day. Spaced repetition schedules each concept based on whether you recalled it. No account, no ads, everything stored on-device.`,
+    stack: ['React Native', 'Expo', 'Android', 'SQLite'],
+  },
+  {
     slug: 'contratista-costa-rica',
     name: 'Contratista Costa Rica',
     img: '/project-contratistacr.png',

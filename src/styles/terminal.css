@@ -439,7 +439,14 @@
     aspect-ratio: auto;
     border-bottom: none;
     border-right: 1px solid var(--border-subtle);
-    height: 260px;
+    min-height: 240px;
+    position: relative;
+  }
+  .pf-readme__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 @media (prefers-reduced-motion: reduce) {

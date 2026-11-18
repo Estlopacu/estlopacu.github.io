@@ -124,17 +124,18 @@ function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          className="pf-hero__aside"
-          initial={useTyper ? { opacity: 0, y: 12 } : false}
-          animate={stage >= 3 ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: DUR.slow, ease: EASE.out, delay: 0.3 }}
-        >
+        <div className="pf-hero__aside">
           <div className="pf-hero__portrait">
-            <img src="/profile-bg-removed.png" alt="Esteban López Acuña" />
+            <img
+              src="/profile-bg-removed.webp"
+              alt="Esteban López Acuña"
+              fetchpriority="high"
+              loading="eager"
+              decoding="sync"
+            />
           </div>
           <TerminalPrompt command="cat about.md" output="Senior full-stack engineer · 10+ yrs · Berlin." />
-        </motion.div>
+        </div>
       </div>
       <a className="pf-hero__scroll" href="#about"><ArrowDown size={16} /> scroll</a>
     </section>

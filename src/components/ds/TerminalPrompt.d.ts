@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface TerminalPromptProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Shell user. @default "esteban" */

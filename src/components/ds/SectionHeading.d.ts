@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface SectionHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Monospace eyebrow label (auto-prefixed with `//`). */
@@ -8,7 +8,7 @@ export interface SectionHeadingProps extends React.HTMLAttributes<HTMLDivElement
   /** Optional supporting line. */
   subtitle?: string;
   /** Alignment. @default "left" */
-  align?: "left" | "center";
+  align?: 'left' | 'center';
 }
 
 /**

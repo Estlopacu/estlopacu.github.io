@@ -1,7 +1,7 @@
 // Typewriter — types a string character-by-character, then calls onDone.
 // SSR-safe: renders the full string on the server, animates only on client
 // when motion is allowed. Renders a blinking cursor at the tail while typing.
-import React from "react";
+import React from 'react';
 
 export default function Typewriter({
   text,
@@ -10,16 +10,18 @@ export default function Typewriter({
   cursor = true, // show blinking cursor at tail while typing
   keepCursor = false, // keep cursor after typing done
   onDone,
-  as: Tag = "span",
-  className = "",
+  as: Tag = 'span',
+  className = '',
   reduce = false, // when true, skip animation, render full text
   ...rest
 }) {
-  const full = String(text ?? "");
+  const full = String(text ?? '');
   const [i, setI] = React.useState(reduce ? full.length : 0);
   const [started, setStarted] = React.useState(reduce);
   const onDoneRef = React.useRef(onDone);
-  onDoneRef.current = onDone;
+  React.useEffect(() => {
+    onDoneRef.current = onDone;
+  });
 
   // Kick off after startDelay.
   React.useEffect(() => {

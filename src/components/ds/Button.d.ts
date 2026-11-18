@@ -1,12 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   /** Visual style. @default "primary" */
-  variant?: "primary" | "secondary" | "ghost" | "terminal";
+  variant?: 'primary' | 'secondary' | 'ghost' | 'terminal';
   /** Size. @default "md" */
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   /** Render as a different element, e.g. "a" for links. @default "button" */
-  as?: "button" | "a";
+  as?: 'button' | 'a';
   /** Optional element rendered before the label (an icon). */
   iconLeft?: React.ReactNode;
   /** Optional element rendered after the label (an icon). */

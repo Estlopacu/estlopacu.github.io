@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface SocialLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Lucide icon name, e.g. "github", "linkedin", "mail". @default "link" */

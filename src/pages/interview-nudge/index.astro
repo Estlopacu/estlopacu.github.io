@@ -342,7 +342,8 @@ const screenshots = [
   .in-deck {
     position: relative;
     width: 240px;
-    height: 510px; /* 240 * (2160/1080) + a little breathing room */
+    /* height driven by aspect ratio of cards — 240 * 2 + room for peeking cards */
+    height: 524px;
     align-self: flex-start;
     flex-shrink: 0;
   }
@@ -352,7 +353,6 @@ const screenshots = [
     top: 0;
     left: 0;
     width: 240px;
-    height: 480px;
     border-radius: 28px;
     overflow: hidden;
     border: 2px solid var(--border-strong);
@@ -388,15 +388,12 @@ const screenshots = [
 
   .in-phone-frame {
     width: 100%;
-    height: 100%;
     overflow: hidden;
   }
   .in-phone-frame img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
+    height: auto;
   }
 
   .in-deck__hint {
@@ -551,11 +548,10 @@ const screenshots = [
     .in-deck {
       order: -1;
       width: 180px;
-      height: 390px;
+      height: 394px;
     }
     .in-deck__card {
       width: 180px;
-      height: 360px;
     }
     .in-section {
       padding: 48px 16px;

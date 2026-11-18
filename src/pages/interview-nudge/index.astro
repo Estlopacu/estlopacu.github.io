@@ -47,20 +47,20 @@ const screenshots = [
       <!-- Hero -->
       <section class="in-hero">
         <div class="in-hero__copy">
-          <div class="in-hero__identity">
+          <div class="in-hero__identity reveal">
             <img class="in-hero__icon" src="/interview-nudge/icon-512.png" width="96" height="96" alt="Interview Nudge app icon" />
             <h1 class="in-hero__title">Interview Nudge</h1>
           </div>
-          <p class="in-hero__sub">Stay interview-ready: bite-size concepts delivered as notifications all day.</p>
-          <p class="in-hero__cmd" aria-hidden="true"><span class="in-prompt">nudge:~$</span> recall --daily</p>
-          <div class="in-hero__cta">
+          <p class="in-hero__sub reveal" style="transition-delay:.08s">Stay interview-ready: bite-size concepts delivered as notifications all day.</p>
+          <p class="in-hero__cmd reveal" aria-hidden="true" style="transition-delay:.16s"><span class="in-prompt">nudge:~$</span> recall --daily</p>
+          <div class="in-hero__cta reveal" style="transition-delay:.24s">
             <a class="in-btn in-btn--primary" href={ctaHref}>{ctaLabel}</a>
             {!PLAY_URL && <p class="in-hero__beta-note">Android · closed beta on Google Play</p>}
           </div>
         </div>
 
         <!-- Deck of cards -->
-        <div class="in-deck" id="cardDeck" aria-label="App screenshots — tap to flip through">
+        <div class="in-deck reveal" style="transition-delay:.12s" id="cardDeck" aria-label="App screenshots — tap to flip through">
           {screenshots.map(({ file, alt }, i) => (
             <div class="in-deck__card" data-index={i} role="img" aria-label={alt}>
               <div class="in-phone-frame">
@@ -79,24 +79,24 @@ const screenshots = [
 
       <!-- How it works -->
       <section class="in-section">
-        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>HOW IT WORKS</p>
-        <h2 class="in-section__title">Three steps, all day long</h2>
+        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>HOW IT WORKS</p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">Three steps, all day long</h2>
         <ol class="in-steps">
-          <li class="in-step">
+          <li class="in-step reveal" style="transition-delay:.12s">
             <span class="in-step__num">01</span>
             <div>
               <strong>Notification arrives</strong>
               <p>A concept name and a short hint drop into your notification shade. Try to recall the answer before you tap.</p>
             </div>
           </li>
-          <li class="in-step">
+          <li class="in-step reveal" style="transition-delay:.2s">
             <span class="in-step__num">02</span>
             <div>
               <strong>Read the full explanation</strong>
               <p>Tap to open the concept detail with the complete explanation.</p>
             </div>
           </li>
-          <li class="in-step">
+          <li class="in-step reveal" style="transition-delay:.28s">
             <span class="in-step__num">03</span>
             <div>
               <strong>Rate your recall</strong>
@@ -108,45 +108,65 @@ const screenshots = [
 
       <!-- Decks -->
       <section class="in-section">
-        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>CONCEPT DECKS</p>
-        <h2 class="in-section__title">Built-in decks, ready on day one</h2>
+        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>CONCEPT DECKS</p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">Built-in decks, ready on day one</h2>
         <ul class="in-decks">
-          <li>System Design</li>
-          <li>Security &amp; Auth</li>
-          <li>Architecture Patterns</li>
-          <li>DSA Patterns</li>
-          <li>Behavioral</li>
+          <li class="reveal" style="transition-delay:.10s">System Design</li>
+          <li class="reveal" style="transition-delay:.16s">Security &amp; Auth</li>
+          <li class="reveal" style="transition-delay:.22s">Architecture Patterns</li>
+          <li class="reveal" style="transition-delay:.28s">DSA Patterns</li>
+          <li class="reveal" style="transition-delay:.34s">Behavioral</li>
         </ul>
-        <p class="in-decks__addendum">Add your own topics and concepts: algorithms, behavioral answers, language trivia, anything.</p>
+        <p class="in-decks__addendum reveal" style="transition-delay:.40s">Add your own topics and concepts: algorithms, behavioral answers, language trivia, anything.</p>
       </section>
 
       <!-- Features -->
       <section class="in-section">
-        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>FEATURES</p>
-        <h2 class="in-section__title">What's under the hood</h2>
+        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>FEATURES</p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">What's under the hood</h2>
         <ul class="in-features">
-          <li><span class="in-feature__label">Spaced repetition</span> — forgotten concepts come back sooner; known ones get spaced out.</li>
-          <li><span class="in-feature__label">Progress</span> — daily streak, review heatmap, and mastery per topic.</li>
-          <li><span class="in-feature__label">Per-topic schedule</span> — set how many times a day, active hours, which days, and notification sound for each deck.</li>
-          <li><span class="in-feature__label">Light and dark theme</span> — follows your system preference or set it manually.</li>
+          <li class="reveal" style="transition-delay:.10s"><span class="in-feature__label">Spaced repetition</span> — forgotten concepts come back sooner; known ones get spaced out.</li>
+          <li class="reveal" style="transition-delay:.18s"><span class="in-feature__label">Progress</span> — daily streak, review heatmap, and mastery per topic.</li>
+          <li class="reveal" style="transition-delay:.26s"><span class="in-feature__label">Per-topic schedule</span> — set how many times a day, active hours, which days, and notification sound for each deck.</li>
+          <li class="reveal" style="transition-delay:.34s"><span class="in-feature__label">Light and dark theme</span> — follows your system preference or set it manually.</li>
         </ul>
       </section>
 
       <!-- Privacy -->
       <section class="in-section in-section--callout">
-        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>PRIVATE BY DESIGN</p>
-        <h2 class="in-section__title">No account, no ads, no tracking.</h2>
-        <p class="in-privacy__body">Everything stays on your phone. The app doesn't even need an internet connection.</p>
-        <a class="in-privacy__link" href="/interview-nudge/privacy/">Read the full privacy policy →</a>
+        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>PRIVATE BY DESIGN</p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">No account, no ads, no tracking.</h2>
+        <p class="in-privacy__body reveal" style="transition-delay:.12s">Everything stays on your phone. The app doesn't even need an internet connection.</p>
+        <a class="in-privacy__link reveal" style="transition-delay:.18s" href="/interview-nudge/privacy/">Read the full privacy policy →</a>
       </section>
     </main>
 
-    <footer class="in-footer">
+    <footer class="in-footer reveal">
       <p>Questions or feedback: <a href="mailto:estlopacu@gmail.com">estlopacu@gmail.com</a></p>
       <p><a href="/">← estlopacu.github.io</a></p>
     </footer>
 
     <script>
+      // Scroll reveal
+      (function () {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        // Hero elements are above the fold — show immediately
+        document.querySelectorAll('.in-hero .reveal').forEach(el => {
+          el.classList.add('in-view');
+        });
+        // Everything else observes on scroll
+        document.querySelectorAll('.reveal:not(.in-hero .reveal)').forEach(el => io.observe(el));
+      })();
+
+      // Deck of cards
       (function () {
         const deck = document.getElementById('cardDeck');
         if (!deck) return;
@@ -519,6 +539,18 @@ const screenshots = [
     text-underline-offset: 3px;
   }
   .in-privacy__link:hover { color: var(--brand-bright); }
+
+  /* ── Scroll reveal ───────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s cubic-bezier(.16,1,.3,1),
+                transform 0.55s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* ── Footer ───────────────────────────────────────────────── */
   .in-footer {

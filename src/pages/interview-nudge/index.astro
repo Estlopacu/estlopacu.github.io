@@ -58,11 +58,28 @@ const screenshots = [
             {!PLAY_URL && <p class="in-hero__beta-note">Android · closed beta on Google Play</p>}
           </div>
         </div>
-        <div class="in-hero__phone-wrap">
-          <div class="in-phone-frame">
-            <img src="/interview-nudge/screenshots/02-concept.png"
-              width="1080" height="2160" loading="eager"
-              alt="Concept detail screen with Forgot and Knew it buttons" />
+
+        <!-- Screenshot carousel -->
+        <div class="in-carousel" aria-label="App screenshots">
+          <div class="in-carousel__track" id="carouselTrack">
+            {screenshots.map(({ file, alt }, i) => (
+              <div class="in-carousel__slide" data-index={i}>
+                <div class="in-phone-frame">
+                  <img
+                    src={`/interview-nudge/screenshots/${file}`}
+                    width="1080" height="2160"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    alt={alt}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="in-carousel__dots" id="carouselDots">
+            {screenshots.map((_, i) => (
+              <button class={`in-carousel__dot${i === 0 ? ' in-carousel__dot--active' : ''}`}
+                data-index={i} aria-label={`Screenshot ${i + 1}`} />
+            ))}
           </div>
         </div>
       </section>
@@ -94,24 +111,6 @@ const screenshots = [
             </div>
           </li>
         </ol>
-      </section>
-
-      <!-- Screenshots -->
-      <section class="in-section">
-        <p class="in-eyebrow"><span class="in-eyebrow__muted">// </span>SCREENSHOTS</p>
-        <h2 class="in-section__title">See it in action</h2>
-        <div class="in-shots">
-          {screenshots.map(({ file, alt }) => (
-            <div class="in-shot">
-              <img
-                src={`/interview-nudge/screenshots/${file}`}
-                width="1080" height="2160"
-                loading="lazy"
-                alt={alt}
-              />
-            </div>
-          ))}
-        </div>
       </section>
 
       <!-- Decks -->
@@ -147,18 +146,37 @@ const screenshots = [
         <p class="in-privacy__body">Everything stays on your phone. The app doesn't even need an internet connection.</p>
         <a class="in-privacy__link" href="/interview-nudge/privacy/">Read the full privacy policy →</a>
       </section>
-
-      <!-- CTA repeat -->
-      <section class="in-section in-cta-bottom">
-        <a class="in-btn in-btn--primary" href={ctaHref}>{ctaLabel}</a>
-        {!PLAY_URL && <p class="in-hero__beta-note">Android · closed beta on Google Play</p>}
-      </section>
     </main>
 
     <footer class="in-footer">
       <p>Questions or feedback: <a href="mailto:estlopacu@gmail.com">estlopacu@gmail.com</a></p>
       <p><a href="/">← estlopacu.github.io</a></p>
     </footer>
+
+    <script>
+      const track = document.getElementById('carouselTrack');
+      const dotsEl = document.getElementById('carouselDots');
+      if (track && dotsEl) {
+        const dots = Array.from(dotsEl.querySelectorAll('.in-carousel__dot'));
+        let current = 0;
+
+        function goTo(i) {
+          current = i;
+          track.style.transform = `translateX(-${i * 100}%)`;
+          dots.forEach((d, idx) => d.classList.toggle('in-carousel__dot--active', idx === i));
+        }
+
+        dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+        // Drag / swipe
+        let startX = 0;
+        track.addEventListener('pointerdown', (e) => { startX = e.clientX; });
+        track.addEventListener('pointerup', (e) => {
+          const dx = e.clientX - startX;
+          if (Math.abs(dx) > 40) goTo(Math.max(0, Math.min(dots.length - 1, current + (dx < 0 ? 1 : -1))));
+        });
+      }
+    </script>
   </body>
 </html>
 
@@ -287,24 +305,66 @@ const screenshots = [
     margin: 0;
   }
 
-  /* phone frame */
-  .in-hero__phone-wrap {
+  /* ── Carousel ─────────────────────────────────────────────── */
+  .in-carousel {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    align-self: flex-start;
+  }
+
+  .in-carousel__track {
+    display: flex;
+    width: 240px;
+    /* height = width * (2160/1080) aspect ratio */
+    height: 480px;
+    overflow: hidden;
+    border-radius: 36px;
+    touch-action: pan-y;
+    transition: transform 0.3s ease;
+    cursor: grab;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    border: 2px solid var(--border-strong);
+  }
+  .in-carousel__track:active { cursor: grabbing; }
+
+  .in-carousel__slide {
+    min-width: 100%;
+    flex-shrink: 0;
   }
 
   .in-phone-frame {
-    border: 2px solid var(--border-strong);
-    border-radius: 36px;
-    overflow: hidden;
-    max-width: 240px;
     width: 100%;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    height: 100%;
+    overflow: hidden;
   }
   .in-phone-frame img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .in-carousel__dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .in-carousel__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border-strong);
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .in-carousel__dot--active {
+    background: var(--text-terminal);
+    transform: scale(1.4);
   }
 
   /* ── Button ───────────────────────────────────────────────── */
@@ -354,27 +414,6 @@ const screenshots = [
     margin-bottom: 4px;
   }
   .in-step p { margin: 0; line-height: 1.6; }
-
-  /* ── Screenshots ──────────────────────────────────────────── */
-  .in-shots {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-  }
-  .in-shot {
-    min-width: 120px;
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--surface-sunken);
-  }
-  .in-shot img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
 
   /* ── Decks ────────────────────────────────────────────────── */
   .in-decks {
@@ -438,14 +477,6 @@ const screenshots = [
   }
   .in-privacy__link:hover { color: var(--brand-bright); }
 
-  /* ── Bottom CTA ───────────────────────────────────────────── */
-  .in-cta-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
   /* ── Footer ───────────────────────────────────────────────── */
   .in-footer {
     max-width: 900px;
@@ -471,15 +502,12 @@ const screenshots = [
       gap: 40px;
       padding: 48px 16px 48px;
     }
-    .in-hero__phone-wrap {
+    .in-carousel {
       order: -1;
     }
-    .in-phone-frame {
-      max-width: 180px;
-    }
-    .in-shots {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+    .in-carousel__track {
+      width: 180px;
+      height: 360px;
     }
     .in-section {
       padding: 48px 16px;
@@ -487,9 +515,6 @@ const screenshots = [
   }
 
   @media (max-width: 480px) {
-    .in-shots {
-      grid-template-columns: repeat(2, 1fr);
-    }
     .in-hero__icon {
       width: 72px;
       height: 72px;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Github, Linkedin, Mail, Link as LinkIcon } from 'lucide-react';
+import React from "react";
+import { Github, Linkedin, Mail, Link as LinkIcon } from "lucide-react";
 
 /**
  * SocialLink — circular icon link (GitHub, LinkedIn, email…). Keeps the
@@ -14,7 +14,7 @@ const ICONS = {
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === 'undefined') return;
+  if (_injected || typeof document === "undefined") return;
   _injected = true;
   const css = `
   .els-social{display:inline-flex;align-items:center;justify-content:center;
@@ -29,18 +29,28 @@ function injectStyles() {
   .els-social--ghost:hover{color:var(--slate-900);background:var(--signal-400);border-color:var(--signal-400)}
   @keyframes els-swing{20%{transform:rotate(13deg)}40%{transform:rotate(-9deg)}60%{transform:rotate(6deg)}80%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
   `;
-  const el = document.createElement('style');
-  el.setAttribute('data-els', 'social');
+  const el = document.createElement("style");
+  el.setAttribute("data-els", "social");
   el.textContent = css;
   document.head.appendChild(el);
 }
 
-export function SocialLink({ icon = 'link', label, ghost = false, className = '', ...rest }) {
+export function SocialLink({
+  icon = "link",
+  label,
+  ghost = false,
+  className = "",
+  ...rest
+}) {
   injectStyles();
   const Icon = ICONS[icon] || LinkIcon;
   return (
-    <a className={`els-social${ghost ? ' els-social--ghost' : ''} ${className}`.trim()}
-       aria-label={label} title={label} {...rest}>
+    <a
+      className={`els-social${ghost ? " els-social--ghost" : ""} ${className}`.trim()}
+      aria-label={label}
+      title={label}
+      {...rest}
+    >
       <Icon size={20} />
     </a>
   );

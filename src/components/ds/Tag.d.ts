@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** Color tone. @default "brand" */
-  tone?: 'brand' | 'neutral' | 'signal';
+  tone?: "brand" | "neutral" | "signal";
   /** Fill the chip instead of the soft tint. @default false */
   solid?: boolean;
   /** Show a leading status dot. @default false */

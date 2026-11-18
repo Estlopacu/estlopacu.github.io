@@ -4,62 +4,79 @@
 // separate paragraphs. Add real Problem/Outcome copy over time — the
 // component doesn't care what sections exist, it just renders whatever's
 // in `body`.
-import React from 'react';
-import { ExternalLink } from 'lucide-react';
-import SectionHeading from '../ds/SectionHeading.jsx';
-import Tag from '../ds/Tag.jsx';
-import TerminalWindow from '../ds/TerminalWindow.jsx';
-import CommandLine from '../ds/CommandLine.jsx';
+import React from "react";
+import { ExternalLink } from "lucide-react";
+import SectionHeading from "../ds/SectionHeading.jsx";
+import Tag from "../ds/Tag.jsx";
+import TerminalWindow from "../ds/TerminalWindow.jsx";
+import CommandLine from "../ds/CommandLine.jsx";
 
 const PROJECTS = [
   {
-    slug: 'interview-nudge',
-    name: 'Interview Nudge',
-    img: '/interview-nudge/screenshots/01-home.png',
-    href: '/interview-nudge/',
+    slug: "interview-nudge",
+    name: "Interview Nudge",
+    img: "/interview-nudge/screenshots/01-home.png",
+    href: "/interview-nudge/",
     body: `An Android app that keeps interview concepts fresh by delivering them as local notifications throughout the day. Spaced repetition schedules each concept based on whether you recalled it. No account, no ads, everything stored on-device.`,
-    stack: ['React Native', 'Expo', 'Android', 'SQLite'],
+    stack: ["React Native", "Expo", "Android", "SQLite"],
   },
   {
-    slug: 'contratista-costa-rica',
-    name: 'Contratista Costa Rica',
-    img: '/project-contratistacr.png',
+    slug: "contratista-costa-rica",
+    name: "Contratista Costa Rica",
+    img: "/project-contratistacr.png",
     body: `A marketplace connecting contractors and independent workers across the Costa Rican construction industry. Two-sided platform: contractors post jobs, workers apply, both build reputation over time.`,
-    stack: ['HTML5', 'CSS3', 'jQuery', 'AngularJS', 'CodeIgniter', 'MySQL'],
+    stack: ["HTML5", "CSS3", "jQuery", "AngularJS", "CodeIgniter", "MySQL"],
   },
   {
-    slug: 'mamavaprimero-monge',
-    name: '#MamáVaPrimero — Monge',
-    img: '/project-mamavaprimero.png',
+    slug: "mamavaprimero-monge",
+    name: "#MamáVaPrimero — Monge",
+    img: "/project-mamavaprimero.png",
     body: `A Mother's Day campaign for retail chain Monge letting users record a personalized video card and share it back through Facebook. In-browser video capture, upload pipeline, and social integration.`,
-    stack: ['JavaScript', 'Facebook API', 'Video', 'AJAX'],
+    stack: ["JavaScript", "Facebook API", "Video", "AJAX"],
   },
   {
-    slug: 'graphql-costa-rica-locations',
-    name: 'GraphQL Costa Rica Locations',
-    img: '/project-graphql-cr.png',
-    href: 'https://github.com/Estlopacu/graphql-costa-rica-locations',
+    slug: "graphql-costa-rica-locations",
+    name: "GraphQL Costa Rica Locations",
+    img: "/project-graphql-cr.png",
+    href: "https://github.com/Estlopacu/graphql-costa-rica-locations",
     body: `A schema-first GraphQL API serving Costa Rica's administrative divisions — 7 provincias, 82 cantones, 474 distritos — with stable IDs and postal codes. Resolvers are type-checked against the schema via GraphQL Code Generator so a bad return shape fails tsc, not a live query. Deployed on EC2 behind nginx as a systemd service.`,
-    stack: ['TypeScript', 'GraphQL', 'Apollo Server', 'graphql-codegen', 'Node.js'],
+    stack: [
+      "TypeScript",
+      "GraphQL",
+      "Apollo Server",
+      "graphql-codegen",
+      "Node.js",
+    ],
   },
   {
-    slug: 'indicadores-economicos-bccr',
-    name: 'indicadores-economicos-bccr',
-    img: '/project-bccr.png',
-    href: 'https://www.npmjs.com/package/indicadores-economicos-bccr',
+    slug: "indicadores-economicos-bccr",
+    name: "indicadores-economicos-bccr",
+    img: "/project-bccr.png",
+    href: "https://www.npmjs.com/package/indicadores-economicos-bccr",
     body: `An npm package for converting between US dollars and Costa Rican colones using live exchange rates from the Banco Central de Costa Rica SOAP web service. Handles XML parsing, rate caching, and typed responses so downstream code stays clean.`,
-    stack: ['Node.js', 'npm', 'axios', 'xmldom', 'SOAP'],
+    stack: ["Node.js", "npm", "axios", "xmldom", "SOAP"],
   },
 ];
 
 // Split body into paragraphs (blank-line separated) and optional '##' headings.
 function renderBody(body) {
-  const blocks = body.split(/\n{2,}/).map((b) => b.trim()).filter(Boolean);
+  const blocks = body
+    .split(/\n{2,}/)
+    .map((b) => b.trim())
+    .filter(Boolean);
   return blocks.map((block, i) => {
-    if (block.startsWith('## ')) {
-      return <h4 className="pf-readme__h" key={i}>{block.slice(3)}</h4>;
+    if (block.startsWith("## ")) {
+      return (
+        <h4 className="pf-readme__h" key={i}>
+          {block.slice(3)}
+        </h4>
+      );
     }
-    return <p className="pf-readme__p" key={i}>{block}</p>;
+    return (
+      <p className="pf-readme__p" key={i}>
+        {block}
+      </p>
+    );
   });
 }
 
@@ -70,19 +87,35 @@ function ProjectPane({ p }) {
       <CommandLine command={`cat ${filename}`} />
       <TerminalWindow title={filename} className="pf-readme__win">
         <div className="pf-readme__media">
-          <img src={p.img} alt={p.name} loading="lazy" className={p.slug === 'interview-nudge' ? 'bell-ring-once' : undefined} />
+          <img
+            src={p.img}
+            alt={p.name}
+            loading="lazy"
+            className={
+              p.slug === "interview-nudge" ? "bell-ring-once" : undefined
+            }
+          />
         </div>
         <div className="pf-readme__content">
           <h3 className="pf-readme__title"># {p.name}</h3>
           {renderBody(p.body)}
           <h4 className="pf-readme__h">## stack</h4>
           <div className="pf-readme__stack">
-            {p.stack.map((t) => <Tag key={t} tone="signal">{t}</Tag>)}
+            {p.stack.map((t) => (
+              <Tag key={t} tone="signal">
+                {t}
+              </Tag>
+            ))}
           </div>
           {p.href && (
             <>
               <h4 className="pf-readme__h">## live</h4>
-              <a className="pf-readme__link" href={p.href} target="_blank" rel="noopener noreferrer">
+              <a
+                className="pf-readme__link"
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {p.href} <ExternalLink size={14} />
               </a>
             </>
@@ -97,13 +130,18 @@ function Projects() {
   return (
     <section className="pf-section" id="projects" data-nav-target>
       <div className="pf-reveal">
-        <SectionHeading eyebrow="selected work" title="Projects I've shipped"
-          subtitle="A few products I've built end-to-end." />
+        <SectionHeading
+          eyebrow="selected work"
+          title="Projects I've shipped"
+          subtitle="A few products I've built end-to-end."
+        />
       </div>
       <CommandLine command="ls work/" className="pf-ls__cmd" />
       <p className="pf-ls__total">total {PROJECTS.length}</p>
       <div className="pf-readme__grid">
-        {PROJECTS.map((p) => <ProjectPane p={p} key={p.slug} />)}
+        {PROJECTS.map((p) => (
+          <ProjectPane p={p} key={p.slug} />
+        ))}
       </div>
     </section>
   );

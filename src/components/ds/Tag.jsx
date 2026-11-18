@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Tag — compact technology / topic chip (React, Node, TypeScript…).
@@ -7,7 +7,7 @@ import React from 'react';
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === 'undefined') return;
+  if (_injected || typeof document === "undefined") return;
   _injected = true;
   const css = `
   .els-tag{
@@ -25,15 +25,23 @@ function injectStyles() {
   .els-tag--solid.els-tag--signal{background:var(--signal-400);color:var(--slate-900)}
   .els-tag__dot{width:.5em;height:.5em;border-radius:50%;background:currentColor}
   `;
-  const el = document.createElement('style');
-  el.setAttribute('data-els', 'tag');
+  const el = document.createElement("style");
+  el.setAttribute("data-els", "tag");
   el.textContent = css;
   document.head.appendChild(el);
 }
 
-export function Tag({ children, tone = 'brand', solid = false, dot = false, className = '', ...rest }) {
+export function Tag({
+  children,
+  tone = "brand",
+  solid = false,
+  dot = false,
+  className = "",
+  ...rest
+}) {
   injectStyles();
-  const cls = `els-tag els-tag--${tone}${solid ? ' els-tag--solid' : ''} ${className}`.trim();
+  const cls =
+    `els-tag els-tag--${tone}${solid ? " els-tag--solid" : ""} ${className}`.trim();
   return (
     <span className={cls} {...rest}>
       {dot && <span className="els-tag__dot" />}

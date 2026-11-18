@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * SectionHeading — a monospace "comment" eyebrow over a display title,
@@ -7,7 +7,7 @@ import React from 'react';
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === 'undefined') return;
+  if (_injected || typeof document === "undefined") return;
   _injected = true;
   const css = `
   .els-sh{display:flex;flex-direction:column;gap:.5em}
@@ -21,15 +21,23 @@ function injectStyles() {
   .els-sh__sub{font-family:var(--font-body);color:var(--text-muted);font-size:var(--text-md);
     line-height:var(--leading-normal);max-width:52ch;margin:0}
   `;
-  const el = document.createElement('style');
-  el.setAttribute('data-els', 'sectionheading');
+  const el = document.createElement("style");
+  el.setAttribute("data-els", "sectionheading");
   el.textContent = css;
   document.head.appendChild(el);
 }
 
-export function SectionHeading({ eyebrow, title, subtitle, align = 'left', className = '', ...rest }) {
+export function SectionHeading({
+  eyebrow,
+  title,
+  subtitle,
+  align = "left",
+  className = "",
+  ...rest
+}) {
   injectStyles();
-  const cls = `els-sh${align === 'center' ? ' els-sh--center' : ''} ${className}`.trim();
+  const cls =
+    `els-sh${align === "center" ? " els-sh--center" : ""} ${className}`.trim();
   return (
     <div className={cls} {...rest}>
       {eyebrow && <span className="els-sh__eyebrow">{eyebrow}</span>}

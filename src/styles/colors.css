@@ -10,29 +10,29 @@
 
 :root {
   /* ---- Brand blue ramp (anchored on #004BA8) ---- */
-  --blue-50:  #eaf2fc;
+  --blue-50: #eaf2fc;
   --blue-100: #cfe0f7;
   --blue-200: #a3c5ee;
   --blue-300: #6ba2e0;
-  --blue-400: #337aca;   /* heritage "tertiary" — bright azure */
+  --blue-400: #337aca; /* heritage "tertiary" — bright azure */
   --blue-500: #1f63b5;
-  --blue-600: #004ba8;   /* heritage PRIMARY brand blue */
+  --blue-600: #004ba8; /* heritage PRIMARY brand blue */
   --blue-700: #023e88;
   --blue-800: #042f63;
   --blue-900: #06223f;
-  --blue-950: #051426;   /* deep ink-blue, terminal canvas */
+  --blue-950: #051426; /* deep ink-blue, terminal canvas */
 
   /* heritage secondary (muted) kept for fidelity */
   --blue-muted: #255c99;
 
   /* ---- Slate / ink neutral ramp (anchored on #4A525A) ---- */
-  --slate-50:  #f7f9fb;
+  --slate-50: #f7f9fb;
   --slate-100: #eef1f5;
   --slate-200: #e0e5ec;
   --slate-300: #c4ccd6;
   --slate-400: #98a2af;
   --slate-500: #6b7480;
-  --slate-600: #4a525a;   /* heritage "forth" — slate */
+  --slate-600: #4a525a; /* heritage "forth" — slate */
   --slate-700: #353c45;
   --slate-800: #232a33;
   --slate-900: #161b22;
@@ -53,39 +53,39 @@
   /* ---- Semantic status ---- */
   --success: #21c46b;
   --warning: #f6a609;
-  --danger:  #e5484d;
-  --info:    #337aca;
+  --danger: #e5484d;
+  --info: #337aca;
 
   /* ============================================================
      SEMANTIC ALIASES — reference these in product code
      ============================================================ */
 
   /* surfaces */
-  --surface-page:    var(--slate-50);
-  --surface-card:    var(--white);
-  --surface-sunken:  var(--slate-100);
-  --surface-inverse: var(--blue-950);   /* terminal / dark hero */
-  --surface-brand:   var(--blue-600);
+  --surface-page: var(--slate-50);
+  --surface-card: var(--white);
+  --surface-sunken: var(--slate-100);
+  --surface-inverse: var(--blue-950); /* terminal / dark hero */
+  --surface-brand: var(--blue-600);
 
   /* text */
-  --text-strong:   var(--slate-900);
-  --text-body:     var(--slate-700);
-  --text-muted:    var(--slate-500);
-  --text-inverse:  var(--slate-50);
+  --text-strong: var(--slate-900);
+  --text-body: var(--slate-700);
+  --text-muted: var(--slate-500);
+  --text-inverse: var(--slate-50);
   --text-on-brand: var(--white);
-  --text-link:     var(--blue-600);
-  --text-terminal: var(--signal-400);  /* green prompt text on dark */
+  --text-link: var(--blue-600);
+  --text-terminal: var(--signal-400); /* green prompt text on dark */
 
   /* brand */
-  --brand:         var(--blue-600);
-  --brand-bright:  var(--blue-400);
-  --brand-deep:    var(--blue-800);
-  --accent:        var(--signal-400);
+  --brand: var(--blue-600);
+  --brand-bright: var(--blue-400);
+  --brand-deep: var(--blue-800);
+  --accent: var(--signal-400);
 
   /* borders / lines */
   --border-subtle: var(--slate-200);
   --border-strong: var(--slate-300);
-  --border-brand:  var(--blue-600);
+  --border-brand: var(--blue-600);
   --border-inverse: rgba(255, 255, 255, 0.12);
 
   /* focus ring */
@@ -102,42 +102,42 @@
    ============================================================ */
 [data-theme="terminal"] {
   /* ---- Terminal-tuned surface + text ---- */
-  --term-bg:         #0a0e0a;   /* near-black, hair of green cast */
-  --term-bg-elev:    #10160f;   /* elevated surfaces (cards) */
-  --term-bg-sunken:  #060906;   /* sunken (behind-panel) */
-  --term-green:      #5cf28a;   /* cyan-tinted phosphor, terminal.shop-ish */
-  --term-green-dim:  #3ba565;
-  --term-amber:      #fbbf24;   /* secondary accent for hover / focus */
-  --term-text:       #d6dcd6;   /* muted white body copy */
-  --term-text-mute:  #7a8578;   /* comments / secondary */
-  --term-border:     rgba(92, 242, 138, 0.18);   /* subtle green line */
-  --term-border-hi:  rgba(92, 242, 138, 0.42);
+  --term-bg: #0a0e0a; /* near-black, hair of green cast */
+  --term-bg-elev: #10160f; /* elevated surfaces (cards) */
+  --term-bg-sunken: #060906; /* sunken (behind-panel) */
+  --term-green: #5cf28a; /* cyan-tinted phosphor, terminal.shop-ish */
+  --term-green-dim: #3ba565;
+  --term-amber: #fbbf24; /* secondary accent for hover / focus */
+  --term-text: #d6dcd6; /* muted white body copy */
+  --term-text-mute: #7a8578; /* comments / secondary */
+  --term-border: rgba(92, 242, 138, 0.18); /* subtle green line */
+  --term-border-hi: rgba(92, 242, 138, 0.42);
 
   /* ---- Semantic alias overrides ---- */
-  --surface-page:    var(--term-bg);
-  --surface-card:    var(--term-bg-elev);
-  --surface-sunken:  var(--term-bg-sunken);
+  --surface-page: var(--term-bg);
+  --surface-card: var(--term-bg-elev);
+  --surface-sunken: var(--term-bg-sunken);
   --surface-inverse: var(--white);
-  --surface-brand:   var(--term-green);
+  --surface-brand: var(--term-green);
 
-  --text-strong:   var(--term-green);
-  --text-body:     var(--term-text);
-  --text-muted:    var(--term-text-mute);
-  --text-inverse:  var(--term-bg);
-  --text-link:     var(--term-green);
+  --text-strong: var(--term-green);
+  --text-body: var(--term-text);
+  --text-muted: var(--term-text-mute);
+  --text-inverse: var(--term-bg);
+  --text-link: var(--term-green);
   --text-terminal: var(--term-green);
 
-  --brand:         var(--term-green);
-  --brand-bright:  var(--term-amber);
-  --brand-deep:    var(--term-green-dim);
-  --accent:        var(--term-amber);
+  --brand: var(--term-green);
+  --brand-bright: var(--term-amber);
+  --brand-deep: var(--term-green-dim);
+  --accent: var(--term-amber);
 
   --border-subtle: var(--term-border);
   --border-strong: var(--term-border-hi);
-  --border-brand:  var(--term-green);
+  --border-brand: var(--term-green);
   --border-inverse: rgba(255, 255, 255, 0.12);
 
-  --focus-ring:    var(--term-amber);
+  --focus-ring: var(--term-amber);
 
   /* Green signal ramp collapsed onto terminal green so existing components
      that reach for --signal-* stay coherent in the terminal theme. */
@@ -148,8 +148,8 @@
 
   /* ---- Typography collapse: mono is the ONE typeface ---- */
   --font-display: var(--font-mono);
-  --font-body:    var(--font-mono);
+  --font-body: var(--font-mono);
   --display-font: var(--font-mono);
   --heading-font: var(--font-mono);
-  --body-font:    var(--font-mono);
+  --body-font: var(--font-mono);
 }

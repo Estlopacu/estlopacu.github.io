@@ -1,8 +1,8 @@
 /* Global entry point — token layers + portfolio UI styles.
    Mirrors the former design-system/styles.css aggregation. */
-@import './fonts.css';
-@import './colors.css';
-@import './typography.css';
-@import './spacing.css';
-@import './portfolio.css';
-@import './terminal.css';
+@import "./fonts.css";
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./portfolio.css";
+@import "./terminal.css";

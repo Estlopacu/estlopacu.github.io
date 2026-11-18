@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * SkillBar — animated proficiency meter, modernized from the original CV's
@@ -7,7 +7,7 @@ import React from 'react';
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === 'undefined') return;
+  if (_injected || typeof document === "undefined") return;
   _injected = true;
   const css = `
   .els-skill{font-family:var(--font-body);margin-bottom:var(--space-4)}
@@ -21,27 +21,46 @@ function injectStyles() {
   .els-skill--signal .els-skill__fill{background:linear-gradient(90deg,var(--signal-600),var(--signal-400))}
   .els-skill--signal .els-skill__pct{color:var(--signal-600)}
   `;
-  const el = document.createElement('style');
-  el.setAttribute('data-els', 'skillbar');
+  const el = document.createElement("style");
+  el.setAttribute("data-els", "skillbar");
   el.textContent = css;
   document.head.appendChild(el);
 }
 
-export function SkillBar({ name, percent = 0, tone = 'brand', className = '', ...rest }) {
+export function SkillBar({
+  name,
+  percent = 0,
+  tone = "brand",
+  className = "",
+  ...rest
+}) {
   injectStyles();
   const [w, setW] = React.useState(0);
   const ref = React.useRef(null);
   React.useEffect(() => {
     const node = ref.current;
-    if (!node || typeof IntersectionObserver === 'undefined') { setW(percent); return; }
-    const io = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) { setW(percent); io.disconnect(); }
-    }, { threshold: 0.3 });
+    if (!node || typeof IntersectionObserver === "undefined") {
+      setW(percent);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setW(percent);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
     io.observe(node);
     return () => io.disconnect();
   }, [percent]);
   return (
-    <div ref={ref} className={`els-skill els-skill--${tone} ${className}`.trim()} {...rest}>
+    <div
+      ref={ref}
+      className={`els-skill els-skill--${tone} ${className}`.trim()}
+      {...rest}
+    >
       <div className="els-skill__head">
         <span className="els-skill__name">{name}</span>
         <span className="els-skill__pct">{percent}%</span>

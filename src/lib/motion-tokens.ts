@@ -15,8 +15,8 @@ export const EASE = {
 };
 
 export const SPRING = {
-  soft: { type: "spring", stiffness: 180, damping: 22, mass: 0.9 } as const,
-  snappy: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 } as const,
+  soft: { type: 'spring', stiffness: 180, damping: 22, mass: 0.9 } as const,
+  snappy: { type: 'spring', stiffness: 320, damping: 28, mass: 0.8 } as const,
 };
 
 export const STAGGER = {

@@ -453,7 +453,7 @@ a {
   max-width: var(--container-md);
 }
 .pf-timeline::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 7px;
   top: 6px;
@@ -629,7 +629,7 @@ a {
   --my: 50%;
 }
 .pf-project::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;

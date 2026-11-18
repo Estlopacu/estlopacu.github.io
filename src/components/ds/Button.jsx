@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /**
  * Button — primary action control for the Estlopacu portfolio system.
@@ -8,7 +8,7 @@ import React from "react";
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === "undefined") return;
+  if (_injected || typeof document === 'undefined') return;
   _injected = true;
   const css = `
   .els-btn{
@@ -37,21 +37,21 @@ function injectStyles() {
   .els-btn--terminal{--_bg:var(--signal-400);--_fg:var(--slate-900);font-family:var(--font-mono);font-weight:700}
   .els-btn--terminal:hover{box-shadow:var(--shadow-signal)}
   `;
-  const el = document.createElement("style");
-  el.setAttribute("data-els", "button");
+  const el = document.createElement('style');
+  el.setAttribute('data-els', 'button');
   el.textContent = css;
   document.head.appendChild(el);
 }
 
 export function Button({
   children,
-  variant = "primary",
-  size = "md",
-  as = "button",
+  variant = 'primary',
+  size = 'md',
+  as = 'button',
   iconLeft,
   iconRight,
   disabled = false,
-  className = "",
+  className = '',
   ...rest
 }) {
   injectStyles();
@@ -61,7 +61,7 @@ export function Button({
   return (
     <Tag
       className={cls}
-      disabled={Tag === "button" ? disabled : undefined}
+      disabled={Tag === 'button' ? disabled : undefined}
       {...rest}
     >
       {iconLeft}

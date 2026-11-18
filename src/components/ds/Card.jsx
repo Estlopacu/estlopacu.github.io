@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /**
  * Card — elevated content surface. Hover lift is opt-in via `interactive`.
@@ -7,7 +7,7 @@ import React from "react";
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === "undefined") return;
+  if (_injected || typeof document === 'undefined') return;
   _injected = true;
   const css = `
   .els-card{
@@ -21,23 +21,23 @@ function injectStyles() {
   .els-card--interactive:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--blue-200)}
   .els-card--terminal.els-card--interactive:hover{border-color:var(--signal-400);box-shadow:var(--shadow-signal)}
   `;
-  const el = document.createElement("style");
-  el.setAttribute("data-els", "card");
+  const el = document.createElement('style');
+  el.setAttribute('data-els', 'card');
   el.textContent = css;
   document.head.appendChild(el);
 }
 
 export function Card({
   children,
-  variant = "default",
+  variant = 'default',
   interactive = false,
-  className = "",
+  className = '',
   ...rest
 }) {
   injectStyles();
-  const v = variant === "default" ? "" : ` els-card--${variant}`;
+  const v = variant === 'default' ? '' : ` els-card--${variant}`;
   const cls =
-    `els-card${v}${interactive ? " els-card--interactive" : ""} ${className}`.trim();
+    `els-card${v}${interactive ? ' els-card--interactive' : ''} ${className}`.trim();
   return (
     <div className={cls} {...rest}>
       {children}

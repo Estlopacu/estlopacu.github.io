@@ -2,17 +2,17 @@
 // box-drawing characters via CSS (::before/::after). Optional title bar
 // with the classic 3-dot chrome. Used to wrap section blocks so each
 // section reads as its own "pane" in the shell environment.
-import React from "react";
+import React from 'react';
 
 export default function TerminalWindow({
   title,
   chrome = true, // show 3-dot title bar
   children,
-  className = "",
+  className = '',
   ...rest
 }) {
   return (
-    <div className={("pf-term " + className).trim()} {...rest}>
+    <div className={('pf-term ' + className).trim()} {...rest}>
       {chrome && (
         <div className="pf-term__chrome" aria-hidden="true">
           <span className="pf-term__dot pf-term__dot--r" />

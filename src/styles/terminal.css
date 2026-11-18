@@ -77,44 +77,44 @@
 /* ============================================================
    Everything below only in terminal theme.
    ============================================================ */
-[data-theme="terminal"] body {
+[data-theme='terminal'] body {
   /* Force mono globally, kill IBM Plex Sans body font. */
   font-family: var(--font-mono);
 }
 
 /* Kill rounded card fluff, replace with square box-drawing feel */
-[data-theme="terminal"] .els-card,
-[data-theme="terminal"] .pf-timeline__card,
-[data-theme="terminal"] .pf-project {
+[data-theme='terminal'] .els-card,
+[data-theme='terminal'] .pf-timeline__card,
+[data-theme='terminal'] .pf-project {
   border-radius: 4px;
   border-color: var(--term-border, var(--border-subtle));
 }
 
 /* Nav: keep the fixed bar but restyle badge for green-bg contrast */
-[data-theme="terminal"] .pf-nav {
+[data-theme='terminal'] .pf-nav {
   background: color-mix(in srgb, var(--term-bg) 88%, transparent);
   border-bottom-color: var(--term-border);
 }
-[data-theme="terminal"] .pf-nav__mono {
+[data-theme='terminal'] .pf-nav__mono {
   background: var(--term-green);
   color: var(--term-bg); /* WCAG contrast — dark on green */
   border-radius: 3px;
 }
-[data-theme="terminal"] .pf-nav__wm {
+[data-theme='terminal'] .pf-nav__wm {
   color: var(--text-body);
 }
-[data-theme="terminal"] .pf-nav__cursor {
+[data-theme='terminal'] .pf-nav__cursor {
   color: var(--term-amber);
 }
 
 /* Nav links styled as file paths — no underline pill; use `>` cursor on active. */
-[data-theme="terminal"] .pf-nav__link {
+[data-theme='terminal'] .pf-nav__link {
   color: var(--text-muted);
   padding-left: 14px; /* room for cursor */
   position: relative;
 }
-[data-theme="terminal"] .pf-nav__link::before {
-  content: "";
+[data-theme='terminal'] .pf-nav__link::before {
+  content: '';
   position: absolute;
   left: 0;
   top: 50%;
@@ -123,31 +123,31 @@
   opacity: 0;
   transition: opacity var(--dur-base) var(--ease-out);
 }
-[data-theme="terminal"] .pf-nav__link:hover,
-[data-theme="terminal"] .pf-nav__link.is-active {
+[data-theme='terminal'] .pf-nav__link:hover,
+[data-theme='terminal'] .pf-nav__link.is-active {
   color: var(--text-strong);
 }
-[data-theme="terminal"] .pf-nav__link:hover::before,
-[data-theme="terminal"] .pf-nav__link.is-active::before {
-  content: ">";
+[data-theme='terminal'] .pf-nav__link:hover::before,
+[data-theme='terminal'] .pf-nav__link.is-active::before {
+  content: '>';
   opacity: 1;
 }
-[data-theme="terminal"] .pf-nav__underline {
+[data-theme='terminal'] .pf-nav__underline {
   display: none;
 }
 
 /* Theme toggle + CTA */
-[data-theme="terminal"] .pf-nav__theme {
+[data-theme='terminal'] .pf-nav__theme {
   background: transparent;
   border-color: var(--term-border-hi);
   color: var(--text-body);
   border-radius: 3px;
 }
-[data-theme="terminal"] .pf-nav__theme:hover {
+[data-theme='terminal'] .pf-nav__theme:hover {
   color: var(--term-green);
   border-color: var(--term-green);
 }
-[data-theme="terminal"] .pf-nav__cta {
+[data-theme='terminal'] .pf-nav__cta {
   background: transparent;
   color: var(--term-green);
   border: 1px solid var(--term-green);
@@ -156,67 +156,67 @@
   font-weight: 500;
   padding: 0.5em 1em;
 }
-[data-theme="terminal"] .pf-nav__cta:hover {
+[data-theme='terminal'] .pf-nav__cta:hover {
   background: var(--term-green);
   color: var(--term-bg);
   box-shadow: 0 0 12px rgba(92, 242, 138, 0.35);
 }
 
 /* Hero title in terminal theme: force mono, tighten scale, lose the tracking */
-[data-theme="terminal"] .pf-hero__title {
+[data-theme='terminal'] .pf-hero__title {
   font-family: var(--font-mono);
   font-weight: 500;
   letter-spacing: -0.02em;
   font-size: clamp(2.5rem, 6vw, 4rem);
 }
-[data-theme="terminal"] .pf-hero__eyebrow {
+[data-theme='terminal'] .pf-hero__eyebrow {
   color: var(--term-green);
   letter-spacing: 0.08em;
 }
-[data-theme="terminal"] .pf-hero__dot {
+[data-theme='terminal'] .pf-hero__dot {
   color: var(--term-amber);
 }
-[data-theme="terminal"] .pf-hero__portrait {
+[data-theme='terminal'] .pf-hero__portrait {
   background: linear-gradient(135deg, var(--term-green), var(--term-amber));
 }
-[data-theme="terminal"] .pf-hero__portrait img {
+[data-theme='terminal'] .pf-hero__portrait img {
   border-color: var(--term-bg);
 }
-[data-theme="terminal"] .pf-hero__scroll {
+[data-theme='terminal'] .pf-hero__scroll {
   color: var(--text-muted);
 }
-[data-theme="terminal"] .pf-hero__scroll svg {
+[data-theme='terminal'] .pf-hero__scroll svg {
   color: var(--term-green);
 }
 
 /* Buttons */
-[data-theme="terminal"] .els-btn,
-[data-theme="terminal"] a.els-btn {
+[data-theme='terminal'] .els-btn,
+[data-theme='terminal'] a.els-btn {
   border-radius: 3px;
   font-family: var(--font-mono);
   letter-spacing: 0.02em;
 }
-[data-theme="terminal"] .els-btn--primary {
+[data-theme='terminal'] .els-btn--primary {
   background: var(--term-green);
   color: var(--term-bg);
   border-color: var(--term-green);
 }
-[data-theme="terminal"] .els-btn--primary:hover {
+[data-theme='terminal'] .els-btn--primary:hover {
   background: var(--term-amber);
   border-color: var(--term-amber);
   box-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
 }
-[data-theme="terminal"] .els-btn--secondary {
+[data-theme='terminal'] .els-btn--secondary {
   background: transparent;
   color: var(--term-green);
   border: 1px solid var(--term-green);
 }
-[data-theme="terminal"] .els-btn--secondary:hover {
+[data-theme='terminal'] .els-btn--secondary:hover {
   background: rgba(92, 242, 138, 0.08);
 }
 
 /* Tags — bracket-styled `[tag]` in terminal theme */
-[data-theme="terminal"] .els-tag {
+[data-theme='terminal'] .els-tag {
   background: transparent;
   border: 1px solid var(--term-border-hi);
   border-radius: 3px;
@@ -224,71 +224,71 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
 }
-[data-theme="terminal"] .els-tag--signal {
+[data-theme='terminal'] .els-tag--signal {
   color: var(--term-green);
   border-color: var(--term-green);
   background: rgba(92, 242, 138, 0.06);
 }
 
 /* Section headings — mono, subdued (the CommandLine above them carries the weight) */
-[data-theme="terminal"] .els-sh__title {
+[data-theme='terminal'] .els-sh__title {
   font-family: var(--font-mono);
   font-weight: 500;
   letter-spacing: -0.01em;
 }
-[data-theme="terminal"] .els-sh__eyebrow {
+[data-theme='terminal'] .els-sh__eyebrow {
   color: var(--term-green);
   font-family: var(--font-mono);
 }
 
 /* Timeline in terminal theme: sharper corners, greener nodes, no card shadow */
-[data-theme="terminal"] .pf-timeline::before {
+[data-theme='terminal'] .pf-timeline::before {
   background: var(--term-border-hi);
 }
-[data-theme="terminal"] .pf-timeline__node {
+[data-theme='terminal'] .pf-timeline__node {
   background: var(--term-bg);
   border-color: var(--term-green);
 }
-[data-theme="terminal"] .pf-timeline__item:first-child .pf-timeline__node {
+[data-theme='terminal'] .pf-timeline__item:first-child .pf-timeline__node {
   background: var(--term-green);
   border-color: var(--term-green);
   box-shadow: 0 0 12px rgba(92, 242, 138, 0.5);
 }
-[data-theme="terminal"] .pf-timeline__card {
+[data-theme='terminal'] .pf-timeline__card {
   background: var(--surface-card);
   box-shadow: none;
 }
-[data-theme="terminal"] .pf-timeline__company {
+[data-theme='terminal'] .pf-timeline__company {
   color: var(--term-green);
 }
 
 /* Projects card in terminal theme */
-[data-theme="terminal"] .pf-project {
+[data-theme='terminal'] .pf-project {
   border-color: var(--term-border);
 }
-[data-theme="terminal"] .pf-project::before {
+[data-theme='terminal'] .pf-project::before {
   background: radial-gradient(
     220px circle at var(--mx) var(--my),
     rgba(92, 242, 138, 0.18),
     transparent 60%
   );
 }
-[data-theme="terminal"] .pf-project:hover {
+[data-theme='terminal'] .pf-project:hover {
   border-color: var(--term-border-hi);
 }
 
 /* Skill pills */
-[data-theme="terminal"] .pf-skillgroup__label {
+[data-theme='terminal'] .pf-skillgroup__label {
   color: var(--term-green);
 }
 
 /* Reveal — softer distance so heavy mono type doesn't jitter */
-[data-theme="terminal"] .pf-reveal {
+[data-theme='terminal'] .pf-reveal {
   transform: translateY(14px);
 }
 
 /* Focus ring for keyboard nav */
-[data-theme="terminal"] :focus-visible {
+[data-theme='terminal'] :focus-visible {
   outline: 2px solid var(--term-amber);
   outline-offset: 3px;
   border-radius: 2px;
@@ -303,7 +303,7 @@
 .pf-about__win .pf-prose {
   margin-top: var(--space-3);
 }
-[data-theme="terminal"] .pf-about__win .pf-prose {
+[data-theme='terminal'] .pf-about__win .pf-prose {
   color: var(--text-body);
 }
 
@@ -368,7 +368,7 @@
   transform: translateX(3px);
   outline: none;
 }
-[data-theme="terminal"] .pf-gitlog__item:focus-visible {
+[data-theme='terminal'] .pf-gitlog__item:focus-visible {
   outline: 2px solid var(--term-amber);
   outline-offset: 2px;
 }
@@ -449,7 +449,7 @@
   position: relative;
 }
 .pf-ls__row::before {
-  content: "";
+  content: '';
   position: absolute;
   left: -2px;
   top: 50%;
@@ -470,10 +470,10 @@
 }
 .pf-ls__row:hover::before,
 .pf-ls__row:focus::before {
-  content: ">";
+  content: '>';
   opacity: 1;
 }
-[data-theme="terminal"] .pf-ls__row:focus-visible {
+[data-theme='terminal'] .pf-ls__row:focus-visible {
   outline: 2px solid var(--term-amber);
   outline-offset: 2px;
 }

@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Surface style. @default "default" */
-  variant?: "default" | "sunken" | "terminal";
+  variant?: 'default' | 'sunken' | 'terminal';
   /** Enable hover-lift + pointer cursor. @default false */
   interactive?: boolean;
   children?: React.ReactNode;

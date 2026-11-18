@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export interface SkillBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Skill label, e.g. "React". */
@@ -6,7 +6,7 @@ export interface SkillBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Proficiency 0–100. @default 0 */
   percent?: number;
   /** Fill color. @default "brand" */
-  tone?: "brand" | "signal";
+  tone?: 'brand' | 'signal';
 }
 
 /**

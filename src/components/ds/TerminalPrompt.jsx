@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /**
  * TerminalPrompt — the signature heritage motif. Renders a shell line
@@ -7,7 +7,7 @@ import React from "react";
 
 let _injected = false;
 function injectStyles() {
-  if (_injected || typeof document === "undefined") return;
+  if (_injected || typeof document === 'undefined') return;
   _injected = true;
   const css = `
   .els-term{font-family:var(--font-terminal);background:var(--blue-950);
@@ -24,20 +24,20 @@ function injectStyles() {
     transform:translateY(.12em);margin-left:.08em;animation:els-blink 1.05s steps(1) infinite}
   @keyframes els-blink{50%{opacity:0}}
   `;
-  const el = document.createElement("style");
-  el.setAttribute("data-els", "terminal");
+  const el = document.createElement('style');
+  el.setAttribute('data-els', 'terminal');
   el.textContent = css;
   document.head.appendChild(el);
 }
 
 export function TerminalPrompt({
-  user = "esteban",
-  host = "portfolio",
-  command = "whoami",
+  user = 'esteban',
+  host = 'portfolio',
+  command = 'whoami',
   output,
   chrome = true,
   cursor = true,
-  className = "",
+  className = '',
   ...rest
 }) {
   injectStyles();
@@ -45,14 +45,14 @@ export function TerminalPrompt({
     <div className={`els-term ${className}`.trim()} {...rest}>
       {chrome && (
         <div className="els-term__bar">
-          <i style={{ background: "var(--danger)" }} />
-          <i style={{ background: "var(--warning)" }} />
-          <i style={{ background: "var(--signal-400)" }} />
+          <i style={{ background: 'var(--danger)' }} />
+          <i style={{ background: 'var(--warning)' }} />
+          <i style={{ background: 'var(--signal-400)' }} />
         </div>
       )}
       <div className="els-term__line">
         <span className="els-term__prompt">
-          {user}@{host}:~${" "}
+          {user}@{host}:~${' '}
         </span>
         <span className="els-term__cmd">{command}</span>
         {!output && cursor && <span className="els-term__cursor" />}

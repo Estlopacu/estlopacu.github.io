@@ -188,16 +188,19 @@ const screenshots = [
 
         applyDepths();
 
+        let animating = false;
         function flyOff(direction) {
+          if (animating) return;
+          animating = true;
           const topIdx = order[0];
           const topCard = cards[topIdx];
           topCard.classList.add(direction === 'left' ? 'in-deck__card--fly-left' : 'in-deck__card--fly-right');
 
           setTimeout(() => {
-            // Remove fly class, send to bottom of order
             topCard.classList.remove('in-deck__card--fly-left', 'in-deck__card--fly-right');
-            order.push(order.shift()); // move top card to bottom
+            order.push(order.shift());
             applyDepths();
+            animating = false;
           }, 420);
         }
 
@@ -206,7 +209,7 @@ const screenshots = [
         cards.forEach(card => {
           card.addEventListener('click', () => {
             const topIdx = order[0];
-            if (cards.indexOf(card) !== topIdx) return; // only top card is interactive
+            if (cards.indexOf(card) !== topIdx) return;
             flyOff(flyDir);
             flyDir = flyDir === 'left' ? 'right' : 'left';
           });

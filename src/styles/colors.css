@@ -100,7 +100,7 @@
    Typography collapses to a single monospace family — the whole
    theme reads as one continuous shell session.
    ============================================================ */
-[data-theme="terminal"] {
+[data-theme='terminal'] {
   /* ---- Terminal-tuned surface + text ---- */
   --term-bg: #0a0e0a; /* near-black, hair of green cast */
   --term-bg-elev: #10160f; /* elevated surfaces (cards) */

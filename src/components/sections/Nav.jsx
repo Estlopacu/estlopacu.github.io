@@ -1,23 +1,23 @@
 // Top navigation — fixed bar with active-section indicator driven by IO.
-import React from "react";
-import { motion, useReducedMotion } from "motion/react";
-import { Moon, Sun } from "lucide-react";
-import { SPRING } from "../../lib/motion-tokens.ts";
+import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
+import { Moon, Sun } from 'lucide-react';
+import { SPRING } from '../../lib/motion-tokens.ts';
 
 // Order must match DOM order — Skills lives inside About, before Experience.
-const LINKS = ["about", "skills", "experience", "projects", "contact"];
+const LINKS = ['about', 'skills', 'experience', 'projects', 'contact'];
 
 // Section IDs that back each nav link. `skills` lives inside the About section.
 const LINK_TO_SECTION = {
-  about: "about",
-  experience: "experience",
-  projects: "projects",
-  skills: "skills",
-  contact: "contact",
+  about: 'about',
+  experience: 'experience',
+  projects: 'projects',
+  skills: 'skills',
+  contact: 'contact',
 };
 
 function useActiveSection() {
-  const [active, setActive] = React.useState("about");
+  const [active, setActive] = React.useState('about');
 
   React.useEffect(() => {
     const ids = Array.from(new Set(Object.values(LINK_TO_SECTION)));
@@ -29,7 +29,7 @@ function useActiveSection() {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) =>
-          visibility.set(e.target.id, e.intersectionRatio),
+          visibility.set(e.target.id, e.intersectionRatio)
         );
         let best = null;
         let bestRatio = 0;
@@ -41,7 +41,7 @@ function useActiveSection() {
         });
         if (best && bestRatio > 0.1) setActive(best);
       },
-      { threshold: [0.1, 0.25, 0.5, 0.75, 1] },
+      { threshold: [0.1, 0.25, 0.5, 0.75, 1] }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -59,12 +59,12 @@ function Nav({ theme, onToggleTheme }) {
   React.useEffect(() => {
     const el = mobileScrollerRef.current;
     if (!el) return;
-    const active = el.querySelector(".pf-nav__mlink.is-active");
+    const active = el.querySelector('.pf-nav__mlink.is-active');
     if (active)
       active.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
       });
   }, [activeSection]);
 
@@ -83,8 +83,8 @@ function Nav({ theme, onToggleTheme }) {
             return (
               <a
                 key={l}
-                href={"#" + l}
-                className={"pf-nav__link" + (isActive ? " is-active" : "")}
+                href={'#' + l}
+                className={'pf-nav__link' + (isActive ? ' is-active' : '')}
               >
                 {l}
                 {isActive && (
@@ -105,7 +105,7 @@ function Nav({ theme, onToggleTheme }) {
             aria-label="Toggle theme"
             title="Toggle theme"
           >
-            {theme === "terminal" ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'terminal' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <a className="pf-nav__cta" href="#contact">
             Hire me
@@ -126,8 +126,8 @@ function Nav({ theme, onToggleTheme }) {
           return (
             <a
               key={l}
-              href={"#" + l}
-              className={"pf-nav__mlink" + (isActive ? " is-active" : "")}
+              href={'#' + l}
+              className={'pf-nav__mlink' + (isActive ? ' is-active' : '')}
             >
               ./{l}
             </a>

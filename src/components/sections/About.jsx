@@ -1,36 +1,36 @@
 // About + Skills — reframed as `cat about.md` and `cat skills.yaml`
 // terminal panes. Same content, terminal-shell presentation.
-import React from "react";
-import SectionHeading from "../ds/SectionHeading.jsx";
-import Card from "../ds/Card.jsx";
-import Tag from "../ds/Tag.jsx";
-import TerminalWindow from "../ds/TerminalWindow.jsx";
-import CommandLine from "../ds/CommandLine.jsx";
+import React from 'react';
+import SectionHeading from '../ds/SectionHeading.jsx';
+import Card from '../ds/Card.jsx';
+import Tag from '../ds/Tag.jsx';
+import TerminalWindow from '../ds/TerminalWindow.jsx';
+import CommandLine from '../ds/CommandLine.jsx';
 
 function About() {
   const groups = [
     {
-      label: "core_stack",
-      tone: "signal",
-      items: ["TypeScript", "React / Next.js", "Node.js", "Vue.js / Nuxt"],
+      label: 'core_stack',
+      tone: 'signal',
+      items: ['TypeScript', 'React / Next.js', 'Node.js', 'Vue.js / Nuxt'],
     },
     {
-      label: "frontend",
+      label: 'frontend',
       items: [
-        "React Native",
-        "TanStack Query",
-        "React Router",
-        "Pinia",
-        "Tailwind",
-        "HTML",
-        "CSS",
+        'React Native',
+        'TanStack Query',
+        'React Router',
+        'Pinia',
+        'Tailwind',
+        'HTML',
+        'CSS',
       ],
     },
-    { label: "cms", items: ["Sanity", "Webflow"] },
-    { label: "infra_cloud", items: ["AWS", "Docker"] },
-    { label: "testing", items: ["Playwright", "Cypress", "E2E"] },
-    { label: "observability", items: ["PostHog", "Datadog", "Sentry"] },
-    { label: "databases", items: ["PostgreSQL", "MySQL"] },
+    { label: 'cms', items: ['Sanity', 'Webflow'] },
+    { label: 'infra_cloud', items: ['AWS', 'Docker'] },
+    { label: 'testing', items: ['Playwright', 'Cypress', 'E2E'] },
+    { label: 'observability', items: ['PostHog', 'Datadog', 'Sentry'] },
+    { label: 'databases', items: ['PostgreSQL', 'MySQL'] },
   ];
   let n = 0;
   return (
@@ -80,10 +80,10 @@ function About() {
                       <span className="pf-yaml__item" key={t}>
                         <span className="pf-yaml__dash">-</span>
                         <Tag
-                          tone={g.tone || "neutral"}
+                          tone={g.tone || 'neutral'}
                           solid={!!g.tone}
                           className="pf-pill"
-                          style={{ transitionDelay: n++ * 45 + "ms" }}
+                          style={{ transitionDelay: n++ * 45 + 'ms' }}
                         >
                           {t}
                         </Tag>

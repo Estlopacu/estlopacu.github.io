@@ -2,58 +2,111 @@
 import '../../styles/global.css';
 
 const PLAY_URL = null; // set to 'https://play.google.com/store/apps/details?id=com.estlopacu.interviewNudge' once public
-const BETA_URL = 'https://play.google.com/apps/testing/com.estlopacu.interviewNudge';
+const BETA_URL =
+  'https://play.google.com/apps/testing/com.estlopacu.interviewNudge';
 const ctaHref = PLAY_URL ?? BETA_URL;
 const ctaLabel = PLAY_URL ? 'Get it on Google Play' : 'Join the beta';
 
 const screenshots = [
-  { file: '01-home.png',          alt: 'Topics list showing System Design, Security & Auth, and other built-in decks' },
-  { file: '02-concept.png',       alt: 'Concept detail screen with Forgot and Knew it buttons' },
-  { file: '03-progress.png',      alt: 'Progress screen showing streak, review heatmap, and mastery per topic' },
-  { file: '04-nudges.png',        alt: 'Recent nudges list showing notification history' },
-  { file: '05-topic-settings.png',alt: 'Topic settings: times per day, active hours, days, and notification sound' },
-  { file: '06-dark-concept.png',  alt: 'Concept detail in dark theme' },
+  {
+    file: '01-home.png',
+    alt: 'Topics list showing System Design, Security & Auth, and other built-in decks',
+  },
+  {
+    file: '02-concept.png',
+    alt: 'Concept detail screen with Forgot and Knew it buttons',
+  },
+  {
+    file: '03-progress.png',
+    alt: 'Progress screen showing streak, review heatmap, and mastery per topic',
+  },
+  {
+    file: '04-nudges.png',
+    alt: 'Recent nudges list showing notification history',
+  },
+  {
+    file: '05-topic-settings.png',
+    alt: 'Topic settings: times per day, active hours, days, and notification sound',
+  },
+  { file: '06-dark-concept.png', alt: 'Concept detail in dark theme' },
 ];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="terminal">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/interview-nudge/icon-512.png" />
     <title>Interview Nudge: interview concepts, one notification at a time</title>
-    <meta name="description" content="Stay interview-ready: bite-size concepts delivered as notifications all day. Spaced repetition on Android, no account required." />
+    <meta
+      name="description"
+      content="Stay interview-ready: bite-size concepts delivered as notifications all day. Spaced repetition on Android, no account required."
+    />
     <link rel="canonical" href="https://estlopacu.github.io/interview-nudge/" />
 
-    <meta property="og:title" content="Interview Nudge: interview concepts, one notification at a time" />
-    <meta property="og:description" content="Stay interview-ready: bite-size concepts delivered as notifications all day." />
-    <meta property="og:image" content="https://estlopacu.github.io/interview-nudge/feature-graphic.png" />
-    <meta property="og:url" content="https://estlopacu.github.io/interview-nudge/" />
+    <meta
+      property="og:title"
+      content="Interview Nudge: interview concepts, one notification at a time"
+    />
+    <meta
+      property="og:description"
+      content="Stay interview-ready: bite-size concepts delivered as notifications all day."
+    />
+    <meta
+      property="og:image"
+      content="https://estlopacu.github.io/interview-nudge/feature-graphic.png"
+    />
+    <meta
+      property="og:url"
+      content="https://estlopacu.github.io/interview-nudge/"
+    />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Interview Nudge: interview concepts, one notification at a time" />
-    <meta name="twitter:description" content="Stay interview-ready: bite-size concepts delivered as notifications all day." />
-    <meta name="twitter:image" content="https://estlopacu.github.io/interview-nudge/feature-graphic.png" />
+    <meta
+      name="twitter:title"
+      content="Interview Nudge: interview concepts, one notification at a time"
+    />
+    <meta
+      name="twitter:description"
+      content="Stay interview-ready: bite-size concepts delivered as notifications all day."
+    />
+    <meta
+      name="twitter:image"
+      content="https://estlopacu.github.io/interview-nudge/feature-graphic.png"
+    />
   </head>
 
   <body>
     <header class="in-nav">
-      <a class="in-nav__home" href="/">← estlopacu.github.io</a>
+      <a class="in-nav__home" href="/">
+        ← estlopacu.github.io
+      </a>
     </header>
 
     <main>
       <!-- Hero -->
       <section class="in-hero">
         <!-- Deck of cards — first in DOM so it appears top on mobile -->
-        <div class="in-deck reveal" style="transition-delay:.12s" id="cardDeck" aria-label="App screenshots — tap to flip through">
+        <div
+          class="in-deck reveal"
+          style="transition-delay:.12s"
+          id="cardDeck"
+          aria-label="App screenshots — tap to flip through"
+        >
           {screenshots.map(({ file, alt }, i) => (
-            <div class="in-deck__card" data-index={i} role="img" aria-label={alt}>
+            <div
+              class="in-deck__card"
+              data-index={i}
+              role="img"
+              aria-label={alt}
+            >
               <div class="in-phone-frame">
                 <img
                   src={`/interview-nudge/screenshots/${file}`}
-                  width="1080" height="2160"
+                  width="1080"
+                  height="2160"
                   loading={i === 0 ? 'eager' : 'lazy'}
                   alt={alt}
                 />
@@ -65,42 +118,76 @@ const screenshots = [
 
         <div class="in-hero__copy">
           <div class="in-hero__identity reveal">
-            <img class="in-hero__icon bell-ring" src="/interview-nudge/icon-512.png" width="96" height="96" alt="Interview Nudge app icon" />
+            <img
+              class="in-hero__icon"
+              src="/interview-nudge/icon-512.png"
+              width="96"
+              height="96"
+              alt="Interview Nudge app icon"
+            />
             <h1 class="in-hero__title">Interview Nudge</h1>
           </div>
-          <p class="in-hero__sub reveal" style="transition-delay:.08s">Stay interview-ready: bite-size concepts delivered as notifications all day.</p>
-          <p class="in-hero__cmd reveal" aria-hidden="true" style="transition-delay:.16s"><span class="in-prompt">nudge:~$</span> recall --daily</p>
+          <p class="in-hero__sub reveal" style="transition-delay:.08s">
+            Stay interview-ready: bite-size concepts delivered as notifications
+            all day.
+          </p>
+          <p
+            class="in-hero__cmd reveal"
+            aria-hidden="true"
+            style="transition-delay:.16s"
+          >
+            <span class="in-prompt">nudge:~$</span> recall --daily
+          </p>
           <div class="in-hero__cta reveal" style="transition-delay:.24s">
-            <a class="in-btn in-btn--primary" href={ctaHref}>{ctaLabel}</a>
-            {!PLAY_URL && <p class="in-hero__beta-note">Android · closed beta on Google Play</p>}
+            <a class="in-btn in-btn--primary" href={ctaHref}>
+              {ctaLabel}
+            </a>
+            {!PLAY_URL && (
+              <p class="in-hero__beta-note">
+                Android · closed beta on Google Play
+              </p>
+            )}
           </div>
         </div>
       </section>
 
       <!-- How it works -->
       <section class="in-section">
-        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>HOW IT WORKS</p>
-        <h2 class="in-section__title reveal" style="transition-delay:.06s">Three steps, all day long</h2>
+        <p class="in-eyebrow reveal">
+          <span class="in-eyebrow__muted">// </span>HOW IT WORKS
+        </p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">
+          Three steps, all day long
+        </h2>
         <ol class="in-steps">
           <li class="in-step reveal" style="transition-delay:.12s">
             <span class="in-step__num">01</span>
             <div>
               <strong>Notification arrives</strong>
-              <p>A concept name and a short hint drop into your notification shade. Try to recall the answer before you tap.</p>
+              <p>
+                A concept name and a short hint drop into your notification
+                shade. Try to recall the answer before you tap.
+              </p>
             </div>
           </li>
           <li class="in-step reveal" style="transition-delay:.2s">
             <span class="in-step__num">02</span>
             <div>
               <strong>Read the full explanation</strong>
-              <p>Tap to open the concept detail with the complete explanation.</p>
+              <p>
+                Tap to open the concept detail with the complete explanation.
+              </p>
             </div>
           </li>
           <li class="in-step reveal" style="transition-delay:.28s">
             <span class="in-step__num">03</span>
             <div>
               <strong>Rate your recall</strong>
-              <p>Tap "Knew it" or "Forgot" right from the notification. Spaced repetition brings forgotten concepts back sooner and spaces out the ones you know.</p>
+              <p>
+                Tap "Knew it" or "Forgot" right from the notification. Spaced
+                repetition brings forgotten concepts back sooner and spaces out
+                the ones you know.
+              </p>
             </div>
           </li>
         </ol>
@@ -108,62 +195,118 @@ const screenshots = [
 
       <!-- Decks -->
       <section class="in-section">
-        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>CONCEPT DECKS</p>
-        <h2 class="in-section__title reveal" style="transition-delay:.06s">Built-in decks, ready on day one</h2>
+        <p class="in-eyebrow reveal">
+          <span class="in-eyebrow__muted">// </span>CONCEPT DECKS
+        </p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">
+          Built-in decks, ready on day one
+        </h2>
         <ul class="in-decks">
-          <li class="reveal" style="transition-delay:.10s">System Design</li>
-          <li class="reveal" style="transition-delay:.16s">Security &amp; Auth</li>
-          <li class="reveal" style="transition-delay:.22s">Architecture Patterns</li>
-          <li class="reveal" style="transition-delay:.28s">DSA Patterns</li>
-          <li class="reveal" style="transition-delay:.34s">Behavioral</li>
+          <li class="reveal" style="transition-delay:.10s">
+            System Design
+          </li>
+          <li class="reveal" style="transition-delay:.16s">
+            Security &amp; Auth
+          </li>
+          <li class="reveal" style="transition-delay:.22s">
+            Architecture Patterns
+          </li>
+          <li class="reveal" style="transition-delay:.28s">
+            DSA Patterns
+          </li>
+          <li class="reveal" style="transition-delay:.34s">
+            Behavioral
+          </li>
         </ul>
-        <p class="in-decks__addendum reveal" style="transition-delay:.40s">Add your own topics and concepts</p>
+        <p class="in-decks__addendum reveal" style="transition-delay:.40s">
+          Add your own topics and concepts
+        </p>
       </section>
 
       <!-- Features -->
       <section class="in-section">
-        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>FEATURES</p>
-        <h2 class="in-section__title reveal" style="transition-delay:.06s">What's under the hood</h2>
+        <p class="in-eyebrow reveal">
+          <span class="in-eyebrow__muted">// </span>FEATURES
+        </p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">
+          What's under the hood
+        </h2>
         <ul class="in-features">
-          <li class="reveal" style="transition-delay:.10s"><span class="in-feature__label">Spaced repetition</span> — forgotten concepts come back sooner; known ones get spaced out.</li>
-          <li class="reveal" style="transition-delay:.18s"><span class="in-feature__label">Progress</span> — daily streak, review heatmap, and mastery per topic.</li>
-          <li class="reveal" style="transition-delay:.26s"><span class="in-feature__label">Per-topic schedule</span> — set how many times a day, active hours, which days, and notification sound for each deck.</li>
-          <li class="reveal" style="transition-delay:.34s"><span class="in-feature__label">Light and dark theme</span> — follows your system preference or set it manually.</li>
+          <li class="reveal" style="transition-delay:.10s">
+            <span class="in-feature__label">Spaced repetition</span> — forgotten
+            concepts come back sooner; known ones get spaced out.
+          </li>
+          <li class="reveal" style="transition-delay:.18s">
+            <span class="in-feature__label">Progress</span> — daily streak,
+            review heatmap, and mastery per topic.
+          </li>
+          <li class="reveal" style="transition-delay:.26s">
+            <span class="in-feature__label">Per-topic schedule</span> — set how
+            many times a day, active hours, which days, and notification sound
+            for each deck.
+          </li>
+          <li class="reveal" style="transition-delay:.34s">
+            <span class="in-feature__label">Light and dark theme</span> —
+            follows your system preference or set it manually.
+          </li>
         </ul>
       </section>
 
       <!-- Privacy -->
       <section class="in-section in-section--callout">
-        <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>PRIVATE BY DESIGN</p>
-        <h2 class="in-section__title reveal" style="transition-delay:.06s">No account, no ads, no tracking.</h2>
-        <p class="in-privacy__body reveal" style="transition-delay:.12s">Everything stays on your phone. The app doesn't even need an internet connection.</p>
-        <a class="in-privacy__link reveal" style="transition-delay:.18s" href="/interview-nudge/privacy/">Read the full privacy policy →</a>
+        <p class="in-eyebrow reveal">
+          <span class="in-eyebrow__muted">// </span>PRIVATE BY DESIGN
+        </p>
+        <h2 class="in-section__title reveal" style="transition-delay:.06s">
+          No account, no ads, no tracking.
+        </h2>
+        <p class="in-privacy__body reveal" style="transition-delay:.12s">
+          Everything stays on your phone. The app doesn't even need an internet
+          connection.
+        </p>
+        <a
+          class="in-privacy__link reveal"
+          style="transition-delay:.18s"
+          href="/interview-nudge/privacy/"
+        >
+          Read the full privacy policy →
+        </a>
       </section>
     </main>
 
     <footer class="in-footer reveal">
-      <p>Questions or feedback: <a href="mailto:estlopacu@gmail.com">estlopacu@gmail.com</a></p>
-      <p><a href="/">← estlopacu.github.io</a></p>
+      <p>
+        Questions or feedback:{' '}
+        <a href="mailto:estlopacu@gmail.com">estlopacu@gmail.com</a>
+      </p>
+      <p>
+        <a href="/">← estlopacu.github.io</a>
+      </p>
     </footer>
 
     <script>
       // Scroll reveal
       (function () {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-              io.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12 });
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
 
         // Hero elements are above the fold — show immediately
-        document.querySelectorAll('.in-hero .reveal').forEach(el => {
+        document.querySelectorAll('.in-hero .reveal').forEach((el) => {
           el.classList.add('in-view');
         });
         // Everything else observes on scroll
-        document.querySelectorAll('.reveal:not(.in-hero .reveal)').forEach(el => io.observe(el));
+        document
+          .querySelectorAll('.reveal:not(.in-hero .reveal)')
+          .forEach((el) => io.observe(el));
       })();
 
       // Deck of cards
@@ -194,10 +337,17 @@ const screenshots = [
           animating = true;
           const topIdx = order[0];
           const topCard = cards[topIdx];
-          topCard.classList.add(direction === 'left' ? 'in-deck__card--fly-left' : 'in-deck__card--fly-right');
+          topCard.classList.add(
+            direction === 'left'
+              ? 'in-deck__card--fly-left'
+              : 'in-deck__card--fly-right'
+          );
 
           setTimeout(() => {
-            topCard.classList.remove('in-deck__card--fly-left', 'in-deck__card--fly-right');
+            topCard.classList.remove(
+              'in-deck__card--fly-left',
+              'in-deck__card--fly-right'
+            );
             order.push(order.shift());
             applyDepths();
             animating = false;
@@ -213,7 +363,11 @@ const screenshots = [
         deck.addEventListener('pointerdown', (e) => {
           dragStartX = e.clientX;
           dragging = true;
-          try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* optional, ignore */ }
+          try {
+            e.currentTarget.setPointerCapture(e.pointerId);
+          } catch {
+            /* optional, ignore */
+          }
         });
         deck.addEventListener('pointerup', (e) => {
           if (!dragging) return;
@@ -227,7 +381,9 @@ const screenshots = [
             flyDir = flyDir === 'left' ? 'right' : 'left';
           }
         });
-        deck.addEventListener('pointercancel', () => { dragging = false; });
+        deck.addEventListener('pointercancel', () => {
+          dragging = false;
+        });
       })();
     </script>
   </body>
@@ -255,7 +411,9 @@ const screenshots = [
     color: var(--text-muted);
     text-decoration: none;
   }
-  .in-nav__home:hover { color: var(--text-terminal); }
+  .in-nav__home:hover {
+    color: var(--text-terminal);
+  }
 
   /* ── Shared section chrome ────────────────────────────────── */
   .in-section {
@@ -279,7 +437,9 @@ const screenshots = [
     color: var(--text-terminal);
     margin: 0 0 8px;
   }
-  .in-eyebrow__muted { color: var(--text-muted); }
+  .in-eyebrow__muted {
+    color: var(--text-muted);
+  }
 
   .in-section__title {
     font-family: var(--font-display);
@@ -361,8 +521,12 @@ const screenshots = [
   /* ── Deck of cards ────────────────────────────────────────── */
 
   /* On desktop: deck is first in DOM but should appear in column 2 */
-  .in-hero__copy { order: 1; }
-  .in-deck       { order: 2; }
+  .in-hero__copy {
+    order: 1;
+  }
+  .in-deck {
+    order: 2;
+  }
 
   .in-deck {
     position: relative;
@@ -381,37 +545,61 @@ const screenshots = [
     border-radius: 28px;
     overflow: hidden;
     border: 2px solid var(--border-strong);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transform-origin: bottom center;
     will-change: transform;
-    transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), opacity 0.3s;
+    transition:
+      transform 0.35s cubic-bezier(0.22, 0.68, 0, 1.2),
+      opacity 0.3s;
     user-select: none;
     touch-action: none;
     -webkit-tap-highlight-color: transparent;
   }
 
   /* Cards behind the top one peek out with rotation + offset */
-  .in-deck__card[data-depth="1"] { transform: rotate(4deg)  translateY(10px); }
-  .in-deck__card[data-depth="2"] { transform: rotate(-5deg) translateY(18px); }
-  .in-deck__card[data-depth="3"] { transform: rotate(3deg)  translateY(26px); }
-  .in-deck__card[data-depth="4"] { transform: rotate(-4deg) translateY(32px); }
-  .in-deck__card[data-depth="5"] { transform: rotate(2deg)  translateY(36px); }
+  .in-deck__card[data-depth='1'] {
+    transform: rotate(4deg) translateY(10px);
+  }
+  .in-deck__card[data-depth='2'] {
+    transform: rotate(-5deg) translateY(18px);
+  }
+  .in-deck__card[data-depth='3'] {
+    transform: rotate(3deg) translateY(26px);
+  }
+  .in-deck__card[data-depth='4'] {
+    transform: rotate(-4deg) translateY(32px);
+  }
+  .in-deck__card[data-depth='5'] {
+    transform: rotate(2deg) translateY(36px);
+  }
 
   /* Top card: flat, no rotation */
-  .in-deck__card[data-depth="0"] {
+  .in-deck__card[data-depth='0'] {
     transform: rotate(0deg) translateY(0);
     cursor: pointer;
     z-index: 10;
   }
-  .in-deck__card[data-depth="0"]:hover {
+  .in-deck__card[data-depth='0']:hover {
     transform: rotate(0deg) translateY(-6px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
   }
 
   /* Flying-off animation */
-  .in-deck__card--fly-left  { transform: translateX(-140%) rotate(-18deg) !important; opacity: 0 !important; transition: transform 0.4s ease-in, opacity 0.35s ease-in !important; }
-  .in-deck__card--fly-right { transform: translateX(140%)  rotate(18deg)  !important; opacity: 0 !important; transition: transform 0.4s ease-in, opacity 0.35s ease-in !important; }
+  .in-deck__card--fly-left {
+    transform: translateX(-140%) rotate(-18deg) !important;
+    opacity: 0 !important;
+    transition:
+      transform 0.4s ease-in,
+      opacity 0.35s ease-in !important;
+  }
+  .in-deck__card--fly-right {
+    transform: translateX(140%) rotate(18deg) !important;
+    opacity: 0 !important;
+    transition:
+      transform 0.4s ease-in,
+      opacity 0.35s ease-in !important;
+  }
 
   .in-phone-frame {
     width: 100%;
@@ -449,7 +637,9 @@ const screenshots = [
     letter-spacing: 0.02em;
     transition: opacity 0.15s;
   }
-  .in-btn:hover { opacity: 0.85; }
+  .in-btn:hover {
+    opacity: 0.85;
+  }
   .in-btn--primary {
     background: var(--brand);
     color: var(--text-inverse);
@@ -483,7 +673,10 @@ const screenshots = [
     color: var(--text-strong);
     margin-bottom: 4px;
   }
-  .in-step p { margin: 0; line-height: 1.6; }
+  .in-step p {
+    margin: 0;
+    line-height: 1.6;
+  }
 
   /* ── Decks ────────────────────────────────────────────────── */
   .in-decks {
@@ -545,14 +738,17 @@ const screenshots = [
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .in-privacy__link:hover { color: var(--brand-bright); }
+  .in-privacy__link:hover {
+    color: var(--brand-bright);
+  }
 
   /* ── Scroll reveal ───────────────────────────────────────── */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.55s cubic-bezier(.16,1,.3,1),
-                transform 0.55s cubic-bezier(.16,1,.3,1);
+    transition:
+      opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.in-view {
     opacity: 1;
@@ -569,13 +765,17 @@ const screenshots = [
     font-size: 13px;
     color: var(--text-muted);
   }
-  .in-footer p { margin: 6px 0; }
+  .in-footer p {
+    margin: 6px 0;
+  }
   .in-footer a {
     color: var(--text-link);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .in-footer a:hover { color: var(--brand-bright); }
+  .in-footer a:hover {
+    color: var(--brand-bright);
+  }
 
   /* ── Responsive ───────────────────────────────────────────── */
   @media (max-width: 768px) {
@@ -585,9 +785,17 @@ const screenshots = [
       padding: 48px 16px 48px;
     }
     /* Reset desktop order — DOM order takes over (deck first) */
-    .in-hero__copy { order: 2; }
-    .in-deck       { order: 1; width: 180px; height: 394px; }
-    .in-deck__card { width: 180px; }
+    .in-hero__copy {
+      order: 2;
+    }
+    .in-deck {
+      order: 1;
+      width: 180px;
+      height: 394px;
+    }
+    .in-deck__card {
+      width: 180px;
+    }
     .in-section {
       padding: 48px 16px;
     }

@@ -1,21 +1,21 @@
 // Contact — terminal-styled CTA with education footer.
-import React from "react";
-import SectionHeading from "../ds/SectionHeading.jsx";
-import Button from "../ds/Button.jsx";
-import TerminalPrompt from "../ds/TerminalPrompt.jsx";
-import SocialLink from "../ds/SocialLink.jsx";
+import React from 'react';
+import SectionHeading from '../ds/SectionHeading.jsx';
+import Button from '../ds/Button.jsx';
+import TerminalPrompt from '../ds/TerminalPrompt.jsx';
+import SocialLink from '../ds/SocialLink.jsx';
 
 function Contact() {
   const education = [
     {
-      dates: "2014",
-      title: "M.Sc. Computer Engineering — Software Development",
-      center: "ULACIT, San José CR",
+      dates: '2014',
+      title: 'M.Sc. Computer Engineering — Software Development',
+      center: 'ULACIT, San José CR',
     },
     {
-      dates: "2012",
+      dates: '2012',
       title: "Bachelor's in Computer Systems",
-      center: "Universidad Fidélitas, San José CR",
+      center: 'Universidad Fidélitas, San José CR',
     },
   ];
   return (
@@ -83,7 +83,7 @@ function Contact() {
           </ul>
         </div>
         <footer className="pf-footer">
-          <span className="pf-footer__eof">EOF</span> — ©{" "}
+          <span className="pf-footer__eof">EOF</span> — ©{' '}
           {new Date().getFullYear()} esteban lópez acuña &nbsp;//&nbsp; built
           with astro + react &nbsp;//&nbsp; press <kbd>?</kbd> for shortcuts
         </footer>

@@ -10,10 +10,10 @@
 
 :root {
   /* ---- Families ---- */
-  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
-  --font-terminal: "VT323", "JetBrains Mono", monospace; /* heritage */
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  --font-terminal: 'VT323', 'JetBrains Mono', monospace; /* heritage */
 
   /* ---- Type scale (1.250 major-third, rem) ---- */
   --text-2xs: 0.6875rem; /* 11px */

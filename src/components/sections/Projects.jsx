@@ -70,7 +70,7 @@ function ProjectPane({ p }) {
       <CommandLine command={`cat ${filename}`} />
       <TerminalWindow title={filename} className="pf-readme__win">
         <div className="pf-readme__media">
-          <img src={p.img} alt={p.name} loading="lazy" />
+          <img src={p.img} alt={p.name} loading="lazy" className={p.slug === 'interview-nudge' ? 'bell-ring-once' : undefined} />
         </div>
         <div className="pf-readme__content">
           <h3 className="pf-readme__title"># {p.name}</h3>

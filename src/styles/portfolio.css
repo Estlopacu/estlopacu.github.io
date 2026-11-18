@@ -240,6 +240,58 @@ a { color: inherit; }
 .pf-edu__c { font-family: var(--font-mono); color: var(--text-muted); font-size: var(--text-xs); }
 .pf-footer { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted); text-align: center; margin-top: var(--space-6); }
 
+/* ---------- Bell ring animation ---------- */
+:root {
+  --bell-ring-ease: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --bell-ring-cycle: 5560ms;
+  --bell-ring-first-delay: 800ms;
+  --bell-ring-once: 560ms;
+  --bell-ring-once-delay: 350ms;
+}
+
+@keyframes bell-ring-loop {
+  0%      { transform: rotate(0deg); }
+  1.44%   { transform: rotate(-14deg); }
+  2.88%   { transform: rotate(12deg); }
+  4.32%   { transform: rotate(-10deg); }
+  5.76%   { transform: rotate(8deg); }
+  7.19%   { transform: rotate(-5deg); }
+  8.63%   { transform: rotate(3deg); }
+  10.07%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes bell-ring-once {
+  0%      { transform: rotate(0deg); }
+  14.29%  { transform: rotate(-14deg); }
+  28.57%  { transform: rotate(12deg); }
+  42.86%  { transform: rotate(-10deg); }
+  57.14%  { transform: rotate(8deg); }
+  71.43%  { transform: rotate(-5deg); }
+  85.71%  { transform: rotate(3deg); }
+  100%    { transform: rotate(0deg); }
+}
+
+.bell-ring {
+  transform-origin: top center;
+  animation: bell-ring-loop var(--bell-ring-cycle) var(--bell-ring-ease)
+             var(--bell-ring-first-delay) infinite;
+}
+
+.bell-ring-once {
+  transform-origin: top center;
+  animation: none;
+}
+
+.pf-readme:hover .bell-ring-once,
+.pf-readme:focus-within .bell-ring-once {
+  animation: bell-ring-once var(--bell-ring-once) var(--bell-ring-ease)
+             var(--bell-ring-once-delay) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bell-ring, .bell-ring-once { animation: none !important; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .pf-hero__grid, .pf-about, .pf-projects { grid-template-columns: 1fr; }

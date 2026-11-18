@@ -157,7 +157,7 @@ function Hero() {
             <img
               src="/profile-bg-removed.webp"
               alt="Esteban López Acuña"
-              fetchpriority="high"
+              fetchPriority="high"
               loading="eager"
               decoding="sync"
             />

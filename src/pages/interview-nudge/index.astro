@@ -213,7 +213,7 @@ const screenshots = [
         deck.addEventListener('pointerdown', (e) => {
           dragStartX = e.clientX;
           dragging = true;
-          try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {}
+          try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* optional, ignore */ }
         });
         deck.addEventListener('pointerup', (e) => {
           if (!dragging) return;

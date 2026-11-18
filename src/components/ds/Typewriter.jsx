@@ -19,7 +19,7 @@ export default function Typewriter({
   const [i, setI] = React.useState(reduce ? full.length : 0);
   const [started, setStarted] = React.useState(reduce);
   const onDoneRef = React.useRef(onDone);
-  onDoneRef.current = onDone;
+  React.useLayoutEffect(() => { onDoneRef.current = onDone; });
 
   // Kick off after startDelay.
   React.useEffect(() => {

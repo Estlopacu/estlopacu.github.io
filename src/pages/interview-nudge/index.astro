@@ -204,15 +204,16 @@ const screenshots = [
           }, 420);
         }
 
-        // Click: fly off in alternating directions
+        // Click: fly off in alternating directions.
+        // Delegate to deck so it fires regardless of where setPointerCapture routes click.
         let flyDir = 'left';
-        cards.forEach(card => {
-          card.addEventListener('click', () => {
-            const topIdx = order[0];
-            if (cards.indexOf(card) !== topIdx) return;
-            flyOff(flyDir);
-            flyDir = flyDir === 'left' ? 'right' : 'left';
-          });
+        deck.addEventListener('click', (e) => {
+          const targetCard = e.target.closest('.in-deck__card');
+          if (!targetCard) return;
+          const topIdx = order[0];
+          if (cards.indexOf(targetCard) !== topIdx) return;
+          flyOff(flyDir);
+          flyDir = flyDir === 'left' ? 'right' : 'left';
         });
 
         // Drag / swipe — pointer capture keeps the event on mobile

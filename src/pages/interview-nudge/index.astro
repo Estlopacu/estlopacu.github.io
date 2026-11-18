@@ -59,28 +59,21 @@ const screenshots = [
           </div>
         </div>
 
-        <!-- Screenshot carousel -->
-        <div class="in-carousel" aria-label="App screenshots">
-          <div class="in-carousel__track" id="carouselTrack">
-            {screenshots.map(({ file, alt }, i) => (
-              <div class="in-carousel__slide" data-index={i}>
-                <div class="in-phone-frame">
-                  <img
-                    src={`/interview-nudge/screenshots/${file}`}
-                    width="1080" height="2160"
-                    loading={i === 0 ? 'eager' : 'lazy'}
-                    alt={alt}
-                  />
-                </div>
+        <!-- Deck of cards -->
+        <div class="in-deck" id="cardDeck" aria-label="App screenshots — tap to flip through">
+          {screenshots.map(({ file, alt }, i) => (
+            <div class="in-deck__card" data-index={i} role="img" aria-label={alt}>
+              <div class="in-phone-frame">
+                <img
+                  src={`/interview-nudge/screenshots/${file}`}
+                  width="1080" height="2160"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  alt={alt}
+                />
               </div>
-            ))}
-          </div>
-          <div class="in-carousel__dots" id="carouselDots">
-            {screenshots.map((_, i) => (
-              <button class={`in-carousel__dot${i === 0 ? ' in-carousel__dot--active' : ''}`}
-                data-index={i} aria-label={`Screenshot ${i + 1}`} />
-            ))}
-          </div>
+            </div>
+          ))}
+          <p class="in-deck__hint">tap to flip</p>
         </div>
       </section>
 
@@ -154,28 +147,68 @@ const screenshots = [
     </footer>
 
     <script>
-      const track = document.getElementById('carouselTrack');
-      const dotsEl = document.getElementById('carouselDots');
-      if (track && dotsEl) {
-        const dots = Array.from(dotsEl.querySelectorAll('.in-carousel__dot'));
-        let current = 0;
+      (function () {
+        const deck = document.getElementById('cardDeck');
+        if (!deck) return;
 
-        function goTo(i) {
-          current = i;
-          track.style.transform = `translateX(-${i * 100}%)`;
-          dots.forEach((d, idx) => d.classList.toggle('in-carousel__dot--active', idx === i));
+        // Cards in DOM order = index 0 is first screenshot (renders on top via z-index from data-depth)
+        const cards = Array.from(deck.querySelectorAll('.in-deck__card'));
+        const total = cards.length;
+        // order[0] = index of card currently on top
+        const order = cards.map((_, i) => i);
+
+        function applyDepths() {
+          order.forEach((cardIdx, depth) => {
+            const card = cards[cardIdx];
+            card.setAttribute('data-depth', depth);
+            // stack order: depth 0 on top
+            card.style.zIndex = total - depth;
+          });
         }
 
-        dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+        applyDepths();
+
+        function flyOff(direction) {
+          const topIdx = order[0];
+          const topCard = cards[topIdx];
+          topCard.classList.add(direction === 'left' ? 'in-deck__card--fly-left' : 'in-deck__card--fly-right');
+
+          setTimeout(() => {
+            // Remove fly class, send to bottom of order
+            topCard.classList.remove('in-deck__card--fly-left', 'in-deck__card--fly-right');
+            order.push(order.shift()); // move top card to bottom
+            applyDepths();
+          }, 420);
+        }
+
+        // Click: fly off in alternating directions
+        let flyDir = 'left';
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            const topIdx = order[0];
+            if (cards.indexOf(card) !== topIdx) return; // only top card is interactive
+            flyOff(flyDir);
+            flyDir = flyDir === 'left' ? 'right' : 'left';
+          });
+        });
 
         // Drag / swipe
-        let startX = 0;
-        track.addEventListener('pointerdown', (e) => { startX = e.clientX; });
-        track.addEventListener('pointerup', (e) => {
-          const dx = e.clientX - startX;
-          if (Math.abs(dx) > 40) goTo(Math.max(0, Math.min(dots.length - 1, current + (dx < 0 ? 1 : -1))));
+        let dragStartX = 0;
+        let dragging = false;
+        deck.addEventListener('pointerdown', (e) => {
+          dragStartX = e.clientX;
+          dragging = true;
         });
-      }
+        deck.addEventListener('pointerup', (e) => {
+          if (!dragging) return;
+          dragging = false;
+          const dx = e.clientX - dragStartX;
+          if (Math.abs(dx) > 50) {
+            flyOff(dx < 0 ? 'left' : 'right');
+            flyDir = dx < 0 ? 'right' : 'left';
+          }
+        });
+      })();
     </script>
   </body>
 </html>
@@ -305,34 +338,53 @@ const screenshots = [
     margin: 0;
   }
 
-  /* ── Carousel ─────────────────────────────────────────────── */
-  .in-carousel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    align-self: flex-start;
-  }
-
-  .in-carousel__track {
-    display: flex;
+  /* ── Deck of cards ────────────────────────────────────────── */
+  .in-deck {
+    position: relative;
     width: 240px;
-    /* height = width * (2160/1080) aspect ratio */
-    height: 480px;
-    overflow: hidden;
-    border-radius: 36px;
-    touch-action: pan-y;
-    transition: transform 0.3s ease;
-    cursor: grab;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    border: 2px solid var(--border-strong);
-  }
-  .in-carousel__track:active { cursor: grabbing; }
-
-  .in-carousel__slide {
-    min-width: 100%;
+    height: 510px; /* 240 * (2160/1080) + a little breathing room */
+    align-self: flex-start;
     flex-shrink: 0;
   }
+
+  .in-deck__card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 480px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 2px solid var(--border-strong);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transform-origin: bottom center;
+    will-change: transform;
+    transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), opacity 0.3s;
+    user-select: none;
+  }
+
+  /* Cards behind the top one peek out with rotation + offset */
+  .in-deck__card[data-depth="1"] { transform: rotate(4deg)  translateY(10px); }
+  .in-deck__card[data-depth="2"] { transform: rotate(-5deg) translateY(18px); }
+  .in-deck__card[data-depth="3"] { transform: rotate(3deg)  translateY(26px); }
+  .in-deck__card[data-depth="4"] { transform: rotate(-4deg) translateY(32px); }
+  .in-deck__card[data-depth="5"] { transform: rotate(2deg)  translateY(36px); }
+
+  /* Top card: flat, no rotation */
+  .in-deck__card[data-depth="0"] {
+    transform: rotate(0deg) translateY(0);
+    cursor: pointer;
+    z-index: 10;
+  }
+  .in-deck__card[data-depth="0"]:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  }
+
+  /* Flying-off animation */
+  .in-deck__card--fly-left  { transform: translateX(-140%) rotate(-18deg) !important; opacity: 0 !important; transition: transform 0.4s ease-in, opacity 0.35s ease-in !important; }
+  .in-deck__card--fly-right { transform: translateX(140%)  rotate(18deg)  !important; opacity: 0 !important; transition: transform 0.4s ease-in, opacity 0.35s ease-in !important; }
 
   .in-phone-frame {
     width: 100%;
@@ -347,24 +399,18 @@ const screenshots = [
     object-position: top;
   }
 
-  .in-carousel__dots {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .in-carousel__dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    border: none;
-    background: var(--border-strong);
-    padding: 0;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .in-carousel__dot--active {
-    background: var(--text-terminal);
-    transform: scale(1.4);
+  .in-deck__hint {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 0;
+    letter-spacing: 0.08em;
+    pointer-events: none;
   }
 
   /* ── Button ───────────────────────────────────────────────── */
@@ -502,10 +548,12 @@ const screenshots = [
       gap: 40px;
       padding: 48px 16px 48px;
     }
-    .in-carousel {
+    .in-deck {
       order: -1;
+      width: 180px;
+      height: 390px;
     }
-    .in-carousel__track {
+    .in-deck__card {
       width: 180px;
       height: 360px;
     }

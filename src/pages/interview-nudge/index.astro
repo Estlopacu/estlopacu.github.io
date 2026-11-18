@@ -68,7 +68,8 @@ const screenshots = [
             <img class="in-hero__icon bell-ring" src="/interview-nudge/icon-512.png" width="96" height="96" alt="Interview Nudge app icon" />
             <h1 class="in-hero__title">Interview Nudge</h1>
           </div>
-          <p class="in-hero__sub reveal" style="transition-delay:.08s">Stay interview-ready: bite-size concepts delivered as notifications all day.</p>
+          <p class="in-hero__audience reveal" style="transition-delay:.04s">For software engineers preparing for tech interviews</p>
+          <p class="in-hero__sub reveal" style="transition-delay:.08s">Stop cramming the night before. Interview Nudge sends short pop-up reminders to your phone throughout the day — each one covering a concept that might come up in your interview.</p>
           <p class="in-hero__cmd reveal" aria-hidden="true" style="transition-delay:.16s"><span class="in-prompt">nudge:~$</span> recall --daily</p>
           <div class="in-hero__cta reveal" style="transition-delay:.24s">
             <a class="in-btn in-btn--primary" href={ctaHref}>{ctaLabel}</a>
@@ -85,8 +86,8 @@ const screenshots = [
           <li class="in-step reveal" style="transition-delay:.12s">
             <span class="in-step__num">01</span>
             <div>
-              <strong>Notification arrives</strong>
-              <p>A concept name and a short hint drop into your notification shade. Try to recall the answer before you tap.</p>
+              <strong>A reminder pops up on your phone</strong>
+              <p>A concept name and a short hint appear on your screen — like a text message alert. Try to recall the answer before you tap.</p>
             </div>
           </li>
           <li class="in-step reveal" style="transition-delay:.2s">
@@ -100,7 +101,7 @@ const screenshots = [
             <span class="in-step__num">03</span>
             <div>
               <strong>Rate your recall</strong>
-              <p>Tap "Knew it" or "Forgot" right from the notification. Spaced repetition brings forgotten concepts back sooner and spaces out the ones you know.</p>
+              <p>Tap "Knew it" or "Forgot" right from the reminder. The app uses spaced repetition — a learning technique that shows you forgotten concepts more often and gradually spaces out the ones you've mastered — so you retain more with less effort.</p>
             </div>
           </li>
         </ol>
@@ -110,6 +111,7 @@ const screenshots = [
       <section class="in-section">
         <p class="in-eyebrow reveal"><span class="in-eyebrow__muted">// </span>CONCEPT DECKS</p>
         <h2 class="in-section__title reveal" style="transition-delay:.06s">Built-in decks, ready on day one</h2>
+        <p class="in-decks__intro reveal" style="transition-delay:.08s">These are the topics that come up most in software engineering interviews — from Google and Meta to startup on-sites.</p>
         <ul class="in-decks">
           <li class="reveal" style="transition-delay:.10s">System Design</li>
           <li class="reveal" style="transition-delay:.16s">Security &amp; Auth</li>
@@ -127,7 +129,7 @@ const screenshots = [
         <ul class="in-features">
           <li class="reveal" style="transition-delay:.10s"><span class="in-feature__label">Spaced repetition</span> — forgotten concepts come back sooner; known ones get spaced out.</li>
           <li class="reveal" style="transition-delay:.18s"><span class="in-feature__label">Progress</span> — daily streak, review heatmap, and mastery per topic.</li>
-          <li class="reveal" style="transition-delay:.26s"><span class="in-feature__label">Per-topic schedule</span> — set how many times a day, active hours, which days, and notification sound for each deck.</li>
+          <li class="reveal" style="transition-delay:.26s"><span class="in-feature__label">Per-topic schedule</span> — set how many times a day, active hours, which days, and alert sound for each deck.</li>
           <li class="reveal" style="transition-delay:.34s"><span class="in-feature__label">Light and dark theme</span> — follows your system preference or set it manually.</li>
         </ul>
       </section>
@@ -324,6 +326,19 @@ const screenshots = [
     margin: 0;
   }
 
+  .in-hero__audience {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-terminal);
+    margin: 0 0 14px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-brand);
+    border-radius: 4px;
+    display: inline-block;
+  }
+
   .in-hero__sub {
     font-size: clamp(16px, 2.2vw, 20px);
     color: var(--text-body);
@@ -507,6 +522,13 @@ const screenshots = [
     content: '$ ';
     color: var(--text-terminal);
   }
+  .in-decks__intro {
+    font-size: 15px;
+    color: var(--text-body);
+    margin: 0 0 20px;
+    line-height: 1.6;
+  }
+
   .in-decks__addendum {
     font-size: 14px;
     color: var(--text-muted);

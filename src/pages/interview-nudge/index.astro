@@ -204,19 +204,10 @@ const screenshots = [
           }, 420);
         }
 
-        // Click: fly off in alternating directions.
-        // Delegate to deck so it fires regardless of where setPointerCapture routes click.
+        // Tap + drag/swipe via pointer events only — avoids click-event routing
+        // issues caused by setPointerCapture in Chrome (click fires on capture
+        // target, not on the card, so card-level click listeners never fire).
         let flyDir = 'left';
-        deck.addEventListener('click', (e) => {
-          const targetCard = e.target.closest('.in-deck__card');
-          if (!targetCard) return;
-          const topIdx = order[0];
-          if (cards.indexOf(targetCard) !== topIdx) return;
-          flyOff(flyDir);
-          flyDir = flyDir === 'left' ? 'right' : 'left';
-        });
-
-        // Drag / swipe — pointer capture keeps the event on mobile
         let dragStartX = 0;
         let dragging = false;
         deck.addEventListener('pointerdown', (e) => {
@@ -231,6 +222,9 @@ const screenshots = [
           if (Math.abs(dx) > 40) {
             flyOff(dx < 0 ? 'left' : 'right');
             flyDir = dx < 0 ? 'right' : 'left';
+          } else {
+            flyOff(flyDir);
+            flyDir = flyDir === 'left' ? 'right' : 'left';
           }
         });
         deck.addEventListener('pointercancel', () => { dragging = false; });

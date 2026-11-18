@@ -2,8 +2,8 @@
 import '../../styles/global.css';
 
 const PLAY_URL = null; // set to 'https://play.google.com/store/apps/details?id=com.estlopacu.interviewNudge' once public
-const BETA_MAILTO = 'mailto:estlopacu@gmail.com?subject=Interview%20Nudge%20beta';
-const ctaHref = PLAY_URL ?? BETA_MAILTO;
+const BETA_URL = 'https://play.google.com/apps/testing/com.estlopacu.interviewNudge';
+const ctaHref = PLAY_URL ?? BETA_URL;
 const ctaLabel = PLAY_URL ? 'Get it on Google Play' : 'Join the beta';
 
 const screenshots = [
@@ -204,18 +204,10 @@ const screenshots = [
           }, 420);
         }
 
-        // Click: fly off in alternating directions
+        // Tap + drag/swipe via pointer events only — avoids click-event routing
+        // issues caused by setPointerCapture in Chrome (click fires on capture
+        // target, not on the card, so card-level click listeners never fire).
         let flyDir = 'left';
-        cards.forEach(card => {
-          card.addEventListener('click', () => {
-            const topIdx = order[0];
-            if (cards.indexOf(card) !== topIdx) return;
-            flyOff(flyDir);
-            flyDir = flyDir === 'left' ? 'right' : 'left';
-          });
-        });
-
-        // Drag / swipe — pointer capture keeps the event on mobile
         let dragStartX = 0;
         let dragging = false;
         deck.addEventListener('pointerdown', (e) => {
@@ -230,6 +222,9 @@ const screenshots = [
           if (Math.abs(dx) > 40) {
             flyOff(dx < 0 ? 'left' : 'right');
             flyDir = dx < 0 ? 'right' : 'left';
+          } else {
+            flyOff(flyDir);
+            flyDir = flyDir === 'left' ? 'right' : 'left';
           }
         });
         deck.addEventListener('pointercancel', () => { dragging = false; });

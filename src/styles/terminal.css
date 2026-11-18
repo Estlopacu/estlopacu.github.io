@@ -439,7 +439,7 @@
     aspect-ratio: auto;
     border-bottom: none;
     border-right: 1px solid var(--border-subtle);
-    min-height: 240px;
+    height: 260px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

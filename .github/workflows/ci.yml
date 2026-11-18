@@ -24,7 +24,7 @@ jobs:
       - run: npx astro check
       - run: npx tsc --noEmit
       - run: npx eslint src
-      - run: npx prettier --check src
+      - run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,astro,css}"
       - run: npm run build
 
   # AI review, then merge when the model finds no critical issues.

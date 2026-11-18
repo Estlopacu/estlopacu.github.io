@@ -13,7 +13,6 @@ a { color: inherit; }
 /* ---------- Reveal-on-scroll ---------- */
 .pf-reveal { opacity: 0; transform: translateY(4px); transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out); }
 .pf-reveal.is-in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .pf-reveal { opacity: 1; transform: none; transition: none; } }
 
 /* ---------- Nav ---------- */
 .pf-nav {
@@ -149,7 +148,6 @@ a { color: inherit; }
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-spring);
 }
 .pf-skillgroups.is-in .pf-pill { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .pf-skillgroup__pills .pf-pill { opacity: 1; transform: none; transition: none; } }
 
 /* ---------- Experience timeline ---------- */
 .pf-timeline { list-style: none; margin: var(--space-8) 0 0; padding: 0; position: relative; max-width: var(--container-md); }
@@ -173,9 +171,20 @@ a { color: inherit; }
 .pf-timeline.is-in .pf-timeline__item:nth-child(5) { transition-delay: 320ms; }
 .pf-timeline.is-in .pf-timeline__item:nth-child(6) { transition-delay: 400ms; }
 .pf-timeline.is-in .pf-timeline__item:nth-child(7) { transition-delay: 480ms; }
-@media (prefers-reduced-motion: reduce) {
-  .pf-timeline .pf-timeline__item { opacity: 1; transform: none; transition: none; }
+
+/* Per-item stagger reveal for git log — mirrors pf-timeline pattern. */
+.pf-gitlog .pf-gitlog__item {
+  opacity: 0; transform: translateY(6px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
 }
+.pf-gitlog.is-in .pf-gitlog__item { opacity: 1; transform: none; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(1) { transition-delay: 0ms; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(2) { transition-delay: 80ms; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(3) { transition-delay: 160ms; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(4) { transition-delay: 240ms; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(5) { transition-delay: 320ms; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(6) { transition-delay: 400ms; }
+.pf-gitlog.is-in .pf-gitlog__item:nth-child(7) { transition-delay: 480ms; }
 .pf-timeline__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .pf-timeline__head h3 { font-family: var(--font-display); font-size: var(--text-md); color: var(--text-strong); margin: 0; }
 .pf-timeline__company { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--brand); margin: 6px 0 4px; }

@@ -1,19 +1,19 @@
 // Hero — terminal-typewriter landing. The eyebrow and headline type themselves
 // in like someone at a terminal, then the rest of the block staggers in.
-import React from "react";
-import { motion, useReducedMotion } from "motion/react";
-import { ArrowDown } from "lucide-react";
-import Button from "../ds/Button.jsx";
-import Tag from "../ds/Tag.jsx";
-import TerminalPrompt from "../ds/TerminalPrompt.jsx";
-import SocialLink from "../ds/SocialLink.jsx";
-import Typewriter from "../ds/Typewriter.jsx";
-import CommandLine from "../ds/CommandLine.jsx";
-import { DUR, EASE, STAGGER } from "../../lib/motion-tokens.ts";
+import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
+import { ArrowDown } from 'lucide-react';
+import Button from '../ds/Button.jsx';
+import Tag from '../ds/Tag.jsx';
+import TerminalPrompt from '../ds/TerminalPrompt.jsx';
+import SocialLink from '../ds/SocialLink.jsx';
+import Typewriter from '../ds/Typewriter.jsx';
+import CommandLine from '../ds/CommandLine.jsx';
+import { DUR, EASE, STAGGER } from '../../lib/motion-tokens.ts';
 
-const EYEBROW = "// software engineer, berlin";
-const TITLE_L1 = "Luis Esteban";
-const TITLE_L2 = "López Acuña";
+const EYEBROW = '// software engineer, berlin';
+const TITLE_L1 = 'Luis Esteban';
+const TITLE_L2 = 'López Acuña';
 
 function Hero() {
   const reduce = useReducedMotion();
@@ -80,7 +80,7 @@ function Hero() {
                   speed={45}
                   startDelay={stage >= 1 ? 180 : 999999}
                   onDone={() => setStage((s) => Math.max(s, 2))}
-                  style={{ display: "inline-block" }}
+                  style={{ display: 'inline-block' }}
                 />
                 <br />
                 <Typewriter
@@ -90,7 +90,7 @@ function Hero() {
                   startDelay={stage >= 2 ? 120 : 999999}
                   onDone={() => setStage((s) => Math.max(s, 3))}
                   keepCursor={false}
-                  style={{ display: "inline-block" }}
+                  style={{ display: 'inline-block' }}
                 />
                 {stage >= 3 && <span className="pf-hero__dot">.</span>}
               </>
@@ -106,8 +106,8 @@ function Hero() {
 
           <motion.div
             variants={restContainer}
-            initial={useTyper ? "hidden" : false}
-            animate={stage >= 3 ? "show" : "hidden"}
+            initial={useTyper ? 'hidden' : false}
+            animate={stage >= 3 ? 'show' : 'hidden'}
           >
             <motion.p className="pf-hero__lead" variants={restVariants}>
               Senior full-stack engineer from Costa Rica, based in Berlin. Over

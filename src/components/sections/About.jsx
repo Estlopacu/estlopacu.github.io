@@ -10,27 +10,42 @@ import CommandLine from '../ds/CommandLine.jsx';
 function About() {
   const groups = [
     {
-      label: 'core_stack',
+      label: 'languages',
       tone: 'signal',
-      items: ['TypeScript', 'React / Next.js', 'Node.js', 'Vue.js / Nuxt'],
+      items: ['TypeScript', 'JavaScript', 'PHP', 'HTML', 'CSS'],
     },
     {
       label: 'frontend',
       items: [
+        'React',
+        'Next.js',
         'React Native',
+        'Vue.js',
         'TanStack Query',
-        'React Router',
-        'Pinia',
-        'Tailwind',
-        'HTML',
-        'CSS',
+        'Storybook',
+        'Tailwind CSS',
+        'jQuery',
       ],
     },
-    { label: 'cms', items: ['Sanity', 'Webflow'] },
-    { label: 'infra_cloud', items: ['AWS', 'Docker'] },
-    { label: 'testing', items: ['Playwright', 'Cypress', 'E2E'] },
+    {
+      label: 'backend',
+      items: ['Node.js', 'Express', 'GraphQL', 'REST APIs', 'Laravel'],
+    },
+    {
+      label: 'infra_cloud',
+      items: ['AWS', 'Vercel', 'Docker', 'GitHub Actions', 'CI/CD'],
+    },
+    {
+      label: 'testing',
+      items: ['Playwright', 'Cypress', 'E2E', 'Unit Testing', 'A/B testing'],
+    },
     { label: 'observability', items: ['PostHog', 'Datadog', 'Sentry'] },
-    { label: 'databases', items: ['PostgreSQL', 'MySQL'] },
+    { label: 'cms', items: ['Sanity', 'Webflow'] },
+    { label: 'databases', items: ['PostgreSQL'] },
+    {
+      label: 'practices',
+      items: ['Scrum', 'Mentoring & Coaching', 'SEO', 'Figma'],
+    },
   ];
   let n = 0;
   return (

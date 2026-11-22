@@ -107,6 +107,15 @@ function Nav({ theme, onToggleTheme }) {
           >
             {theme === 'terminal' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+          <a
+            className="pf-nav__resume"
+            href="https://docs.google.com/document/d/1NoRwMe4CK_w1YBpBs5VDg04HYqPSLyzzvhvItg4ZVwM/export?format=pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+          >
+            CV
+          </a>
           <a className="pf-nav__cta" href="#contact">
             Hire me
           </a>

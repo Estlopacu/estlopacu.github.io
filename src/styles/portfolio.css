@@ -145,6 +145,17 @@ a {
   width: 18px;
   height: 18px;
 }
+.pf-nav__resume {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color var(--dur-base);
+}
+.pf-nav__resume:hover {
+  color: var(--text-strong);
+}
 .pf-nav__cta {
   font-family: var(--font-display);
   font-weight: 600;

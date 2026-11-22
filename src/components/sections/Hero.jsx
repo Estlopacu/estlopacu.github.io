@@ -2,7 +2,7 @@
 // in like someone at a terminal, then the rest of the block staggers in.
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, FileDown } from 'lucide-react';
 import Button from '../ds/Button.jsx';
 import Tag from '../ds/Tag.jsx';
 import TerminalPrompt from '../ds/TerminalPrompt.jsx';
@@ -128,6 +128,18 @@ function Hero() {
               </Button>
               <Button variant="secondary" size="lg" as="a" href="#contact">
                 Get in touch
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                as="a"
+                href="https://docs.google.com/document/d/1NoRwMe4CK_w1YBpBs5VDg04HYqPSLyzzvhvItg4ZVwM/export?format=pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                iconRight={<FileDown size={18} />}
+              >
+                Download CV
               </Button>
             </motion.div>
             <motion.div className="pf-hero__social" variants={restVariants}>

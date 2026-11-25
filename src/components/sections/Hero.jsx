@@ -137,9 +137,9 @@ function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                iconRight={<FileDown size={18} />}
+                iconRight={<FileDown size={18} aria-hidden="true" />}
               >
-                Download CV
+                Download CV<span className="sr-only"> (opens in new tab)</span>
               </Button>
             </motion.div>
             <motion.div className="pf-hero__social" variants={restVariants}>
@@ -181,7 +181,7 @@ function Hero() {
         </div>
       </div>
       <a className="pf-hero__scroll" href="#about">
-        <ArrowDown size={16} /> scroll
+        <ArrowDown size={16} aria-hidden="true" /> scroll
       </a>
     </section>
   );

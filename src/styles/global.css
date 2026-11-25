@@ -6,3 +6,38 @@
 @import './spacing.css';
 @import './portfolio.css';
 @import './terminal.css';
+
+/* Skip-to-content link — visually hidden until focused */
+.pf-skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75em 1.5em;
+  background: var(--brand);
+  color: var(--text-on-brand);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.pf-skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Visually hidden text for screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

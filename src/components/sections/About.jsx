@@ -49,7 +49,12 @@ function About() {
   ];
   let n = 0;
   return (
-    <section className="pf-section" id="about" data-nav-target>
+    <section
+      className="pf-section"
+      id="about"
+      data-nav-target
+      aria-labelledby="about-heading"
+    >
       <div className="pf-about pf-reveal">
         <div className="pf-about__text">
           <CommandLine command="cat about.md" />
@@ -57,6 +62,7 @@ function About() {
             <SectionHeading
               eyebrow="about"
               title="Engineer who sweats the details"
+              headingId="about-heading"
             />
             <p className="pf-prose">
               I'm a senior full-stack engineer, originally from Costa Rica and

@@ -1,0 +1,151 @@
+/* CRT terminal boot animation */
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0e0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: crt-poweron 0.45s ease-out;
+}
+
+.boot-screen--off {
+  animation: crt-collapse 0.55s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes crt-poweron {
+  0% {
+    filter: brightness(0);
+  }
+  12% {
+    filter: brightness(4) saturate(0.4);
+  }
+  18% {
+    filter: brightness(0.6);
+  }
+  32% {
+    filter: brightness(1.4);
+  }
+  45% {
+    filter: brightness(0.95);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes crt-collapse {
+  0% {
+    transform: scaleY(1) scaleX(1);
+    filter: brightness(1.2);
+    opacity: 1;
+  }
+  45% {
+    transform: scaleY(0.012) scaleX(1);
+    filter: brightness(2.5);
+    opacity: 1;
+  }
+  70% {
+    transform: scaleY(0.012) scaleX(0.4);
+    filter: brightness(1.8);
+    opacity: 1;
+  }
+  85% {
+    transform: scaleY(0.012) scaleX(0.08);
+    filter: brightness(3);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.012) scaleX(0);
+    filter: brightness(0);
+    opacity: 0;
+  }
+}
+
+/* CRT scanlines overlay */
+.boot-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.28) 2px,
+    rgba(0, 0, 0, 0.28) 4px
+  );
+  pointer-events: none;
+  animation: scanline-drift 8s linear infinite;
+}
+
+@keyframes scanline-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 32px;
+  }
+}
+
+/* CRT vignette */
+.boot-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  pointer-events: none;
+}
+
+/* Text area */
+.boot-content {
+  position: relative;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(0.68rem, 1.4vw, 0.85rem);
+  line-height: 1.65;
+  color: #5cf28a;
+  width: min(580px, 86vw);
+  text-shadow:
+    0 0 6px rgba(92, 242, 138, 0.7),
+    0 0 18px rgba(92, 242, 138, 0.25);
+}
+
+.boot-line {
+  margin: 0;
+  min-height: 1.65em;
+  white-space: pre;
+  animation: line-appear 0.06s ease-out both;
+}
+
+@keyframes line-appear {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.boot-cursor {
+  display: inline-block;
+  color: #5cf28a;
+  text-shadow:
+    0 0 6px rgba(92, 242, 138, 0.9),
+    0 0 20px rgba(92, 242, 138, 0.4);
+  animation: cursor-blink 0.65s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

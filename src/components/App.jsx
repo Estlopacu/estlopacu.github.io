@@ -6,6 +6,7 @@ import Experience from './sections/Experience.jsx';
 import Projects from './sections/Projects.jsx';
 import Contact from './sections/Contact.jsx';
 import KeyboardNav from './ds/KeyboardNav.jsx';
+import BootScreen from './BootScreen.jsx';
 
 const STORE_KEY = 'estlopacu-theme';
 // One-time migration marker — flip existing visitors to terminal default
@@ -13,6 +14,12 @@ const STORE_KEY = 'estlopacu-theme';
 const MIGRATION_KEY = 'estlopacu-theme-migrated-v2-terminal-default';
 
 export default function App() {
+  const [booted, setBooted] = React.useState(false);
+
+  const handleBootDone = React.useCallback(() => {
+    setBooted(true);
+  }, []);
+
   const [theme, setTheme] = React.useState(() => {
     if (typeof localStorage === 'undefined') return 'terminal';
     if (!localStorage.getItem(MIGRATION_KEY)) return 'terminal';
@@ -43,6 +50,7 @@ export default function App() {
 
   return (
     <>
+      {!booted && <BootScreen onDone={handleBootDone} />}
       <Nav
         theme={theme}
         onToggleTheme={() =>

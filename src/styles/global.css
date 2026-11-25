@@ -6,6 +6,7 @@
 @import './spacing.css';
 @import './portfolio.css';
 @import './terminal.css';
+@import './boot.css';
 
 /* Skip-to-content link — visually hidden until focused */
 .pf-skip-link {

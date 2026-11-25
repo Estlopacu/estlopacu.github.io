@@ -87,6 +87,7 @@ function Experience() {
       className="pf-section pf-section--alt"
       id="experience"
       data-nav-target
+      aria-labelledby="experience-heading"
     >
       <div className="pf-reveal">
         <SectionHeading
@@ -94,6 +95,7 @@ function Experience() {
           title="Where I've worked"
           align="center"
           subtitle="10+ years across startups and scale-ups — the last six in Berlin."
+          headingId="experience-heading"
         />
       </div>
       <CommandLine
@@ -145,7 +147,7 @@ function Experience() {
       {!showEarlier && (
         <div className="pf-timeline__more">
           <Button variant="secondary" onClick={() => setShowEarlier(true)}>
-            $ git log --all <ChevronDown size={16} />
+            $ git log --all <ChevronDown size={16} aria-hidden="true" />
           </Button>
         </div>
       )}

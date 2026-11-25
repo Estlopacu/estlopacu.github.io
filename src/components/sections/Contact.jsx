@@ -19,13 +19,19 @@ function Contact() {
     },
   ];
   return (
-    <section className="pf-section pf-contact" id="contact" data-nav-target>
+    <section
+      className="pf-section pf-contact"
+      id="contact"
+      data-nav-target
+      aria-labelledby="contact-heading"
+    >
       <div className="pf-contact__inner pf-reveal">
         <SectionHeading
           eyebrow="contact"
           title="Let's build something"
           align="center"
           subtitle="I'm open to new opportunities. The fastest way to reach me is email."
+          headingId="contact-heading"
         />
         <div className="pf-contact__term">
           <TerminalPrompt

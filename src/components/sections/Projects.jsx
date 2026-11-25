@@ -16,6 +16,8 @@ const PROJECTS = [
     slug: 'interview-nudge',
     name: 'Interview Nudge',
     img: '/interview-nudge/screenshots/01-home.png',
+    imgAlt:
+      'Interview Nudge Android app home screen showing a list of interview topics',
     href: '/interview-nudge/',
     body: `An Android app that keeps interview concepts fresh by delivering them as local notifications throughout the day. Spaced repetition schedules each concept based on whether you recalled it. No account, no ads, everything stored on-device.`,
     stack: ['React Native', 'Expo', 'Android', 'SQLite'],
@@ -24,6 +26,8 @@ const PROJECTS = [
     slug: 'contratista-costa-rica',
     name: 'Contratista Costa Rica',
     img: '/project-contratistacr.png',
+    imgAlt:
+      'Contratista Costa Rica marketplace website showing job listings for construction workers',
     body: `A marketplace connecting contractors and independent workers across the Costa Rican construction industry. Two-sided platform: contractors post jobs, workers apply, both build reputation over time.`,
     stack: ['HTML5', 'CSS3', 'jQuery', 'AngularJS', 'CodeIgniter', 'MySQL'],
   },
@@ -31,6 +35,8 @@ const PROJECTS = [
     slug: 'mamavaprimero-monge',
     name: '#MamáVaPrimero — Monge',
     img: '/project-mamavaprimero.png',
+    imgAlt:
+      "Monge's #MamáVaPrimero Mother's Day campaign page with video recording interface",
     body: `A Mother's Day campaign for retail chain Monge letting users record a personalized video card and share it back through Facebook. In-browser video capture, upload pipeline, and social integration.`,
     stack: ['JavaScript', 'Facebook API', 'Video', 'AJAX'],
   },
@@ -38,6 +44,8 @@ const PROJECTS = [
     slug: 'graphql-costa-rica-locations',
     name: 'GraphQL Costa Rica Locations',
     img: '/project-graphql-cr.png',
+    imgAlt:
+      'GraphQL Costa Rica Locations API schema explorer showing province and canton queries',
     href: 'https://github.com/Estlopacu/graphql-costa-rica-locations',
     body: `A schema-first GraphQL API serving Costa Rica's administrative divisions — 7 provincias, 82 cantones, 474 distritos — with stable IDs and postal codes. Resolvers are type-checked against the schema via GraphQL Code Generator so a bad return shape fails tsc, not a live query. Deployed on EC2 behind nginx as a systemd service.`,
     stack: [
@@ -52,6 +60,8 @@ const PROJECTS = [
     slug: 'indicadores-economicos-bccr',
     name: 'indicadores-economicos-bccr',
     img: '/project-bccr.png',
+    imgAlt:
+      'npm package page for indicadores-economicos-bccr showing download stats and README',
     href: 'https://www.npmjs.com/package/indicadores-economicos-bccr',
     body: `An npm package for converting between US dollars and Costa Rican colones using live exchange rates from the Banco Central de Costa Rica SOAP web service. Handles XML parsing, rate caching, and typed responses so downstream code stays clean.`,
     stack: ['Node.js', 'npm', 'axios', 'xmldom', 'SOAP'],
@@ -87,7 +97,7 @@ function ProjectPane({ p }) {
       <CommandLine command={`cat ${filename}`} />
       <TerminalWindow title={filename} className="pf-readme__win">
         <div className="pf-readme__media">
-          <img src={p.img} alt={p.name} loading="lazy" />
+          <img src={p.img} alt={p.imgAlt || p.name} loading="lazy" />
         </div>
         <div className="pf-readme__content">
           <h3 className="pf-readme__title"># {p.name}</h3>
@@ -109,7 +119,8 @@ function ProjectPane({ p }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {p.href} <ExternalLink size={14} />
+                {p.href} <ExternalLink size={14} aria-hidden="true" />
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             </>
           )}
@@ -121,12 +132,18 @@ function ProjectPane({ p }) {
 
 function Projects() {
   return (
-    <section className="pf-section" id="projects" data-nav-target>
+    <section
+      className="pf-section"
+      id="projects"
+      data-nav-target
+      aria-labelledby="projects-heading"
+    >
       <div className="pf-reveal">
         <SectionHeading
           eyebrow="selected work"
           title="Projects I've shipped"
           subtitle="A few products I've built end-to-end."
+          headingId="projects-heading"
         />
       </div>
       <CommandLine command="ls work/" className="pf-ls__cmd" />

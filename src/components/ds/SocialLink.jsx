@@ -40,18 +40,21 @@ export function SocialLink({
   label,
   ghost = false,
   className = '',
+  target,
   ...rest
 }) {
   injectStyles();
   const Icon = ICONS[icon] || LinkIcon;
+  const fullLabel = target === '_blank' ? `${label} (opens in new tab)` : label;
   return (
     <a
       className={`els-social${ghost ? ' els-social--ghost' : ''} ${className}`.trim()}
-      aria-label={label}
-      title={label}
+      aria-label={fullLabel}
+      title={fullLabel}
+      target={target}
       {...rest}
     >
-      <Icon size={20} />
+      <Icon size={20} aria-hidden="true" />
     </a>
   );
 }

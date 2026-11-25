@@ -32,6 +32,7 @@ export function SectionHeading({
   title,
   subtitle,
   align = 'left',
+  headingId,
   className = '',
   ...rest
 }) {
@@ -41,7 +42,11 @@ export function SectionHeading({
   return (
     <div className={cls} {...rest}>
       {eyebrow && <span className="els-sh__eyebrow">{eyebrow}</span>}
-      {title && <h2 className="els-sh__title">{title}</h2>}
+      {title && (
+        <h2 id={headingId} className="els-sh__title">
+          {title}
+        </h2>
+      )}
       {subtitle && <p className="els-sh__sub">{subtitle}</p>}
     </div>
   );

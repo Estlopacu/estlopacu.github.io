@@ -77,7 +77,7 @@ function Nav({ theme, onToggleTheme }) {
             estlopacu<span className="pf-nav__cursor">_</span>
           </span>
         </a>
-        <nav className="pf-nav__links">
+        <nav className="pf-nav__links" aria-label="Primary navigation">
           {LINKS.map((l) => {
             const isActive = LINK_TO_SECTION[l] === activeSection;
             return (
@@ -102,10 +102,22 @@ function Nav({ theme, onToggleTheme }) {
           <button
             className="pf-nav__theme"
             onClick={onToggleTheme}
-            aria-label="Toggle theme"
-            title="Toggle theme"
+            aria-label={
+              theme === 'terminal'
+                ? 'Switch to light theme'
+                : 'Switch to dark theme'
+            }
+            title={
+              theme === 'terminal'
+                ? 'Switch to light theme'
+                : 'Switch to dark theme'
+            }
           >
-            {theme === 'terminal' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'terminal' ? (
+              <Sun size={18} aria-hidden="true" />
+            ) : (
+              <Moon size={18} aria-hidden="true" />
+            )}
           </button>
           <a
             className="pf-nav__resume"
@@ -114,7 +126,7 @@ function Nav({ theme, onToggleTheme }) {
             rel="noopener noreferrer"
             download
           >
-            CV
+            CV<span className="sr-only"> (opens in new tab)</span>
           </a>
           <a className="pf-nav__cta" href="#contact">
             Hire me

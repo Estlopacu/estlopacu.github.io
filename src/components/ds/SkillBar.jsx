@@ -65,7 +65,14 @@ export function SkillBar({
         <span className="els-skill__name">{name}</span>
         <span className="els-skill__pct">{percent}%</span>
       </div>
-      <div className="els-skill__track">
+      <div
+        className="els-skill__track"
+        role="progressbar"
+        aria-valuenow={percent}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={name}
+      >
         <div className="els-skill__fill" style={{ width: `${w}%` }} />
       </div>
     </div>

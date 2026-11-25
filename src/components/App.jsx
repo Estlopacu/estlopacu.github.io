@@ -14,13 +14,9 @@ const STORE_KEY = 'estlopacu-theme';
 const MIGRATION_KEY = 'estlopacu-theme-migrated-v2-terminal-default';
 
 export default function App() {
-  const [booted, setBooted] = React.useState(() => {
-    if (typeof sessionStorage === 'undefined') return true;
-    return !!sessionStorage.getItem('estlopacu-booted');
-  });
+  const [booted, setBooted] = React.useState(false);
 
   const handleBootDone = React.useCallback(() => {
-    sessionStorage.setItem('estlopacu-booted', '1');
     setBooted(true);
   }, []);
 

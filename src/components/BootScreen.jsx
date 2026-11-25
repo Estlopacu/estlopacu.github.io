@@ -1,20 +1,14 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
 const LINES = [
-  { text: 'ESTLOPACU BIOS v1.0  —  Copyright (C) 2024', delay: 350 },
-  { text: 'CPU: Caffeine-driven @ 10+ yrs experience', delay: 650 },
-  { text: 'RAM: 640K creative capacity  ...  OK', delay: 950 },
-  { text: '', delay: 1200 },
-  { text: 'Initializing portfolio kernel...', delay: 1350 },
-  { text: '> Loading /experience .................  [OK]', delay: 1700 },
-  { text: '> Loading /projects ...................  [OK]', delay: 2000 },
-  { text: '> Loading /contact ....................  [OK]', delay: 2300 },
-  { text: '', delay: 2550 },
-  { text: 'System ready.  Welcome.', delay: 2750 },
+  { text: 'ESTLOPACU BIOS v1.0', delay: 300 },
+  { text: 'Initializing portfolio...', delay: 700 },
+  { text: '> /experience  /projects  /contact  [OK]', delay: 1100 },
+  { text: 'System ready.', delay: 1500 },
 ];
 
-const COLLAPSE_AT = 3400;
-const DONE_AT = 3950;
+const COLLAPSE_AT = 2100;
+const DONE_AT = 2650;
 
 export default function BootScreen({ onDone }) {
   const [lines, setLines] = useState([]);
